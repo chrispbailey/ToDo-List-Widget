@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+	<TableLayout
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/table_layout"
+	    >
+    </TableLayout>
+	
+	<Button android:id="@+id/addnotebutton"
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Add new note"
+        />
+    <Button android:id="@+id/donebutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        />        
+</LinearLayout>
+
