@@ -1,0 +1,6 @@
+gen/*
+bin/*
+other/*
+.settings/*
+*.apk
+todo.txt
