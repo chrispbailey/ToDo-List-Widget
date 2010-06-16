@@ -2,7 +2,6 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:minWidth="146dip"
     android:minHeight="146dip"
-    android:updatePeriodMillis="86400000"
     android:initialLayout="@layout/widget"
     android:configure="org.chrisbailey.todo.ToDoActivity">
 </appwidget-provider>

@@ -92,15 +92,19 @@ public class ToDoDatabase extends SQLiteOpenHelper
 
         Cursor c = null;
 
+        String result = null;
         try
         {
-            c = getWritableDatabase().query(VARIABLE_TABLE_NAME, cols,
+            SQLiteDatabase db = this.getReadableDatabase();
+            c = db.query(VARIABLE_TABLE_NAME, cols,
                     "name=?", whereArgs, null, null, null);
             boolean hasResult = c.moveToFirst();
             if (hasResult && !c.isNull(0))
             {
-                return c.getString(0);
+                result = c.getString(0);
             }
+            c.close();
+            db.close();
         }
         catch (Exception e)
         {
@@ -116,11 +120,11 @@ public class ToDoDatabase extends SQLiteOpenHelper
                 }
                 catch (Exception e)
                 {
-                    return null;
+                    Log.e(LOG_TAG,"Error closing cursor",e);
                 }
             }
         }
-        return null;
+        return result;
     }
 
     /**
@@ -201,7 +205,8 @@ public class ToDoDatabase extends SQLiteOpenHelper
 
         try
         {
-            c = getWritableDatabase().query(NOTE_TABLE_NAME, cols,
+            SQLiteDatabase db = this.getReadableDatabase();
+            c = db.query(NOTE_TABLE_NAME, cols,
                     "rowid=?", whereArgs, null, null, null);
             boolean hasResult = c.moveToFirst();
             if (hasResult && !c.isNull(0))
@@ -213,6 +218,12 @@ public class ToDoDatabase extends SQLiteOpenHelper
                 n.created = c.getLong(3);
                 return n;
             }
+            c.close();
+            db.close();
+        }
+        catch (IllegalStateException e)
+        {
+            Log.e(LOG_TAG, "Hi - caught you", e);
         }
         catch (Exception e)
         {
@@ -228,10 +239,15 @@ public class ToDoDatabase extends SQLiteOpenHelper
                 }
                 catch (Exception e)
                 {
-                    return null;
+                    Log.e(LOG_TAG,"Error closing cursor",e);
                 }
             }
         }
+        
+        Log.w(LOG_TAG, "c: "+ c.isClosed() + " : " + c.toString());
+
+        c = null;
+        
         return null;
     }
     
@@ -271,10 +287,11 @@ public class ToDoDatabase extends SQLiteOpenHelper
         String[] cols = new String[] { "rowid", "name", "status", "created" };
 
         Cursor c = null;
-
+        Log.d(LOG_TAG, "doing getAllNotes" );
         try
         {
-            c = getWritableDatabase().query(NOTE_TABLE_NAME, cols, null, null, null, null, null);
+            SQLiteDatabase db = this.getReadableDatabase();
+            c = db.query(NOTE_TABLE_NAME, cols, null, null, null, null, null);
             while (c.moveToNext())
             {
                 Note n = new Note();
@@ -284,6 +301,12 @@ public class ToDoDatabase extends SQLiteOpenHelper
                 n.created = c.getLong(3);
                 results.add(n);
             }
+            c.close();
+            db.close();
+        }
+        catch (IllegalStateException e)
+        {
+            Log.e(LOG_TAG, "Hi - caught you", e);
         }
         catch (Exception e)
         {
@@ -299,10 +322,14 @@ public class ToDoDatabase extends SQLiteOpenHelper
                 }
                 catch (Exception e)
                 {
-                    return results;
+                    Log.e(LOG_TAG,"Error closing cursor",e);
                 }
             }
         }
+
+        Log.w(LOG_TAG, "cc: "+ c.isClosed() + " : " +c.toString() );
+
+        c = null;
         return results;
     }
     
@@ -379,5 +406,12 @@ public class ToDoDatabase extends SQLiteOpenHelper
         }
 
         return returnFlag;
+    }
+    
+    public void close()
+    {
+        Log.i(LOG_TAG, "Closing db");
+        getWritableDatabase().close();
+        super.close();
     }
 }

@@ -15,49 +15,66 @@ public class ToDoWidgetProvider extends AppWidgetProvider
 {
     public static String LOG_TAG = "ToDoWidgetProvider";
     
+//    @Override
+//    public void onEnabled(Context  context)
+//    {
+//        Log.d(LOG_TAG, "onEnabled");
+//        setIntent(context);
+//    }
+    
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
     {
-        Log.d(LOG_TAG, "onUpdate");
-        // For each widget that needs an update, get the text that we should display:
-        //   - Create a RemoteViews object for it
-        //   - Set the text in the RemoteViews object
-        //   - Tell the AppWidgetManager to show that views object for the widget.
-        final int N = appWidgetIds.length;
+        Log.i(LOG_TAG, "onUpdate");
+        
+        int N = appWidgetIds.length;
+        
+        Log.i(LOG_TAG, "have " + N + " widgets!");
+
         for (int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
+        
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
-
     
     public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId)
     {
-        ToDoDatabase db = new ToDoDatabase(context);
+        ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
 
         LinkedList<Note> notes = db.getAllNotes();
         
         db.close();
-
+        db = null;
+        
+        
         StringBuffer s = new StringBuffer();
 
         for (Note n : notes)
         {
-            if (n.status == Note.Status.FINISHED) s.append("<ul>"+n.text+"</ul>");
-            else s.append(n.text);
+            if (n.status == Note.Status.FINISHED) s.append("<font color=\""+ToDoActivity.DONE_COLOR+"\">"+n.text+"</font>");
+            else s.append("<font color=\"#000000\">"+n.text+"</font>");
             s.append("<br/>");
         }
         
-        // Create an Intent to launch ToDoActivity
-        Intent intent = new Intent(context, ToDoActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-        
+        Log.d(LOG_TAG, s.toString());
+
         // Get the layout for the App Widget and attach an on-click listener to the button
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
         views.setTextViewText(R.id.textarea, Html.fromHtml((s.toString())));
-        views.setOnClickPendingIntent(R.id.textarea, pendingIntent);
         
         // Tell the AppWidgetManager to perform an update on the current App Widget
+        // Create an Intent to launch ToDoActivity
+        Intent intent = new Intent(context, ToDoActivity.class);
+        intent.setAction(appWidgetId+"");
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent, 0);
+        
+        views.setOnClickPendingIntent(R.id.widget_layout, pendingIntent);
+        
         manager.updateAppWidget(appWidgetId, views);
     }
+    
 }
