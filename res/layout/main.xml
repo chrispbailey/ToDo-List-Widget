@@ -1,26 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
-	<TableLayout
-	    android:orientation="vertical"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:id="@+id/table_layout"
-	    >
-    </TableLayout>
-	
-	<Button android:id="@+id/addnotebutton"
-	    android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Add new note"
-        />
-    <Button android:id="@+id/donebutton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Done"
-        />        
-</LinearLayout>
+    android:gravity="center_horizontal">
+    
+    <ScrollView
+        android:padding="1px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
+            <TableLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/table_layout"/>
+                
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView android:id="@+id/addnotebutton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:src="@drawable/add"/>
+
+                <ImageView android:id="@+id/donebutton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:src="@drawable/done"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

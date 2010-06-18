@@ -15,9 +15,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -53,8 +55,8 @@ public class ToDoActivity extends Activity
         
         redraw(this);
 
-        Button addnotebutton = (Button)findViewById(R.id.addnotebutton);
-        addnotebutton.setOnClickListener(new View.OnClickListener()
+        ImageView addnote = (ImageView)findViewById(R.id.addnotebutton);
+        addnote.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
             {
@@ -63,8 +65,8 @@ public class ToDoActivity extends Activity
             }
         });
         
-        Button donebutton = (Button)findViewById(R.id.donebutton);
-        donebutton.setOnClickListener(new View.OnClickListener()
+        ImageView done = (ImageView)findViewById(R.id.donebutton);
+        done.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
             {
@@ -88,26 +90,14 @@ public class ToDoActivity extends Activity
         }
     }
     
-    
     @Override
-    public void onPause()
-    {
-        Log.d(LOG_TAG, "onPause");
-        super.onPause();
-    }
-    
-    @Override
-    public void onStop()
-    {
-        Log.d(LOG_TAG, "onStop");
-        super.onPause();
-    }
-    
-    @Override
-    public void onDestroy()
-    {
-        Log.d(LOG_TAG, "onDestroy");
-        super.onPause();
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            Log.d(LOG_TAG, "KEYCODE_BACK");
+            done();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
     
     private void done()
@@ -132,26 +122,30 @@ public class ToDoActivity extends Activity
     {
         TableRow row = createRow(c);
         
-        EditText note = new EditText(c);
-
+        ImageView toggle = createImage(c);
+        int btn = R.drawable.tickbox;
+        if (n.status == Status.FINISHED) btn = R.drawable.tick;
+        toggle.setImageDrawable(getResources().getDrawable(btn));
+        toggle.setId(n.id);
+        toggle.setOnClickListener(new StatusClickListener(c));
+        row.addView(toggle);
+        
+        EditText note = createInput(c);
+        note.setPadding(0, 0, 0, 0);
+        note.setBackgroundResource(R.drawable.input_background);
         note.setText(n.text);
         note.setId(n.id);
         if (n.status == Note.Status.FINISHED) note.setTextColor(Color.parseColor(DONE_COLOR));
-        note.addTextChangedListener(new MyTextWatcher(note));        
-
+        else note.setTextColor(Color.WHITE);
+        note.addTextChangedListener(new MyTextWatcher(note));
         row.addView(note);
 
-        Button b = createButton(c);
-        b.setText("F");
-        b.setId(n.id);
-        b.setOnClickListener(new ButtonStatusClickListener(c));
-        row.addView(b);
         
-        b = createButton(c);
-        b.setText("D");
-        b.setId(n.id);
-        b.setOnClickListener(new ButtonDeleteClickListener(c));
-        row.addView(b);
+        ImageView delete = createImage(c);
+        delete.setImageDrawable(getResources().getDrawable(R.drawable.delete));
+        delete.setId(n.id);
+        delete.setOnClickListener(new DeleteClickListener(c));
+        row.addView(delete);
         
         return row;
     }
@@ -163,6 +157,11 @@ public class ToDoActivity extends Activity
         table.removeAllViews();
 
         LinkedList<Note> notes = db.getAllNotes();
+        if (notes.size() == 0)
+        {
+            db.addNote(new Note());
+            notes = db.getAllNotes();
+        }
 
         for (Note n : notes)
         {
@@ -181,22 +180,32 @@ public class ToDoActivity extends Activity
         row.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.WRAP_CONTENT,
                 TableRow.LayoutParams.WRAP_CONTENT));
-        row.setPadding(5, 0, 0, 5);
+        row.setGravity(Gravity.CENTER_HORIZONTAL);
+        row.setPadding(0, 0, 0, 0);
         return row;
     }
+
+    
     /**
-     * Utility function to create a Button and set defaults
+     * Utility function to create an image and set defaults
      * @param c
      * @return
      */
-    private static Button createButton(Context c)
+    private static ImageView createImage(Context c)
     {
-        Button b = new Button(c);
-        b.setLayoutParams(new TableRow.LayoutParams(
+        ImageView iv = new ImageView(c);
+        iv.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.WRAP_CONTENT,
                 TableRow.LayoutParams.WRAP_CONTENT));
-        b.setPadding(5, 0, 0, 5);
-        return b;
+        iv.setPadding(4, 0, 4, 0);
+        return iv;
+    }
+    
+    private static EditText createInput(Context c)
+    {
+        EditText et = new EditText(c);
+        et.setWidth(200);
+        return et;
     }
     
     /**
@@ -209,19 +218,19 @@ public class ToDoActivity extends Activity
         setResult(resultCode, data);
     }
     
-    class ButtonDeleteClickListener implements View.OnClickListener
+    class DeleteClickListener implements View.OnClickListener
     {
         ToDoActivity c;
         int noteId = -1;
         
-        public ButtonDeleteClickListener(ToDoActivity c)
+        public DeleteClickListener(ToDoActivity c)
         {
             this.c = c;
         }
         
         public void onClick(View v)
         {
-            Button b = ((Button)v);
+            ImageView b = ((ImageView)v);
             Note n = db.getNote(b.getId());
             
             noteId = n.id;
@@ -244,24 +253,28 @@ public class ToDoActivity extends Activity
         }
     }
     
-    class ButtonStatusClickListener implements View.OnClickListener
+    class StatusClickListener implements View.OnClickListener
     {
         ToDoActivity c;
         
-        public ButtonStatusClickListener(ToDoActivity c)
+        public StatusClickListener(ToDoActivity c)
         {
             this.c = c;
         }
         
         public void onClick(View v)
         {
-            Button b = ((Button)v);
+            ImageView b = ((ImageView)v);
             Note n = db.getNote(b.getId());
             
             n.status = (n.status == Status.FINISHED) ? Status.CREATED : Status.FINISHED;
             Log.i(LOG_TAG, "Setting status of " +n.text+ " to " +n.status+ " ");
            
             db.updateNote(n);
+            
+            int btn = R.drawable.tickbox;
+            if (n.status == Status.FINISHED) btn = R.drawable.tick;
+            b.setImageDrawable(getResources().getDrawable(btn));
             
             redraw(c);
         }

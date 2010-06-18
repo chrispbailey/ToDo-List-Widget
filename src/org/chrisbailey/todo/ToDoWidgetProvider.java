@@ -14,14 +14,7 @@ import android.widget.RemoteViews;
 public class ToDoWidgetProvider extends AppWidgetProvider
 {
     public static String LOG_TAG = "ToDoWidgetProvider";
-    
-//    @Override
-//    public void onEnabled(Context  context)
-//    {
-//        Log.d(LOG_TAG, "onEnabled");
-//        setIntent(context);
-//    }
-    
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
     {
@@ -48,21 +41,24 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         db.close();
         db = null;
         
-        
         StringBuffer s = new StringBuffer();
 
         for (Note n : notes)
         {
-            if (n.status == Note.Status.FINISHED) s.append("<font color=\""+ToDoActivity.DONE_COLOR+"\">"+n.text+"</font>");
-            else s.append("<font color=\"#000000\">"+n.text+"</font>");
+            if (n.text != null)
+            {
+            if (n.status == Note.Status.FINISHED) s.append("<font color='#FF0000'>&Oslash;</font> <font color='"+ToDoActivity.DONE_COLOR+"'>"+n.text+"</font>");
+            else s.append("<font color='#0000FF'>O</font> <font color='#000000'>"+n.text+"</font>");
             s.append("<br/>");
+            }
         }
         
         Log.d(LOG_TAG, s.toString());
 
         // Get the layout for the App Widget and attach an on-click listener to the button
+        ImageGetter imgGetter = new ImageGetter(context);
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
-        views.setTextViewText(R.id.textarea, Html.fromHtml((s.toString())));
+        views.setTextViewText(R.id.textarea, Html.fromHtml(s.toString(), imgGetter, null));
         
         // Tell the AppWidgetManager to perform an update on the current App Widget
         // Create an Intent to launch ToDoActivity
@@ -76,5 +72,4 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         
         manager.updateAppWidget(appWidgetId, views);
     }
-    
 }
