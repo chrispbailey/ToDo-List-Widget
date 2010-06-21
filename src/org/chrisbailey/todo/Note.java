@@ -35,19 +35,19 @@ public class Note
     public String text;
     public Status status;
     public Long created;
+    public int list;
     
-//    public Note(String note)
-//    {
-//        this.id = -1;
-//        this.text = note;
-//        status = Status.CREATED;
-//    }
-    
-    public Note()
+    public Note(int list)
     {
         this.id = -1;
+        this.list = list;
         this.status = Status.CREATED;
         this.created = System.currentTimeMillis();
+    }
+    
+    public void setStatus(Status s)
+    {
+        this.status = s;
     }
     
     public boolean isNew() { return id == -1; }

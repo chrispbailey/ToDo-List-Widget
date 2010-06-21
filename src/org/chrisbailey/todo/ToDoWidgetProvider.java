@@ -9,6 +9,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 
 public class ToDoWidgetProvider extends AppWidgetProvider
@@ -35,6 +36,8 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     
     public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId)
     {
+        Log.d(LOG_TAG, "updateAppWidget with " + appWidgetId);
+        
         ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
@@ -42,40 +45,52 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         
         db.close();
         db = null;
-        
-        StringBuffer s = new StringBuffer();
 
-        for (int i=1; i<= MAX_NOTES; i++)
+        Field f;
+        String fieldName;
+        
+        for (int i=0; i< MAX_NOTES; i++)
         {
-            if (i >= notes.size()) break;
-            Note n = notes.get(i);
-            if (n.text != null)
+            try
             {
-                Field f;
-                try
+                fieldName = "notelayout_"+(i+1);
+                f = R.id.class.getDeclaredField(fieldName);
+                views.setViewVisibility(f.getInt(fieldName), View.VISIBLE);
+                
+                if (i >= notes.size()) 
                 {
-                    f = R.id.class.getDeclaredField("noteimage_"+i);
-                    int imageView = f.getInt("noteimage_"+i);
-                    int imageDrawable = R.drawable.tickbox;
-                    if (n.status == Note.Status.FINISHED) imageDrawable = R.drawable.tick;
+                    views.setViewVisibility(f.getInt(fieldName), View.INVISIBLE);
+                    continue;
+                }
+                
+                Note n = notes.get(i);
+                if (n.text != null && !n.text.equals(""))
+                {
+                    fieldName = "noteimage_"+(i+1);
+                    f = R.id.class.getDeclaredField(fieldName);
+                    int imageView = f.getInt(fieldName);
+                    int imageDrawable = R.drawable.tickbox_widget;
+                    if (n.status == Note.Status.FINISHED) imageDrawable = R.drawable.tick_widget;
                     views.setImageViewResource(imageView, imageDrawable);
-                    f = R.id.class.getDeclaredField("note_"+i);
-                    int textView = f.getInt("note_"+i);
+                    fieldName = "note_"+(i+1);
+                    f = R.id.class.getDeclaredField(fieldName);
+                    int textView = f.getInt(fieldName);
+                    int textColor = R.color.widget_item_color;
+                    if (n.status == Note.Status.FINISHED) textColor = R.color.done_color;
                     views.setTextViewText(textView, n.text);
-                    if (n.status == Note.Status.FINISHED) views.setTextColor(textView, R.color.done_color);
+                    views.setTextColor(textView, context.getResources().getColor(textColor));
                 }
-                catch (Exception e)
+                else
                 {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    views.setViewVisibility(f.getInt(fieldName), View.INVISIBLE);
                 }
-//            if (n.status == Note.Status.FINISHED) s.append("<font color='#FF0000'>[]</font><img src='tick'/> <font color='"+ToDoActivity.DONE_COLOR+"'>"+n.text+"</font>");
-//            else s.append("<font color='#0000FF'>[*]</font><img src='tickbox'/> <font color='#000000'>"+n.text+"</font>");
- //           s.append("<br/>");
+            }
+            catch (Exception e)
+            {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
-        
-        Log.d(LOG_TAG, s.toString());
 
         // Tell the AppWidgetManager to perform an update on the current App Widget
         // Create an Intent to launch ToDoActivity

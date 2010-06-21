@@ -10,7 +10,6 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,8 +28,6 @@ public class ToDoActivity extends Activity
     public ToDoDatabase db;
     
     private static final String LOG_TAG = "ToDoActivity";
-    
-    public static final String DONE_COLOR = "#777777";
     
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     
@@ -52,15 +49,13 @@ public class ToDoActivity extends Activity
         setContentView(R.layout.main);
         
         db = new ToDoDatabase(this.getApplicationContext());
-        
-        redraw(this);
 
         ImageView addnote = (ImageView)findViewById(R.id.addnotebutton);
         addnote.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
             {
-                db.addNote(new Note());
+                db.addNote(new Note(mAppWidgetId));
                 redraw(ToDoActivity.this);
             }
         });
@@ -82,12 +77,15 @@ public class ToDoActivity extends Activity
                     AppWidgetManager.EXTRA_APPWIDGET_ID, 
                     AppWidgetManager.INVALID_APPWIDGET_ID);
         }
+        Log.d(LOG_TAG, "mAppWidgetId is " + mAppWidgetId);
         
         // If they gave us an intent without the widget id, just bail.
         if (mAppWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             Log.d(LOG_TAG, "Invalid app id, finishing");
             finish();
         }
+        
+        redraw(this);
     }
     
     @Override
@@ -104,7 +102,6 @@ public class ToDoActivity extends Activity
     {
         if (db != null)
         {
-            Log.d(LOG_TAG, "Closing db");
             db.close();
             db = null;
         }
@@ -135,12 +132,11 @@ public class ToDoActivity extends Activity
         note.setBackgroundResource(R.drawable.input_background);
         note.setText(n.text);
         note.setId(n.id);
-        if (n.status == Note.Status.FINISHED) note.setTextColor(Color.parseColor(DONE_COLOR));
-        else note.setTextColor(Color.WHITE);
+        if (n.status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.done_color));
+        else note.setTextColor(getResources().getColor(R.color.widget_item_color));
         note.addTextChangedListener(new MyTextWatcher(note));
         row.addView(note);
 
-        
         ImageView delete = createImage(c);
         delete.setImageDrawable(getResources().getDrawable(R.drawable.delete));
         delete.setId(n.id);
@@ -156,11 +152,11 @@ public class ToDoActivity extends Activity
         
         table.removeAllViews();
 
-        LinkedList<Note> notes = db.getAllNotes();
+        LinkedList<Note> notes = db.getAllNotes(mAppWidgetId);
         if (notes.size() == 0)
         {
-            db.addNote(new Note());
-            notes = db.getAllNotes();
+            db.addNote(new Note(mAppWidgetId));
+            notes = db.getAllNotes(mAppWidgetId);
         }
 
         for (Note n : notes)
@@ -232,10 +228,12 @@ public class ToDoActivity extends Activity
         {
             ImageView b = ((ImageView)v);
             Note n = db.getNote(b.getId());
-            
+            String name = n.text;
+            if (name == null) name = "Empty";
+            if (name.length() > 5) name = name.substring(0,5)+"...";
             noteId = n.id;
             new AlertDialog.Builder(v.getContext())
-            .setMessage("Are you sure you want to delete this note?")
+            .setMessage("Are you sure you want to delete this note ("+name+")?")
             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                public void onClick(DialogInterface dialog, int id) {
                     Log.i(LOG_TAG,"ID:"+noteId);
@@ -293,7 +291,7 @@ public class ToDoActivity extends Activity
         {
             Note n = db.getNote(et.getId());
             n.text = et.getText().toString();
-            Log.i(LOG_TAG,"Saving tag");
+            Log.i(LOG_TAG,"Saving tag " + n.text);
             db.updateNote(n);
         }
 
