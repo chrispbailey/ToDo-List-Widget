@@ -5,12 +5,46 @@
     android:layout_height="fill_parent"
     android:id="@+id/widget_layout"
     android:background="@drawable/background"
-    android:padding="15dp"
-    >
-	    <TextView 
-		    android:id="@+id/textarea"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:autoLink="all"
-		    />
+    android:padding="15dp">
+   
+    <LinearLayout android:id="@+id/notelayout_1" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_2" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_2" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_2" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_3" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_3" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_3" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_4" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_4" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_4" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_5" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_5" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_5" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_6" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_6" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_6" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_7" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_7" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_7" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_8" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_8" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_8" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_9" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_9" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_9" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/notelayout_10" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/noteimage_10" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/note_10" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
 </LinearLayout>
