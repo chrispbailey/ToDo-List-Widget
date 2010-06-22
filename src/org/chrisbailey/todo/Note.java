@@ -36,19 +36,15 @@ public class Note
     public Status status;
     public Long created;
     public int list;
+    private static final int EMPTYNOTE = -1;
     
     public Note(int list)
     {
-        this.id = -1;
+        this.id = EMPTYNOTE;
         this.list = list;
         this.status = Status.CREATED;
         this.created = System.currentTimeMillis();
     }
     
-    public void setStatus(Status s)
-    {
-        this.status = s;
-    }
-    
-    public boolean isNew() { return id == -1; }
+    public boolean isNew() { return id == EMPTYNOTE; }
 }

@@ -8,6 +8,7 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -20,11 +21,9 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
     {
-        Log.i(LOG_TAG, "onUpdate");
-        
         int N = appWidgetIds.length;
         
-        Log.i(LOG_TAG, "have " + N + " widgets!");
+        Log.i(LOG_TAG, "updating " + N + " widgets");
 
         for (int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
@@ -34,10 +33,41 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
     
+    @Override
+    public void onDeleted(Context context, int[] appWidgetIds)
+    {
+        int N = appWidgetIds.length;
+        
+        Log.i(LOG_TAG, "deleting " + N + " widgets");
+
+        ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
+        for (int i=0; i<N; i++) {
+            int appWidgetId = appWidgetIds[i];
+            db.deleteAllNotes(appWidgetId);
+        }
+        db.close();
+        db = null;
+        
+        super.onDeleted(context, appWidgetIds);
+    }
+    
+    @Override 
+    public void onReceive(Context context, Intent intent) { 
+        final String action = intent.getAction();
+        Bundle extras = intent.getExtras();
+        if (AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)) { 
+            final int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, 
+                                                  AppWidgetManager.INVALID_APPWIDGET_ID); 
+            if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) { 
+                this.onDeleted(context, new int[] { appWidgetId }); 
+            } 
+        } else { 
+            super.onReceive(context, intent); 
+        } 
+    } 
+
     public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId)
     {
-        Log.d(LOG_TAG, "updateAppWidget with " + appWidgetId);
-        
         ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 

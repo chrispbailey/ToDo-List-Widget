@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_confirm">Sind Sie sicher, dass Sie diese Notiz löschen [note]?</string>
+</resources>

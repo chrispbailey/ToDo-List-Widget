@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ToDoWidget</string>
+    <string name="app_name">ToDo Widget</string>
+    <string name="delete_confirm">Are you sure you want to delete this note [note]?</string>
 </resources>

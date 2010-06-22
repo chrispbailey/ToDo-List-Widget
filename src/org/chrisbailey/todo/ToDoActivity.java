@@ -77,7 +77,6 @@ public class ToDoActivity extends Activity
                     AppWidgetManager.EXTRA_APPWIDGET_ID, 
                     AppWidgetManager.INVALID_APPWIDGET_ID);
         }
-        Log.d(LOG_TAG, "mAppWidgetId is " + mAppWidgetId);
         
         // If they gave us an intent without the widget id, just bail.
         if (mAppWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
@@ -91,7 +90,6 @@ public class ToDoActivity extends Activity
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            Log.d(LOG_TAG, "KEYCODE_BACK");
             done();
             return true;
         }
@@ -229,20 +227,27 @@ public class ToDoActivity extends Activity
             ImageView b = ((ImageView)v);
             Note n = db.getNote(b.getId());
             String name = n.text;
-            if (name == null) name = "Empty";
+            if (name == null) name = "";
             if (name.length() > 5) name = name.substring(0,5)+"...";
+            if (name.length() > 0) name = "(" + name + ")";
+            String message = getString(R.string.delete_confirm);
+            message = message.replace("[note]", name);
+            
+            String confirm = getString(android.R.string.ok);
+            String cancel = getString(android.R.string.cancel);
+            
             noteId = n.id;
+
             new AlertDialog.Builder(v.getContext())
-            .setMessage("Are you sure you want to delete this note ("+name+")?")
-            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            .setMessage(message)
+            .setPositiveButton(confirm, new DialogInterface.OnClickListener() {
                public void onClick(DialogInterface dialog, int id) {
-                    Log.i(LOG_TAG,"ID:"+noteId);
                     Note n = db.getNote(noteId);
                     db.deleteNote(n);
                     redraw(c);
                }
            })
-           .setNegativeButton("No", new DialogInterface.OnClickListener() {
+           .setNegativeButton(cancel, new DialogInterface.OnClickListener() {
                public void onClick(DialogInterface dialog, int id) {
                     dialog.cancel();
                }
@@ -266,7 +271,6 @@ public class ToDoActivity extends Activity
             Note n = db.getNote(b.getId());
             
             n.status = (n.status == Status.FINISHED) ? Status.CREATED : Status.FINISHED;
-            Log.i(LOG_TAG, "Setting status of " +n.text+ " to " +n.status+ " ");
            
             db.updateNote(n);
             
@@ -291,7 +295,6 @@ public class ToDoActivity extends Activity
         {
             Note n = db.getNote(et.getId());
             n.text = et.getText().toString();
-            Log.i(LOG_TAG,"Saving tag " + n.text);
             db.updateNote(n);
         }
 
