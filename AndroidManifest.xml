@@ -4,27 +4,27 @@
       android:versionCode="1"
       android:versionName="1.0">
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-    
-	    <activity android:name="ToDoActivity" 
-		    android:label="@string/app_name" 
-		    android:theme="@android:style/Theme.Dialog">
-	        <intent-filter>
-    	        <action android:name="android.intent.action.MAIN" />
-	            <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-	        </intent-filter>
-	    </activity>
-	
-	    <receiver android:name="ToDoWidgetProvider" >
-	        <intent-filter>
-	            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-	            <action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />
+
+    <activity android:name="ToDoActivity" 
+        android:label="@string/app_name" 
+        android:theme="@android:style/Theme.Dialog">
+          <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+          </intent-filter>
+      </activity>
+
+      <receiver android:name="ToDoWidgetProvider" >
+          <intent-filter>
+              <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+              <action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />
             </intent-filter>
-	        <meta-data android:name="android.appwidget.provider"
-	               android:resource="@xml/todowidgetproviderinfo" />
-	    </receiver>
+          <meta-data android:name="android.appwidget.provider"
+                 android:resource="@xml/todowidgetproviderinfo" />
+      </receiver>
 
     </application>
-    
+
     <uses-sdk android:minSdkVersion="3" />
 
 </manifest> 
