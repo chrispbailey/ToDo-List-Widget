@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	 <string name="app_name">备忘录桌面Widget</string>
+    <string name="delete_confirm">你确定要删除此项目吗 [note]?</string>
+</resources>
