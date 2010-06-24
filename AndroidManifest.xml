@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="org.chrisbailey.todo"
-      android:versionCode="1"
-      android:versionName="1.0">
+    package="org.chrisbailey.todo"
+    android:versionCode="3"
+    android:versionName="1.1">
+
+    <supports-screens android:smallScreens="true"
+                      android:normalScreens="true"
+                      android:largeScreens="true"/>
+
+    <uses-sdk android:minSdkVersion="3" />
+
     <application android:icon="@drawable/icon" android:label="@string/app_name">
 
-    <activity android:name="ToDoActivity" 
-        android:label="@string/app_name" 
-        android:theme="@android:style/Theme.Dialog">
+      <activity android:name="ToDoActivity" 
+            android:label="@string/app_name" 
+            android:theme="@android:style/Theme.Dialog">
           <intent-filter>
               <action android:name="android.intent.action.MAIN" />
               <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -18,13 +25,11 @@
           <intent-filter>
               <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
               <action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />
-            </intent-filter>
+          </intent-filter>
           <meta-data android:name="android.appwidget.provider"
-                 android:resource="@xml/todowidgetproviderinfo" />
+                     android:resource="@xml/todowidgetproviderinfo" />
       </receiver>
 
     </application>
-
-    <uses-sdk android:minSdkVersion="3" />
 
 </manifest> 
