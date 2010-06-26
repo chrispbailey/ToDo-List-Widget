@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -47,6 +48,7 @@ public class ToDoActivity extends Activity
         setConfigureResult(RESULT_CANCELED);
 
         setContentView(R.layout.main);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         
         db = new ToDoDatabase(this.getApplicationContext());
 
@@ -55,8 +57,15 @@ public class ToDoActivity extends Activity
         {
             public void onClick(View v)
             {
-                db.addNote(new Note(mAppWidgetId));
+                Note n = new Note(mAppWidgetId);
+                db.addNote(n);
                 redraw(ToDoActivity.this);
+
+                // give new note focus
+                TableLayout table = (TableLayout) ((Activity)v.getContext().getApplicationContext()).findViewById(R.id.table_layout);
+                TableRow row = (TableRow) table.getChildAt(table.getChildCount() - 1);
+                EditText et = (EditText) row.getChildAt(1);
+                et.requestFocus();
             }
         });
         
@@ -83,6 +92,11 @@ public class ToDoActivity extends Activity
             Log.d(LOG_TAG, "Invalid app id, finishing");
             finish();
         }
+        
+        EditText title = (EditText)findViewById(R.id.edittitle);
+        title.setId(mAppWidgetId);
+        title.setText(db.getTitle(mAppWidgetId));
+        title.addTextChangedListener(new MyTitleTextWatcher(title));
         
         redraw(this);
     }
@@ -305,5 +319,20 @@ public class ToDoActivity extends Activity
         public void onTextChanged(CharSequence s, int start, int before,
                 int count)
         { }
+    }
+    public class MyTitleTextWatcher extends MyTextWatcher
+    {
+        public MyTitleTextWatcher(EditText et)
+        {
+            super(et);
+        }
+
+        @Override
+        public void afterTextChanged(Editable s)
+        {
+            int id= et.getId();
+            String str = et.getText().toString();
+            db.setTitle(id, str);
+        }
     }
 }

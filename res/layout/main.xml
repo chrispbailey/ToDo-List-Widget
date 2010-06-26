@@ -5,6 +5,12 @@ android:layout_gravity="center_horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center_horizontal">
+    <EditText android:id="@+id/edittitle"
+        android:text="Test title"
+        android:singleLine="true"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
     
     <ScrollView
         android:padding="1px"

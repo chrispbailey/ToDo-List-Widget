@@ -43,6 +43,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
         for (int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
+            db.deleteTitle(appWidgetId);
             db.deleteAllNotes(appWidgetId);
         }
         db.close();
@@ -71,6 +72,17 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
+        // set the note title
+        
+        String title = db.getTitle(appWidgetId);
+        views.setTextViewText(R.id.notetitle, title);
+        views.setViewVisibility(R.id.notetitle, View.VISIBLE);
+        if (title.length() == 0)
+        {
+            views.setViewVisibility(R.id.notetitle, View.GONE);
+        }
+        
+        // set the note items
         LinkedList<Note> notes = db.getAllNotes(appWidgetId);
         
         db.close();
@@ -117,7 +129,6 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             }
             catch (Exception e)
             {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

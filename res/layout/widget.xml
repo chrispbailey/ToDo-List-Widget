@@ -6,7 +6,11 @@
     android:id="@+id/widget_layout"
     android:background="@drawable/background"
     android:padding="8dp">
-   
+    
+    <TitleView android:id="@+id/notetitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+        
     <LinearLayout android:id="@+id/notelayout_1" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView android:id="@+id/noteimage_1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
         <TextView android:id="@+id/note_1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
