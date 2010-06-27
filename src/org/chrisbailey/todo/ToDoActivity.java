@@ -18,6 +18,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -46,9 +47,8 @@ public class ToDoActivity extends Activity
         super.onCreate(savedInstanceState);
         
         setConfigureResult(RESULT_CANCELED);
-
-        setContentView(R.layout.main);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.main);
         
         db = new ToDoDatabase(this.getApplicationContext());
 
@@ -62,10 +62,12 @@ public class ToDoActivity extends Activity
                 redraw(ToDoActivity.this);
 
                 // give new note focus
-                TableLayout table = (TableLayout) ((Activity)v.getContext().getApplicationContext()).findViewById(R.id.table_layout);
+                Activity a = (Activity)v.getContext();
+                TableLayout table = (TableLayout) (a).findViewById(R.id.table_layout);
                 TableRow row = (TableRow) table.getChildAt(table.getChildCount() - 1);
                 EditText et = (EditText) row.getChildAt(1);
                 et.requestFocus();
+                et.postDelayed(new ShowKeyboardRunnable(et), 100);
             }
         });
         
@@ -97,6 +99,9 @@ public class ToDoActivity extends Activity
         title.setId(mAppWidgetId);
         title.setText(db.getTitle(mAppWidgetId));
         title.addTextChangedListener(new MyTitleTextWatcher(title));
+        title.setTextAppearance(this, android.R.attr.textAppearanceLarge);
+        title.setPadding(0, 0, 0, 0);
+        title.setBackgroundResource(R.drawable.input_background);
         
         redraw(this);
     }
@@ -333,6 +338,22 @@ public class ToDoActivity extends Activity
             int id= et.getId();
             String str = et.getText().toString();
             db.setTitle(id, str);
+        }
+    }
+    
+    public class ShowKeyboardRunnable implements Runnable
+    {
+        EditText et;
+        
+        public ShowKeyboardRunnable(EditText et)
+        {
+            this.et = et;
+        }
+
+        public void run() {
+                InputMethodManager keyboard = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+                keyboard.showSoftInput(et, 0);
         }
     }
 }
