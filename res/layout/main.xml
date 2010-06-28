@@ -5,12 +5,19 @@ android:layout_gravity="center_horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center_horizontal">
+    
     <EditText android:id="@+id/edittitle"
-        android:text="Test title"
-        android:singleLine="true"
-        android:layout_gravity="center"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:textStyle="bold"
+        android:background="@drawable/input_background"
+        android:textColor="@color/widget_item_color"
+        android:inputType="text"
+        android:textSize="20dp"/>
     
     <ScrollView
         android:padding="1px"
@@ -21,7 +28,8 @@ android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingTop="5dp">
 
             <TableLayout
                 android:gravity="center_horizontal"

@@ -7,9 +7,19 @@
     android:background="@drawable/background"
     android:padding="8dp">
     
-    <TitleView android:id="@+id/notetitle"
+    <TextView android:id="@+id/notetitle"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="3dp"
+        android:shadowRadius="0.2"
+        android:shadowDy="1.2"
+        android:shadowDx="1.2"
+        android:shadowColor="#AAAAAAFF"
+        android:textStyle="bold"/>
         
     <LinearLayout android:id="@+id/notelayout_1" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView android:id="@+id/noteimage_1" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
