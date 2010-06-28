@@ -9,6 +9,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -75,8 +76,10 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         // set the note title
         
         String title = db.getTitle(appWidgetId);
-        views.setTextViewText(R.id.notetitle, title);
+        title.trim();
+        views.setTextViewText(R.id.notetitle, Html.fromHtml("<b><u>"+title+"</u></b>"));
         views.setViewVisibility(R.id.notetitle, View.VISIBLE);
+        views.setTextColor(R.id.notetitle, context.getResources().getColor(R.color.widget_item_color));
         if (title.length() == 0)
         {
             views.setViewVisibility(R.id.notetitle, View.GONE);
