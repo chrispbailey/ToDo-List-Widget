@@ -31,6 +31,8 @@ public class ToDoActivity extends Activity
     
     private static final String LOG_TAG = "ToDoActivity";
     
+    public static enum FOCUS { GIVE_TO_LAST, GIVE_TO_LAST_WITH_KEYBOARD, NONE };
+    
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     
     public ToDoActivity() {
@@ -59,15 +61,7 @@ public class ToDoActivity extends Activity
             {
                 Note n = new Note(mAppWidgetId);
                 db.addNote(n);
-                redraw(ToDoActivity.this);
-
-                // give new note focus
-                Activity a = (Activity)v.getContext();
-                TableLayout table = (TableLayout) (a).findViewById(R.id.table_layout);
-                TableRow row = (TableRow) table.getChildAt(table.getChildCount() - 1);
-                EditText et = (EditText) row.getChildAt(1);
-                et.requestFocus();
-                et.postDelayed(new ShowKeyboardRunnable(et), 100);
+                redraw(ToDoActivity.this, FOCUS.GIVE_TO_LAST_WITH_KEYBOARD);
             }
         });
         
@@ -99,11 +93,8 @@ public class ToDoActivity extends Activity
         title.setId(mAppWidgetId);
         title.setText(db.getTitle(mAppWidgetId));
         title.addTextChangedListener(new MyTitleTextWatcher(title));
-        title.setTextAppearance(this, android.R.attr.textAppearanceLarge);
-        title.setPadding(0, 0, 0, 0);
         title.setBackgroundResource(R.drawable.input_background);
-        
-        redraw(this);
+        redraw(this, FOCUS.GIVE_TO_LAST);
     }
     
     @Override
@@ -163,7 +154,7 @@ public class ToDoActivity extends Activity
         return row;
     }
     
-    public void redraw(ToDoActivity c)
+    public void redraw(ToDoActivity c, FOCUS focus)
     {
         TableLayout table = (TableLayout) c.findViewById(R.id.table_layout);
         
@@ -174,12 +165,27 @@ public class ToDoActivity extends Activity
         {
             db.addNote(new Note(mAppWidgetId));
             notes = db.getAllNotes(mAppWidgetId);
+            focus = FOCUS.GIVE_TO_LAST_WITH_KEYBOARD;
         }
 
-        for (Note n : notes)
+        for (int i = 0; i < notes.size(); i++)
         {
-            table.addView(addNote(n, c));
+            Note n = notes.get(i);
+            TableRow row = addNote(n, c);
+            table.addView(row);
+
+            if (i == notes.size() - 1)
+            {
+                EditText et = (EditText) row.getChildAt(1);
+                if (focus != FOCUS.NONE) et.requestFocus();
+
+                // give new note focus
+                if (focus == FOCUS.GIVE_TO_LAST_WITH_KEYBOARD) et.postDelayed(new ShowKeyboardRunnable(et), 200);
+                
+            }
         }
+        
+        if (focus == FOCUS.NONE && c.getCurrentFocus() != null) c.getCurrentFocus().clearFocus();
     }
     
     /**
@@ -263,7 +269,7 @@ public class ToDoActivity extends Activity
                public void onClick(DialogInterface dialog, int id) {
                     Note n = db.getNote(noteId);
                     db.deleteNote(n);
-                    redraw(c);
+                    redraw(c, FOCUS.NONE);
                }
            })
            .setNegativeButton(cancel, new DialogInterface.OnClickListener() {
@@ -297,7 +303,7 @@ public class ToDoActivity extends Activity
             if (n.status == Status.FINISHED) btn = R.drawable.tick;
             b.setImageDrawable(getResources().getDrawable(btn));
             
-            redraw(c);
+            redraw(c, FOCUS.GIVE_TO_LAST);
         }
     }
     
@@ -325,6 +331,7 @@ public class ToDoActivity extends Activity
                 int count)
         { }
     }
+
     public class MyTitleTextWatcher extends MyTextWatcher
     {
         public MyTitleTextWatcher(EditText et)
@@ -350,10 +357,10 @@ public class ToDoActivity extends Activity
             this.et = et;
         }
 
-        public void run() {
-                InputMethodManager keyboard = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
-                keyboard.showSoftInput(et, 0);
+        public void run()
+        {
+            InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            keyboard.showSoftInput(et, 0);
         }
     }
 }
