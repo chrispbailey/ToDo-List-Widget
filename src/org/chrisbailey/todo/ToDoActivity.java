@@ -162,8 +162,8 @@ public class ToDoActivity extends Activity
         toggle.setImageDrawable(getResources().getDrawable(btn));
         
         EditText note = (EditText) row.getChildAt(1);
-        if (status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.done_color));
-        else note.setTextColor(getResources().getColor(R.color.widget_item_color));
+        if (status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.activity_done_color));
+        else note.setTextColor(getResources().getColor(R.color.activity_widget_item_color));
     }
     
     public void redraw(ToDoActivity c, FOCUS focus)
