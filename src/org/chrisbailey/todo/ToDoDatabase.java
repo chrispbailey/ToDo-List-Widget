@@ -144,7 +144,7 @@ public class ToDoDatabase extends SQLiteOpenHelper
     private void deleteVariable(String name)
     {
         String sql = "DELETE FROM " + VARIABLE_TABLE_NAME
-                + "WHERE name=?";
+                + " WHERE name=?";
         
         try
         {
