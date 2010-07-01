@@ -7,6 +7,7 @@ android:layout_gravity="center_horizontal"
     android:gravity="center_horizontal">
     
     <EditText android:id="@+id/edittitle"
+        android:layout_weight="0"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
@@ -20,6 +21,7 @@ android:layout_gravity="center_horizontal"
         android:textSize="20dp"/>
     
     <ScrollView
+        android:layout_weight="1"
         android:padding="1px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -38,30 +40,32 @@ android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:id="@+id/table_layout"/>
                 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView android:id="@+id/donebutton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="50dp"
-                    android:paddingRight="50dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:src="@drawable/done"/>
-
-                <ImageView android:id="@+id/addnotebutton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="50dp"
-                    android:paddingRight="50dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:src="@drawable/add"/>
-
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    
+    <LinearLayout
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView android:id="@+id/donebutton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/done"/>
+
+        <ImageView android:id="@+id/addnotebutton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/add"/>
+
+    </LinearLayout>
 </LinearLayout>
