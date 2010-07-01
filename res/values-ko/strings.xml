@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ToDo 위젯</string>
+    <string name="app_name_2x2">ToDo 위젯 2x2</string>
+    <string name="app_name_2x3">ToDo 위젯 2x3</string>
+    <string name="app_name_2x4">ToDo 위젯 2x4</string>
     <string name="delete_confirm">(정말) 삭제하시겠습니까 [note]?</string>
 </resources>
