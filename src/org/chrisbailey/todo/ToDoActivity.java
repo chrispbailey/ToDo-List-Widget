@@ -129,7 +129,6 @@ public class ToDoActivity extends Activity
         
         ImageView toggle = createImage(c);
         int btn = R.drawable.tickbox;
-        if (n.status == Status.FINISHED) btn = R.drawable.tick;
         toggle.setImageDrawable(getResources().getDrawable(btn));
         toggle.setId(n.id);
         toggle.setOnClickListener(new StatusClickListener(c));
@@ -140,8 +139,6 @@ public class ToDoActivity extends Activity
         note.setBackgroundResource(R.drawable.input_background);
         note.setText(n.text);
         note.setId(n.id);
-        if (n.status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.done_color));
-        else note.setTextColor(getResources().getColor(R.color.widget_item_color));
         note.addTextChangedListener(new MyTextWatcher(note));
         row.addView(note);
 
@@ -151,7 +148,22 @@ public class ToDoActivity extends Activity
         delete.setOnClickListener(new DeleteClickListener(c));
         row.addView(delete);
         
+        toggleRow(row, n.status);
+        
         return row;
+    }
+    
+    public void toggleRow(TableRow row, Status status)
+    {
+        int btn = R.drawable.tickbox;
+        if (status == Status.FINISHED) btn = R.drawable.tick;
+        
+        ImageView toggle = (ImageView) row.getChildAt(0);
+        toggle.setImageDrawable(getResources().getDrawable(btn));
+        
+        EditText note = (EditText) row.getChildAt(1);
+        if (status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.done_color));
+        else note.setTextColor(getResources().getColor(R.color.widget_item_color));
     }
     
     public void redraw(ToDoActivity c, FOCUS focus)
@@ -299,11 +311,7 @@ public class ToDoActivity extends Activity
            
             db.updateNote(n);
             
-            int btn = R.drawable.tickbox;
-            if (n.status == Status.FINISHED) btn = R.drawable.tick;
-            b.setImageDrawable(getResources().getDrawable(btn));
-            
-            redraw(c, FOCUS.GIVE_TO_LAST);
+            toggleRow((TableRow)(v.getParent()), n.status);
         }
     }
     
