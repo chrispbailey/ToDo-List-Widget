@@ -14,9 +14,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
-public class ToDoWidgetProvider extends AppWidgetProvider
+public abstract class ToDoWidgetProvider extends AppWidgetProvider
 {
-    public static final int MAX_NOTES = 10;
+    public static final int MAX_NOTES = 20;
     public static String LOG_TAG = "ToDoWidgetProvider";
 
     @Override
@@ -71,7 +71,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId)
     {
         ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
+        RemoteViews views = new RemoteViews(context.getPackageName(), manager.getAppWidgetInfo(appWidgetId).initialLayout);
 
         // set the note title
         
