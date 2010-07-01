@@ -14,7 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
-public abstract class ToDoWidgetProvider extends AppWidgetProvider
+public class ToDoWidgetProvider extends AppWidgetProvider
 {
     public static final int MAX_NOTES = 20;
     public static String LOG_TAG = "ToDoWidgetProvider";
