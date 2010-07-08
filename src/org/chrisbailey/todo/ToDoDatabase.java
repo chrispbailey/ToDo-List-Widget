@@ -22,6 +22,13 @@ public class ToDoDatabase extends SQLiteOpenHelper
     // static table name identifier
     public static final String VARIABLE_TABLE_NAME = "variables";
     public static final String NOTE_TABLE_NAME = "notes";
+    
+    // user preferences
+    public static final String PREF_BACKGROUND = "pref_background";
+    public static final String PREF_ICONS = "pref_icons";
+    public static final String PREF_SIZE = "pref_size";
+    public static final String PREF_COLOR_ACTIVE = "pref_color_active";
+    public static final String PREF_COLOR_FINISHED = "pref_color_finished";
 
     // SQL create query
     private final static String CREATE_SQL = 
@@ -57,7 +64,7 @@ public class ToDoDatabase extends SQLiteOpenHelper
      * @param name
      * @param value
      */
-    private void setVariable(String name, String value)
+    private void setStringVariable(String name, String value)
     {
         String sql = "REPLACE INTO " + VARIABLE_TABLE_NAME
                 + " (name,value) VALUES (?,?)";
@@ -87,6 +94,17 @@ public class ToDoDatabase extends SQLiteOpenHelper
         }
     }
 
+    private void setIntVariable(String name, int value)
+    {
+    	setStringVariable(name, value+"");
+    }
+    
+    private int getIntVariable(String name)
+    {
+        String s = getVariable(name);
+        if (s == null) return -1;
+        return Integer.parseInt(s);
+    }
     
     /**
      * Reads the value of the parameter identified by <code>name</code>
@@ -171,11 +189,21 @@ public class ToDoDatabase extends SQLiteOpenHelper
         }
     }
 
+    /**
+     * Wrapper to set a title for a given note
+     * @param id
+     * @param value
+     */
     public void setTitle(int id, String value)
     {
-        setVariable(TITLE_KEY + id, value);
+        setStringVariable(TITLE_KEY + id, value);
     }
     
+    /**
+     * Gets the title of a given note
+     * @param id
+     * @return
+     */
     public String getTitle(int id)
     {
         String s = getVariable(TITLE_KEY + id);
@@ -183,9 +211,64 @@ public class ToDoDatabase extends SQLiteOpenHelper
         return s;
     }
     
+    /**
+     * Deletes a note's title
+     * @param id
+     */
     public void deleteTitle(int id)
     {
         deleteVariable(TITLE_KEY + id);
+    }
+    
+    
+    public int getPrefSize()
+    {
+        return getIntVariable(PREF_SIZE);
+    }
+    
+    public void setPrefSize(int value)
+    {
+        setIntVariable(PREF_SIZE, value);
+    }
+    
+    public int getPrefBackground()
+    {
+    	return getIntVariable(PREF_BACKGROUND);
+    }
+    
+    public void setPrefBackground(int value)
+    {
+    	setIntVariable(PREF_BACKGROUND, value);
+    }
+    
+    public int getPrefIcon()
+    {
+    	return getIntVariable(PREF_ICONS);
+    }
+    
+    public void setPrefIcon(int value)
+    {
+    	setIntVariable(PREF_ICONS, value);
+    }
+    
+    public int getPrefColorActive()
+    {
+    	return getIntVariable(PREF_COLOR_ACTIVE);
+    }
+    
+    public void setPrefColorActive(int value)
+    {
+    	setIntVariable(PREF_COLOR_ACTIVE, value);
+    }
+    
+    public int getPrefColorFinished()
+    {
+    	return getIntVariable(PREF_COLOR_FINISHED);
+    }
+    
+    public void setPrefColorFinished(int value)
+    {
+    	setIntVariable(PREF_COLOR_FINISHED, value);
     }
     
     /**

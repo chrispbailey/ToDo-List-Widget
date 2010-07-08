@@ -1,106 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
- <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-     android:id="@+id/widget_layout"
-     android:padding="8dp"
-     android:orientation="vertical"
-     android:layout_width="fill_parent"
-     android:layout_height="fill_parent"
-     android:background="@drawable/background">
-     
-  <TextView android:id="@+id/notetitle"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:gravity="center_horizontal"
-      android:paddingLeft="0dp"
-      android:paddingRight="0dp"
-      android:paddingTop="0dp"
-      android:paddingBottom="3dp"
-      android:shadowRadius="0.2"
-      android:shadowDy="1.2"
-      android:shadowDx="1.2"
-      android:shadowColor="#AAAAAAFF"
-      android:textStyle="bold"
-      android:textColor="@color/widget_item_color"
-      android:text="Title"/>
+ <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/widget_layout"
+	android:padding="8dp"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="@drawable/background1">
+
+	<TextView android:id="@+id/notetitle"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:paddingLeft="0dp"
+		android:paddingRight="0dp"
+		android:paddingTop="0dp"
+		android:paddingBottom="3dp"
+		android:shadowRadius="0.2"
+		android:shadowDy="1.2"
+		android:shadowDx="1.2"
+		android:shadowColor="#AAAAAAFF"
+		android:textStyle="bold"
+		android:text="Lorem"
+		android:layout_alignParentTop="true"/>
       
-  <LinearLayout android:id="@+id/notelayout_1" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/tickbox_widget"/>
-      <TextView android:id="@+id/note_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="item 1" android:textColor="@color/widget_item_color"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_2" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_2" android:layout_width="wrap_content" android:layout_height="wrap_content"  android:src="@drawable/tick_widget"/>
-      <TextView android:id="@+id/note_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="item 2" android:textColor="@color/done_color"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_3" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_3" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_3" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_4" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_4" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_4" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_5" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_5" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_5" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_6" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_6" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_6" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_7" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_7" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_7" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_8" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_8" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_8" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_9" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_9" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_9" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_10" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_10" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_10" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_11" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_11" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_11" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_12" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_12" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_12" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_13" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_13" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_13" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_14" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_14" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_14" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_15" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_15" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_15" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_16" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_16" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_16" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_17" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_17" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_17" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_18" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_18" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_18" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_19" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_19" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_19" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/notelayout_20" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-      <ImageView android:id="@+id/noteimage_20" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-      <TextView android:id="@+id/note_20" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-  </LinearLayout>
- </LinearLayout>
+	<ImageView android:id="@+id/noteimage_1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/icon_active1"
+		android:layout_below="@id/notetitle"
+		android:layout_alignParentLeft="true"/>
+		
+	<TextView android:id="@+id/note_1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Ipsum"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/notetitle"
+		android:layout_toRightOf="@id/noteimage_1"
+		android:layout_alignTop="@id/noteimage_1"/>
+
+      <ImageView android:id="@+id/noteimage_2"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:src="@drawable/icon_active1"
+	      android:layout_below="@id/noteimage_1"
+	      android:layout_alignParentLeft="true"/>
+	      
+	<TextView android:id="@+id/note_2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_1"
+		android:layout_toRightOf="@id/noteimage_2"
+		android:layout_alignTop="@id/noteimage_2"/>
+		
+      <ImageView android:id="@+id/noteimage_3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_2"
+      android:layout_alignParentLeft="true"/>
+	      
+	<TextView android:id="@+id/note_3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_2"
+		android:layout_toRightOf="@id/noteimage_3"
+		android:layout_alignTop="@id/noteimage_3"/>
+		
+      <ImageView android:id="@+id/noteimage_4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_3"
+      android:layout_alignParentLeft="true"/>
+	      
+	<TextView android:id="@+id/note_4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_3"
+		android:layout_toRightOf="@id/noteimage_4"
+		android:layout_alignTop="@id/noteimage_4"/>
+		
+      <ImageView android:id="@+id/noteimage_5"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_4"
+      android:layout_alignParentLeft="true"/>
+	      
+	<TextView android:id="@+id/note_5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_4"
+		android:layout_toRightOf="@id/noteimage_5"
+		android:layout_alignTop="@id/noteimage_5"/>
+		
+      <ImageView android:id="@+id/noteimage_6"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_5"
+      android:layout_alignParentLeft="true"/>
+	      
+	<TextView android:id="@+id/note_6"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_5"
+		android:layout_toRightOf="@id/noteimage_6"
+		android:layout_alignTop="@id/noteimage_6"/>
+		
+      <ImageView android:id="@+id/noteimage_7"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_6"
+      android:layout_alignParentLeft="true"/>
+     
+	<TextView android:id="@+id/note_7"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_6"
+		android:layout_toRightOf="@id/noteimage_7"
+		android:layout_alignTop="@id/noteimage_7"/>
+		
+      <ImageView android:id="@+id/noteimage_8"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_7"
+      android:layout_alignParentLeft="true"/>
+	      
+	<TextView android:id="@+id/note_8"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_7"
+		android:layout_toRightOf="@id/noteimage_8"
+		android:layout_alignTop="@id/noteimage_8"/>
+		
+      <ImageView android:id="@+id/noteimage_9"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_8"
+      android:layout_alignParentLeft="true"/>
+	      
+	<TextView android:id="@+id/note_9"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_8"
+		android:layout_toRightOf="@id/noteimage_9"
+		android:layout_alignTop="@id/noteimage_9"/>
+		
+      <ImageView android:id="@+id/noteimage_10"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_9"
+      android:layout_alignParentLeft="true"/>
+	      
+	<TextView android:id="@+id/note_10"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_9"
+		android:layout_toRightOf="@id/noteimage_10"
+		android:layout_alignTop="@id/noteimage_10"/>
+		
+      <ImageView android:id="@+id/noteimage_11"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_10"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_11"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_10"
+		android:layout_toRightOf="@id/noteimage_11"
+		android:layout_alignTop="@id/noteimage_11"/>
+		
+      <ImageView android:id="@+id/noteimage_12"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_11"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_12"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_11"
+		android:layout_toRightOf="@id/noteimage_12"
+		android:layout_alignTop="@id/noteimage_12"/>
+		
+      <ImageView android:id="@+id/noteimage_13"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_12"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_13"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_12"
+		android:layout_toRightOf="@id/noteimage_13"
+		android:layout_alignTop="@id/noteimage_13"/>
+		
+      <ImageView android:id="@+id/noteimage_14"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_13"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_14"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_13"
+		android:layout_toRightOf="@id/noteimage_14"
+		android:layout_alignTop="@id/noteimage_14"/>
+		
+      <ImageView android:id="@+id/noteimage_15"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_14"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_15"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_14"
+		android:layout_toRightOf="@id/noteimage_15"
+		android:layout_alignTop="@id/noteimage_15"/>
+		
+      <ImageView android:id="@+id/noteimage_16"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_15"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_16"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_15"
+		android:layout_toRightOf="@id/noteimage_16"
+		android:layout_alignTop="@id/noteimage_16"/>
+		
+      <ImageView android:id="@+id/noteimage_17"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_16"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_17"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_16"
+		android:layout_toRightOf="@id/noteimage_17"
+		android:layout_alignTop="@id/noteimage_17"/>
+		
+      <ImageView android:id="@+id/noteimage_18"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_17"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_18"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_17"
+		android:layout_toRightOf="@id/noteimage_18"
+		android:layout_alignTop="@id/noteimage_18"/>
+		
+      <ImageView android:id="@+id/noteimage_19"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_17"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_19"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_18"
+		android:layout_toRightOf="@id/noteimage_19"
+		android:layout_alignTop="@id/noteimage_19"/>
+		
+      <ImageView android:id="@+id/noteimage_20"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/icon_active1"
+      android:layout_below="@id/noteimage_19"
+      android:layout_alignParentLeft="true"/>
+      
+	<TextView android:id="@+id/note_20"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Dolor"
+		android:textColor="@color/widget_item_color"
+		android:layout_below="@id/note_10"
+		android:layout_toRightOf="@id/noteimage_20"
+		android:layout_alignTop="@id/noteimage_20"/>
+		
+ </RelativeLayout>

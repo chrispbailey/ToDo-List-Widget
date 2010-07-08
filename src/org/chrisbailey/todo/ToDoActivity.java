@@ -31,6 +31,8 @@ public class ToDoActivity extends Activity
     
     private static final String LOG_TAG = "ToDoActivity";
     
+    private PreferenceManager pm;
+    
     public static enum FOCUS { GIVE_TO_LAST, GIVE_TO_LAST_WITH_KEYBOARD, NONE };
     
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -54,6 +56,8 @@ public class ToDoActivity extends Activity
         
         db = new ToDoDatabase(this.getApplicationContext());
 
+        pm = new PreferenceManager(this, db);
+        
         ImageView addnote = (ImageView)findViewById(R.id.addnotebutton);
         addnote.setOnClickListener(new View.OnClickListener()
         {
@@ -128,7 +132,7 @@ public class ToDoActivity extends Activity
         TableRow row = createRow(c);
         
         ImageView toggle = createImage(c);
-        int btn = R.drawable.tickbox;
+        int btn = pm.getActiveIcon();
         toggle.setImageDrawable(getResources().getDrawable(btn));
         toggle.setId(n.id);
         toggle.setOnClickListener(new StatusClickListener(c));
@@ -155,15 +159,15 @@ public class ToDoActivity extends Activity
     
     public void toggleRow(TableRow row, Status status)
     {
-        int btn = R.drawable.tickbox;
-        if (status == Status.FINISHED) btn = R.drawable.tick;
+        int btn = pm.getActiveIcon();
+        if (status == Status.FINISHED) btn = pm.getFinishedIcon();
         
         ImageView toggle = (ImageView) row.getChildAt(0);
         toggle.setImageDrawable(getResources().getDrawable(btn));
         
         EditText note = (EditText) row.getChildAt(1);
-        if (status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.activity_done_color));
-        else note.setTextColor(getResources().getColor(R.color.activity_widget_item_color));
+        if (status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.activity_finished_color));
+        else note.setTextColor(getResources().getColor(R.color.activity_active_color));
     }
     
     public void redraw(ToDoActivity c, FOCUS focus)

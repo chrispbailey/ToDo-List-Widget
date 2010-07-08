@@ -18,7 +18,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
 {
     public static final int MAX_NOTES = 20;
     public static String LOG_TAG = "ToDoWidgetProvider";
-
+    
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
     {
@@ -71,6 +71,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId)
     {
         ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
+        PreferenceManager pm = new PreferenceManager(context, db);
         RemoteViews views = new RemoteViews(context.getPackageName(), manager.getAppWidgetInfo(appWidgetId).initialLayout);
 
         // set the note title
@@ -79,7 +80,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         title.trim();
         views.setTextViewText(R.id.notetitle, Html.fromHtml("<b><u>"+title+"</u></b>"));
         views.setViewVisibility(R.id.notetitle, View.VISIBLE);
-        views.setTextColor(R.id.notetitle, context.getResources().getColor(R.color.widget_item_color));
+        views.setTextColor(R.id.notetitle, pm.getActiveColor());
         if (title.length() == 0)
         {
             views.setViewVisibility(R.id.notetitle, View.GONE);
@@ -114,14 +115,14 @@ public class ToDoWidgetProvider extends AppWidgetProvider
                     fieldName = "noteimage_"+(i+1);
                     f = R.id.class.getDeclaredField(fieldName);
                     int imageView = f.getInt(fieldName);
-                    int imageDrawable = R.drawable.tickbox_widget;
-                    if (n.status == Note.Status.FINISHED) imageDrawable = R.drawable.tick_widget;
+                    int imageDrawable = pm.getActiveIcon();
+                    if (n.status == Note.Status.FINISHED) imageDrawable = pm.getFinishedIcon();
                     views.setImageViewResource(imageView, imageDrawable);
                     fieldName = "note_"+(i+1);
                     f = R.id.class.getDeclaredField(fieldName);
                     int textView = f.getInt(fieldName);
-                    int textColor = R.color.widget_item_color;
-                    if (n.status == Note.Status.FINISHED) textColor = R.color.done_color;
+                    int textColor = pm.getActiveColor();
+                    if (n.status == Note.Status.FINISHED) textColor = pm.getFinishedColor();
                     views.setTextViewText(textView, n.text);
                     views.setTextColor(textView, context.getResources().getColor(textColor));
                 }

@@ -2,6 +2,6 @@
 <resources>
     <color name="done_color">#3c3c3c</color>
     <color name="widget_item_color">#F5F5F5</color>
-    <color name="activity_done_color">#7A7A7A</color>
-    <color name="activity_widget_item_color">#F5F5F5</color>
+    <color name="activity_finished_color">#7A7A7A</color>
+    <color name="activity_active_color">#F5F5F5</color>
 </resources>
