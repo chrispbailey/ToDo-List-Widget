@@ -4,8 +4,16 @@
 	android:padding="8dp"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:background="@drawable/background1">
-
+	>
+	
+	<ImageView android:id="@+id/widget_background"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_alignParentTop="true"
+	android:layout_alignParentBottom="true"
+	android:src="@drawable/background1"
+	android:scaleType="fitXY"/>
+	
 	<TextView android:id="@+id/notetitle"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -14,10 +22,6 @@
 		android:paddingRight="0dp"
 		android:paddingTop="0dp"
 		android:paddingBottom="3dp"
-		android:shadowRadius="0.2"
-		android:shadowDy="1.2"
-		android:shadowDx="1.2"
-		android:shadowColor="#AAAAAAFF"
 		android:textStyle="bold"
 		android:text="Lorem"
 		android:layout_alignParentTop="true"/>
@@ -33,7 +37,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Ipsum"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/notetitle"
 		android:layout_toRightOf="@id/noteimage_1"
 		android:layout_alignTop="@id/noteimage_1"/>
@@ -49,7 +52,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_1"
 		android:layout_toRightOf="@id/noteimage_2"
 		android:layout_alignTop="@id/noteimage_2"/>
@@ -65,7 +67,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_2"
 		android:layout_toRightOf="@id/noteimage_3"
 		android:layout_alignTop="@id/noteimage_3"/>
@@ -81,7 +82,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_3"
 		android:layout_toRightOf="@id/noteimage_4"
 		android:layout_alignTop="@id/noteimage_4"/>
@@ -97,7 +97,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_4"
 		android:layout_toRightOf="@id/noteimage_5"
 		android:layout_alignTop="@id/noteimage_5"/>
@@ -113,7 +112,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_5"
 		android:layout_toRightOf="@id/noteimage_6"
 		android:layout_alignTop="@id/noteimage_6"/>
@@ -129,7 +127,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_6"
 		android:layout_toRightOf="@id/noteimage_7"
 		android:layout_alignTop="@id/noteimage_7"/>
@@ -145,7 +142,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_7"
 		android:layout_toRightOf="@id/noteimage_8"
 		android:layout_alignTop="@id/noteimage_8"/>
@@ -161,7 +157,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_8"
 		android:layout_toRightOf="@id/noteimage_9"
 		android:layout_alignTop="@id/noteimage_9"/>
@@ -177,7 +172,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_9"
 		android:layout_toRightOf="@id/noteimage_10"
 		android:layout_alignTop="@id/noteimage_10"/>
@@ -193,7 +187,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_10"
 		android:layout_toRightOf="@id/noteimage_11"
 		android:layout_alignTop="@id/noteimage_11"/>
@@ -209,7 +202,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_11"
 		android:layout_toRightOf="@id/noteimage_12"
 		android:layout_alignTop="@id/noteimage_12"/>
@@ -225,7 +217,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_12"
 		android:layout_toRightOf="@id/noteimage_13"
 		android:layout_alignTop="@id/noteimage_13"/>
@@ -241,7 +232,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_13"
 		android:layout_toRightOf="@id/noteimage_14"
 		android:layout_alignTop="@id/noteimage_14"/>
@@ -257,7 +247,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_14"
 		android:layout_toRightOf="@id/noteimage_15"
 		android:layout_alignTop="@id/noteimage_15"/>
@@ -273,7 +262,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_15"
 		android:layout_toRightOf="@id/noteimage_16"
 		android:layout_alignTop="@id/noteimage_16"/>
@@ -289,7 +277,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_16"
 		android:layout_toRightOf="@id/noteimage_17"
 		android:layout_alignTop="@id/noteimage_17"/>
@@ -305,7 +292,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_17"
 		android:layout_toRightOf="@id/noteimage_18"
 		android:layout_alignTop="@id/noteimage_18"/>
@@ -321,7 +307,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_18"
 		android:layout_toRightOf="@id/noteimage_19"
 		android:layout_alignTop="@id/noteimage_19"/>
@@ -337,7 +322,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Dolor"
-		android:textColor="@color/widget_item_color"
 		android:layout_below="@id/note_10"
 		android:layout_toRightOf="@id/noteimage_20"
 		android:layout_alignTop="@id/noteimage_20"/>

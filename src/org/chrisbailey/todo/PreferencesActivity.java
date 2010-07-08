@@ -39,8 +39,8 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
     
     /* References to preview items */
     private ViewGroup preview;
-    private ImageView ivActiveColor;
-    private ImageView ivFinishedColor;
+    private ImageView ivActiveIcon;
+    private ImageView ivFinishedIcon;
     public static TextView tvTitle;
     public static ArrayList<TextView> tvNotes;
     public static ArrayList<ImageView> ivIcons;
@@ -79,6 +79,7 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
                 PreferencesActivity.this.showDialog(PreferencesActivity.DIALOG_SELECT_COLOR);
             }
         });
+        setBackgroundColor(colorPickerActive,pm.getActiveColor());
         
         colorPickerFinished = (View) findViewById(R.id.pick_color_finished);
         colorPickerFinished.setOnClickListener(new OnClickListener() 
@@ -90,13 +91,14 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
                 PreferencesActivity.this.showDialog(PreferencesActivity.DIALOG_SELECT_COLOR);
             }
         });
+        setBackgroundColor(colorPickerFinished,pm.getFinishedColor());
         
         try
         {
             NumberPicker fontSizeSelector = (NumberPicker) findViewById(R.id.font_size_selector);
             fontSizeSelector.setOnChangeListener(this);
             fontSizeSelector.setRange(10, 30);
-            fontSizeSelector.setCurrent(16);
+            fontSizeSelector.setCurrent(pm.getSize());
         } 
         catch (ClassCastException issue6894)
         {
@@ -113,6 +115,7 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
                 pm.save(db);
                 db.close();
                 db = null;
+                finish();
             }
         });
         
@@ -131,9 +134,24 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         backgroundSelector.setAdapter(new ImageAdapter(this, 150, 100, imageBackgrounds));
         backgroundSelector.setOnItemClickListener(this);
         
+        for (int i = 0; i < imageBackgrounds.length; i++)
+        {
+        	if (imageBackgrounds[i] == pm.getBackgroundId()) backgroundSelector.setSelection(i);
+        }
+        
         Gallery iconSelector = (Gallery) findViewById(R.id.icon_selector);
         iconSelector.setAdapter(new ImageAdapter(this, 70, 70, imageIcons));
         iconSelector.setOnItemClickListener(this);
+        
+        for (int i = 0; i < imageIcons.length; i++)
+        {
+        	Log.i(LOG_TAG, imageIcons[i] + " == "+pm.getIconId());
+        	if (imageIcons[i] == pm.getIconId())
+        		{
+        		Log.i(LOG_TAG, "current icon is " + imageIcons[i] + ":"+i);
+        		iconSelector.setSelection(i);
+        		}
+        }
         
         // set default values
         defaultScale = (int) new TextView(this).getTextSize();
@@ -177,24 +195,26 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         Log.i(LOG_TAG,"Color changed to " + color);
         if (activeColorChooser)
         {
-            GradientDrawable shape = (GradientDrawable) colorPickerActive.getBackground();
-            shape.setColor(color);
-            colorPickerActive.setBackgroundDrawable(shape);
+            setBackgroundColor(colorPickerActive,color);
             pm.setActiveColor(color);
         }
         else
         {
-            GradientDrawable shape = (GradientDrawable) colorPickerFinished.getBackground();
-            shape.setColor(color);
-            colorPickerFinished.setBackgroundDrawable(shape);
+        	setBackgroundColor(colorPickerFinished,color);
             pm.setFinishedColor(color);
 
         }
         
         updateIcons(2);
-
     }
 
+    private void setBackgroundColor(View v, int c)
+    {
+    	GradientDrawable shape = (GradientDrawable) v.getBackground();
+        shape.setColor(c);
+        v.setBackgroundDrawable(shape);
+    }
+    
     @Override
     public void onNumberChanged(NumberPicker picker, int oldVal, int newVal)
     {
@@ -220,43 +240,47 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
     
     public void updateIcons(int max)
     {
-        if (preview == null)
-        {
-            preview = (ViewGroup) findViewById(R.id.preview);
-            tvTitle = (TextView) findViewById(R.id.notetitle);
-            
-            tvNotes = new ArrayList<TextView>();
-            ivIcons = new ArrayList<ImageView>();
-            
-            ivActiveColor = (ImageView) findViewById(R.id.active_color);
-            ivFinishedColor = (ImageView) findViewById(R.id.finished_color);
-            for (int i = 0; i < max; i++)
-            {
-            	tvNotes.add((TextView) findViewById(getNoteId(i)));
-            	ivIcons.add((ImageView) findViewById(getIconId(i)));
-            }
-        }
-        
-        preview.setBackgroundResource(pm.getBackground());
-        
-        tvTitle.setTextColor(pm.getActiveColor());
-        tvTitle.setTextSize(pm.getSize());
-        
-        tvNotes.get(0).setTextColor(pm.getActiveColor());
-        tvNotes.get(0).setTextSize(pm.getSize());
-        
-        tvNotes.get(1).setTextColor(pm.getFinishedColor());
-        tvNotes.get(1).setTextSize(pm.getSize());
-        
-        // set height of icon
-        float scalingFactor = (float)pm.getSize() / (float)defaultScale;
-        int newH = (int) (originalSize * scalingFactor);
-        
-        setIcon(ivIcons.get(0), pm.getActiveIcon(), originalSize, newH);
-        setIcon(ivIcons.get(1), pm.getFinishedIcon(), originalSize, newH);
-
-        ivActiveColor.setImageResource(pm.getActiveIcon());
-        ivFinishedColor.setImageResource(pm.getFinishedIcon());
+    	try
+    	{
+	        if (preview == null)
+	        {
+	            preview = (ViewGroup) findViewById(R.id.preview);
+	            tvTitle = (TextView) findViewById(R.id.notetitle);
+	            
+	            tvNotes = new ArrayList<TextView>();
+	            ivIcons = new ArrayList<ImageView>();
+	            
+	            ivActiveIcon = (ImageView) findViewById(R.id.active_color);
+	            ivFinishedIcon = (ImageView) findViewById(R.id.finished_color);
+	            for (int i = 0; i < max; i++)
+	            {
+	            	tvNotes.add((TextView) findViewById(getNoteId(i)));
+	            	ivIcons.add((ImageView) findViewById(getIconId(i)));
+	            }
+	        }
+	        
+	        preview.setBackgroundResource(pm.getBackground());
+	        
+	        tvTitle.setTextColor(pm.getActiveColor());
+	        tvTitle.setTextSize(pm.getTitleSize());
+	        
+	        tvNotes.get(0).setTextColor(pm.getActiveColor());
+	        tvNotes.get(0).setTextSize(pm.getSize());
+	        
+	        tvNotes.get(1).setTextColor(pm.getFinishedColor());
+	        tvNotes.get(1).setTextSize(pm.getSize());
+	        
+	        // set height of icon
+	        float scalingFactor = (float)pm.getSize() / (float)defaultScale;
+	        int newH = (int) (originalSize * scalingFactor);
+	        
+	        setIcon(ivIcons.get(0), pm.getActiveIcon(), originalSize, newH);
+	        setIcon(ivIcons.get(1), pm.getFinishedIcon(), originalSize, newH);
+	
+	        ivActiveIcon.setImageResource(pm.getActiveIcon());
+	        ivFinishedIcon.setImageResource(pm.getFinishedIcon());
+    	}
+    	catch (Exception e) {}
     }
     
     private void setIcon(ImageView v, int ref, int w, int h)

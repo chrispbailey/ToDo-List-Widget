@@ -253,7 +253,9 @@ public class ToDoDatabase extends SQLiteOpenHelper
     
     public int getPrefColorActive()
     {
-    	return getIntVariable(PREF_COLOR_ACTIVE);
+        String s = getVariable(PREF_COLOR_ACTIVE);
+        if (s == null) return 0; // need to return 0, as -1 is a valid color value
+        return Integer.parseInt(s);
     }
     
     public void setPrefColorActive(int value)
@@ -263,7 +265,9 @@ public class ToDoDatabase extends SQLiteOpenHelper
     
     public int getPrefColorFinished()
     {
-    	return getIntVariable(PREF_COLOR_FINISHED);
+        String s = getVariable(PREF_COLOR_FINISHED);
+        if (s == null) return 0; // need to return 0, as -1 is a valid color value
+        return Integer.parseInt(s);
     }
     
     public void setPrefColorFinished(int value)

@@ -33,6 +33,8 @@ public class ToDoActivity extends Activity
     
     private PreferenceManager pm;
     
+    EditText title;
+    
     public static enum FOCUS { GIVE_TO_LAST, GIVE_TO_LAST_WITH_KEYBOARD, NONE };
     
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -41,7 +43,6 @@ public class ToDoActivity extends Activity
         super();
     }
 
-    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -78,6 +79,17 @@ public class ToDoActivity extends Activity
             }
         });
         
+        ImageView configure = (ImageView)findViewById(R.id.configurebutton);
+        configure.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(ToDoActivity.this, PreferencesActivity.class);
+                ToDoActivity.this.startActivity(intent);
+            }
+        });
+
+        
         // request the widget get updated
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -93,7 +105,7 @@ public class ToDoActivity extends Activity
             finish();
         }
         
-        EditText title = (EditText)findViewById(R.id.edittitle);
+        title = (EditText)findViewById(R.id.edittitle);
         title.setId(mAppWidgetId);
         title.setText(db.getTitle(mAppWidgetId));
         title.addTextChangedListener(new MyTitleTextWatcher(title));
@@ -166,12 +178,14 @@ public class ToDoActivity extends Activity
         toggle.setImageDrawable(getResources().getDrawable(btn));
         
         EditText note = (EditText) row.getChildAt(1);
-        if (status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.activity_finished_color));
-        else note.setTextColor(getResources().getColor(R.color.activity_active_color));
+        if (status == Note.Status.FINISHED) note.setTextColor(pm.getFinishedColor());
+        else note.setTextColor(pm.getActiveColor());
     }
     
     public void redraw(ToDoActivity c, FOCUS focus)
     {
+    	title.setTextColor(pm.getActiveColor());
+    	
         TableLayout table = (TableLayout) c.findViewById(R.id.table_layout);
         
         table.removeAllViews();

@@ -5,7 +5,13 @@ android:layout_gravity="center_horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center_horizontal">
-    
+
+    <LinearLayout
+        android:layout_weight="0"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
     <EditText android:id="@+id/edittitle"
         android:layout_weight="0"
         android:layout_width="fill_parent"
@@ -16,9 +22,15 @@ android:layout_gravity="center_horizontal"
         android:paddingBottom="0dp"
         android:textStyle="bold"
         android:background="@drawable/input_background"
-        android:textColor="@color/widget_item_color"
         android:inputType="text"
         android:textSize="20dp"/>
+        
+        <ImageView android:id="@+id/configurebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/configure"/>
+            
+    </LinearLayout>
     
     <ScrollView
         android:layout_weight="1"

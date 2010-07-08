@@ -1,6 +1,5 @@
 package org.chrisbailey.todo;
 
-import java.lang.reflect.Field;
 import java.util.LinkedList;
 
 import android.app.PendingIntent;
@@ -74,13 +73,16 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         PreferenceManager pm = new PreferenceManager(context, db);
         RemoteViews views = new RemoteViews(context.getPackageName(), manager.getAppWidgetInfo(appWidgetId).initialLayout);
 
+        views.setImageViewResource(R.id.widget_background, pm.getBackground());
+
         // set the note title
-        
         String title = db.getTitle(appWidgetId);
         title.trim();
         views.setTextViewText(R.id.notetitle, Html.fromHtml("<b><u>"+title+"</u></b>"));
         views.setViewVisibility(R.id.notetitle, View.VISIBLE);
         views.setTextColor(R.id.notetitle, pm.getActiveColor());
+        views.setFloat(R.id.notetitle, "setTextSize", pm.getTitleSize());
+        
         if (title.length() == 0)
         {
             views.setViewVisibility(R.id.notetitle, View.GONE);
@@ -92,43 +94,34 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         db.close();
         db = null;
 
-        Field f;
-        String fieldName;
+        int noteField;
+        int imageField;
         
         for (int i=0; i< MAX_NOTES; i++)
         {
             try
             {
-                fieldName = "notelayout_"+(i+1);
-                f = R.id.class.getDeclaredField(fieldName);
-                views.setViewVisibility(f.getInt(fieldName), View.VISIBLE);
+                noteField = R.id.class.getDeclaredField("note_"+(i+1)).getInt(null);
+                imageField = R.id.class.getDeclaredField("noteimage_"+(i+1)).getInt(null);
+                views.setViewVisibility(noteField, View.INVISIBLE);
+                views.setViewVisibility(imageField, View.INVISIBLE);
                 
-                if (i >= notes.size()) 
-                {
-                    views.setViewVisibility(f.getInt(fieldName), View.INVISIBLE);
-                    continue;
-                }
+                views.setFloat(noteField, "setTextSize", pm.getSize());
+                
+                if (i >= notes.size()) { continue; }
                 
                 Note n = notes.get(i);
                 if (n.text != null && !n.text.equals(""))
                 {
-                    fieldName = "noteimage_"+(i+1);
-                    f = R.id.class.getDeclaredField(fieldName);
-                    int imageView = f.getInt(fieldName);
+                	views.setViewVisibility(noteField, View.VISIBLE);
+                	views.setViewVisibility(imageField, View.VISIBLE);
                     int imageDrawable = pm.getActiveIcon();
                     if (n.status == Note.Status.FINISHED) imageDrawable = pm.getFinishedIcon();
-                    views.setImageViewResource(imageView, imageDrawable);
-                    fieldName = "note_"+(i+1);
-                    f = R.id.class.getDeclaredField(fieldName);
-                    int textView = f.getInt(fieldName);
+                    views.setImageViewResource(imageField, imageDrawable);
                     int textColor = pm.getActiveColor();
                     if (n.status == Note.Status.FINISHED) textColor = pm.getFinishedColor();
-                    views.setTextViewText(textView, n.text);
-                    views.setTextColor(textView, context.getResources().getColor(textColor));
-                }
-                else
-                {
-                    views.setViewVisibility(f.getInt(fieldName), View.INVISIBLE);
+                    views.setTextViewText(noteField, n.text);
+                    views.setTextColor(noteField, textColor);
                 }
             }
             catch (Exception e)

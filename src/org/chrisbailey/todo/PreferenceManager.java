@@ -15,9 +15,11 @@ public class PreferenceManager
     
     private static final String LOG_TAG = "ReferenceManager";
 
-    private int currentBackground = -1;
-    private int activeIcon = -1;
-    private int finishedIcon = -1;
+    private int currentBackground = -1;    
+    private int currentBackgroundRef = -1;
+    private int currentIcon = -1;
+    private int activeIconRef = -1;
+    private int finishedIconRef = -1;
     private int currentActiveColor = -1;
     private int currentFinishedColor = -1;
     private int currentSize = -1;
@@ -29,15 +31,15 @@ public class PreferenceManager
         setIcons(db.getPrefIcon());
         
         int i = db.getPrefColorActive();
-        if ( i < 0) i = c.getResources().getColor(R.color.widget_item_color);
+        if (i == 0) i = c.getResources().getColor(R.color.default_active_color);
         setActiveColor(i);
         
         i = db.getPrefColorFinished();
-        if ( i < 0) i = c.getResources().getColor(R.color.done_color);
+        if (i == 0) i = c.getResources().getColor(R.color.default_finished_color);
         setFinishedColor(i);
         
         i = db.getPrefSize();
-        if ( i < 0) i = (int) new TextView(c).getTextSize();
+        if (i == -1) i = (int) new TextView(c).getTextSize();
         setSize(i);
     }
     
@@ -47,10 +49,11 @@ public class PreferenceManager
      */
     public void save(ToDoDatabase db)
     {
+    	Log.i(LOG_TAG, "Saving: bg:" + currentBackground + " icon:" + currentIcon + " Acolor:"+currentActiveColor+" Fcolor:"+currentFinishedColor+" size:"+currentSize);
     	db.setPrefBackground(currentBackground);
     	db.setPrefColorActive(currentActiveColor);
     	db.setPrefColorFinished(currentFinishedColor);
-    	db.setPrefIcon(activeIcon);
+    	db.setPrefIcon(currentIcon);
     	db.setPrefSize(currentSize);
     }
     
@@ -64,6 +67,11 @@ public class PreferenceManager
     	return currentSize;
     }
     
+    public int getTitleSize()
+    {
+    	return currentSize+2;
+    }
+        
     public int getActiveColor()
     {
     	return currentActiveColor;
@@ -123,27 +131,50 @@ public class PreferenceManager
     public void setBackground(int i)
     {
     	if (i < 0) i = 0;
-    	currentBackground = getBackgroundId(i);
+    	currentBackground = i;
+    	currentBackgroundRef = getBackgroundId(currentBackground);
     }
     public void setIcons(int i)
     {
     	if (i < 0) i = 0;
-    	activeIcon = getActiveIconId(i);
-    	finishedIcon = getFinishedIconId(i);
+    	currentIcon = i;
+    	activeIconRef = getActiveIconId(currentIcon);
+    	finishedIconRef = getFinishedIconId(currentIcon);
     }
 
+    /**
+     * Returns the reference to the current background drawable
+     * @return
+     */
     public int getBackground()
+    {
+    	return currentBackgroundRef;
+    }
+    
+    /**
+     * Returns the current background file number.
+     * E.g. background2.png => 2
+     * @return
+     */
+    public int getBackgroundId()
     {
     	return currentBackground;
     }
+    
+    public int getIconId()
+    {
+    	return currentIcon;
+    }
+    
     public int getActiveIcon()
     {
-    	return activeIcon;
+    	return activeIconRef;
     }
     public int getFinishedIcon()
     {
-    	return finishedIcon;
-    }    
+    	return finishedIconRef;
+    }
+
     private static int getActiveIconId(int i)
     {
         DrawableField f = new DrawableField(ACTIVE_DRAWABLE_PREFIX);
@@ -175,7 +206,6 @@ public class PreferenceManager
             try 
             {
                 i++;
-                Log.i(LOG_TAG, "Looking up " + field+i);
                 return R.drawable.class.getField(field+i).getInt(null);
             } catch (Exception e)
             {
