@@ -113,8 +113,9 @@ public class ToDoWidgetProvider extends AppWidgetProvider
                 Note n = notes.get(i);
                 if (n.text != null && !n.text.equals(""))
                 {
-                	views.setViewVisibility(noteField, View.VISIBLE);
-                	views.setViewVisibility(imageField, View.VISIBLE);
+                    views.setViewVisibility(noteField, View.VISIBLE);
+                    views.setViewVisibility(imageField, View.VISIBLE);
+                    if (pm.isEmptyIcon()) views.setViewVisibility(imageField, View.GONE);
                     int imageDrawable = pm.getActiveIcon();
                     if (n.status == Note.Status.FINISHED) imageDrawable = pm.getFinishedIcon();
                     views.setImageViewResource(imageField, imageDrawable);

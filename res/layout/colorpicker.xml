@@ -16,41 +16,24 @@
  -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/background"
-    android:gravity="center"
-    >
-	
-	<LinearLayout
-	    android:orientation="horizontal"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:id="@+id/background"
-	    >
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:id="@+id/background"
+	android:gravity="center">
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:id="@+id/background">
 
 		<org.chrisbailey.todo.widgets.ColorSlider
-				android:id="@+id/saturation" 
-				android:layout_width="50sp" 
-				android:layout_height="fill_parent"
-				android:layout_margin="5sp"
-				/>
+			android:id="@+id/saturation" android:layout_width="50sp"
+			android:layout_height="fill_parent" android:layout_margin="5sp" />
 		<org.chrisbailey.todo.widgets.ColorCircle
-			android:layout_weight="1"
-				android:id="@+id/colorcircle"
-				android:layout_width="fill_parent" 
-				android:layout_height="fill_parent"
-				android:layout_marginLeft="10dip"
-				android:layout_marginRight="10dip"
-				android:layout_margin="5sp"
-				/>
+			android:layout_weight="1" android:id="@+id/colorcircle"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:layout_marginLeft="10dip" android:layout_marginRight="10dip"
+			android:layout_margin="5sp" />
 		<org.chrisbailey.todo.widgets.ColorSlider
-			android:id="@+id/value"
-		    android:layout_width="50sp"
-		    android:layout_height="fill_parent"
-		    android:layout_margin="5sp"
-			/>
+			android:id="@+id/value" android:layout_width="50sp"
+			android:layout_height="fill_parent" android:layout_margin="5sp" />
 	</LinearLayout>
 
 </LinearLayout>

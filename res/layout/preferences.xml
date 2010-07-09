@@ -1,172 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="3dp">
-    
-    <!-- Action buttons -->
-    <LinearLayout
-       android:id="@+id/button_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
-    
-        <Button android:id="@+id/ok_button"
-            android:layout_width="fill_parent"
-			android:layout_weight="0.5"
-			android:layout_height="wrap_content"
-			android:text="@android:string/ok"/>
-        
-        <Button android:id="@+id/cancel_button"
-            android:layout_width="fill_parent"
-	        android:layout_weight="0.5"
-	        android:layout_height="wrap_content"
-	        android:text="@android:string/cancel"/>
-    </LinearLayout>
-    
-    <ScrollView 
-    android:layout_width="fill_parent" 
-    android:layout_height="fill_parent"
-    android:layout_above="@id/button_layout">
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:padding="3dp">
 
-		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:gravity="center_horizontal" android:orientation="vertical"  android:layout_weight="0">
+	<!-- Action buttons -->
+	<LinearLayout android:id="@+id/button_layout"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:orientation="horizontal" android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true" android:paddingTop="10dp"
+		android:paddingBottom="10dp">
 
-		<RelativeLayout android:padding="3dp"  android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:gravity="center_vertical" android:orientation="horizontal"  android:background="#FF323232">
-	
-			<!-- Font size selector -->
-		  	<org.chrisbailey.todo.widgets.NumberPicker 
-				    android:id="@+id/font_size_selector"
-				    android:layout_width="wrap_content"
-				    android:layout_height="80dp"
-				    android:layout_alignParentTop="true"
-				    android:layout_alignParentBottom="true"/>
+		<ImageView android:id="@+id/ok_button" android:layout_width="48dp"
+			android:layout_height="48dp" android:layout_weight="0.5"
+			android:src="@drawable/action_save" />
 
-			<!-- ACTIVE item color selector -->
-	    	<ImageView android:id="@+id/pick_color_active"
-					android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="15dp"
-					android:layout_alignParentTop="true"
-	                android:layout_alignParentRight="true"
-					android:background="@drawable/shape"/>
+		<ImageView android:id="@+id/cancel_button"
+			android:layout_width="48dp" android:layout_height="48dp"
+			android:layout_weight="0.5" android:src="@drawable/action_cancel" />
 
-               <ImageView android:id="@+id/active_color" 
-					android:src="@drawable/icon_active1" 
-					android:layout_width="wrap_content" 
-					android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-					android:paddingRight="5dp"
-					android:layout_alignParentTop="true"
-					android:layout_toLeftOf="@id/pick_color_active"/>
-                   
-                   				
-               <!-- FINISHED item color selector -->
-               <ImageView android:id="@+id/pick_color_finished"
-					android:layout_width="40dp"
-					android:layout_height="30dp"
-					android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="15dp"
-					android:layout_alignParentRight="true"
-					android:layout_below="@id/pick_color_active"
-					android:background="@drawable/shape"/>
-                   
-               <ImageView android:id="@+id/finished_color"
-					android:src="@drawable/icon_finished1" 
-					android:layout_width="wrap_content" 
-					android:layout_height="wrap_content"
-					android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-					android:paddingRight="5dp"
+	</LinearLayout>
+
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:layout_above="@id/button_layout">
+
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center_horizontal"
+			android:orientation="vertical" android:layout_weight="0">
+
+			<RelativeLayout android:padding="3dp"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="center_vertical" android:orientation="horizontal"
+				android:background="#FF323232">
+
+				<!-- Font size selector -->
+				<org.chrisbailey.todo.widgets.NumberPicker
+					android:id="@+id/font_size_selector" android:layout_width="wrap_content"
+					android:layout_height="80dp" android:layout_alignParentTop="true"
+					android:layout_alignParentBottom="true" />
+
+				<!-- ACTIVE item color selector -->
+				<ImageView android:id="@+id/pick_color_active"
+					android:layout_width="30dp" android:layout_height="30dp"
+					android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+					android:layout_marginRight="15dp" android:layout_alignParentTop="true"
+					android:layout_alignParentRight="true" android:background="@drawable/shape" />
+
+				<ImageView android:id="@+id/active_color_icon"
+					android:background="@drawable/icon_active1" android:layout_width="20dp"
+					android:layout_height="20dp" android:layout_marginTop="10dp"
+					android:layout_marginBottom="10dp" android:layout_marginRight="10dp"
+					android:layout_alignParentTop="true" android:layout_toLeftOf="@id/pick_color_active" />
+
+				<!-- FINISHED item color selector -->
+				<ImageView android:id="@+id/pick_color_finished"
+					android:layout_width="30dp" android:layout_height="30dp"
+					android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+					android:layout_marginRight="15dp" android:layout_alignParentRight="true"
+					android:layout_below="@id/pick_color_active" android:background="@drawable/shape" />
+
+				<ImageView android:id="@+id/finished_color_icon"
+					android:background="@drawable/icon_finished1" android:layout_width="20dp"
+					android:layout_height="20dp" android:layout_marginTop="10dp"
+					android:layout_marginBottom="10dp" android:layout_marginRight="10dp"
 					android:layout_toLeftOf="@id/pick_color_finished"
-					android:layout_below="@id/active_color" />
-                    
-	    </RelativeLayout>
-	    
-		<!-- tick box image selector -->
-		<Gallery android:id="@+id/icon_selector" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-			    
-		<!-- Background image selector -->
-		<Gallery android:id="@+id/background_selector" android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="#FF323232"/>
-		
-		<!-- Preview panel -->
-		<LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content" 
-		    android:padding="3dp"
-		    android:gravity="center"
-		    android:background="@drawable/example_background">
-		    
-			<RelativeLayout android:id="@+id/preview" 
-			      android:background="@drawable/background1"
-			      android:orientation="vertical"
-			      android:layout_width="146dp"
-			      android:layout_height="146dp"
-			      android:padding="8dp">
-			      
-				  <TextView android:id="@+id/notetitle"
-				      android:layout_width="fill_parent"
-				      android:layout_height="wrap_content"
-				      android:gravity="center_horizontal"
-				      android:paddingBottom="3dp"
-				      android:shadowRadius="0.2"
-				      android:shadowDy="1.2"
-				      android:shadowDx="1.2"
-				      android:shadowColor="#AAAAAAFF"
-				      android:textStyle="bold"
-				      android:text="Lorem"
-				      android:layout_alignParentTop="true"/>
-	      
-					<ImageView android:id="@+id/noteimage_1" 
-					android:src="@drawable/icon_active1" 
-					android:layout_width="20dp" 
-					android:layout_height="20dp"
-					android:layout_below="@id/notetitle"
-					android:layout_alignParentLeft="true"
-					/>
-					
-					<TextView android:id="@+id/note_1"
-					android:text="Ipsum"
-					android:minWidth="20dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_below="@id/notetitle"
-					android:layout_toRightOf="@id/noteimage_1"
-					android:layout_alignTop="@id/noteimage_1"
-					/>
-
-					<ImageView
-					android:id="@+id/noteimage_2"
-					android:src="@drawable/icon_finished1"
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:layout_below="@+id/noteimage_1"
-                    android:layout_alignParentLeft="true"/>
-                    
-					<TextView android:id="@+id/note_2"
-					android:text="Dolor"
-					android:minWidth="20dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_below="@id/note_1"
-					android:layout_toRightOf="@id/noteimage_2"
-					android:layout_alignTop="@id/noteimage_2"
-					/>
+					android:layout_below="@id/active_color_icon" />
 
 			</RelativeLayout>
-			
+
+			<!-- tick box image selector -->
+			<Gallery android:id="@+id/icon_selector"
+				android:layout_width="fill_parent" android:layout_height="wrap_content" />
+
+			<!-- Background image selector -->
+			<Gallery android:id="@+id/background_selector"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:background="#FF323232" />
+
+			<!-- Preview panel -->
+			<LinearLayout android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:padding="3dp"
+				android:gravity="center" android:background="@drawable/example_background">
+
+				<RelativeLayout android:orientation="vertical"
+					android:layout_width="146dp" android:layout_height="146dp"
+					android:padding="6dp">
+
+					<ImageView android:id="@+id/preview"
+						android:layout_width="fill_parent" android:layout_height="fill_parent"
+						android:layout_alignParentTop="true"
+						android:layout_alignParentBottom="true" android:src="@drawable/background1"
+						android:scaleType="fitXY" />
+
+					<RelativeLayout android:padding="6dp"
+						android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+						<TextView android:id="@+id/notetitle"
+							android:layout_width="fill_parent" android:layout_height="wrap_content"
+							android:gravity="center_horizontal" android:paddingBottom="3dp"
+							android:shadowRadius="0.2" android:shadowDy="1.2"
+							android:shadowDx="1.2" android:shadowColor="#AAAAAAFF"
+							android:textStyle="bold" android:text="Lorem"
+							android:layout_alignParentTop="true" />
+
+						<ImageView android:id="@+id/noteimage_1" android:src="@drawable/icon_active1"
+							android:layout_width="20dp" android:layout_height="20dp"
+							android:layout_below="@id/notetitle"
+							android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+
+						<TextView android:id="@+id/note_1" android:text="Ipsum"
+							android:minWidth="20dp" android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:layout_below="@id/notetitle"
+							android:layout_toRightOf="@id/noteimage_1"
+							android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_1" />
+
+						<ImageView android:id="@+id/noteimage_2" android:src="@drawable/icon_finished1"
+							android:layout_width="20dp" android:layout_height="20dp"
+							android:layout_below="@+id/noteimage_1"
+							android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+
+						<TextView android:id="@+id/note_2" android:text="Dolor"
+							android:minWidth="20dp" android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:layout_below="@id/note_1"
+							android:layout_toRightOf="@id/noteimage_2"
+							android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_2" />
+
+					</RelativeLayout>
+
+				</RelativeLayout>
+
+			</LinearLayout>
+
 		</LinearLayout>
-		
-		</LinearLayout>
-		
+
 	</ScrollView>
-		
+
 </RelativeLayout>

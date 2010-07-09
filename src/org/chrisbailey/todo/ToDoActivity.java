@@ -7,6 +7,7 @@ import org.chrisbailey.todo.Note.Status;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,14 +24,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.ImageView.ScaleType;
 
 public class ToDoActivity extends Activity
 {
     // reference to the database
     public ToDoDatabase db;
     
+    public static final String UPDATE_INTENT = "android.appwidget.action.APPWIDGET_UPDATE";
     private static final String LOG_TAG = "ToDoActivity";
-    
+    private static float scale;
+
     private PreferenceManager pm;
     
     EditText title;
@@ -51,9 +55,11 @@ public class ToDoActivity extends Activity
         
         super.onCreate(savedInstanceState);
         
+        scale = getResources().getDisplayMetrics().density;
+
         setConfigureResult(RESULT_CANCELED);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity);
         
         db = new ToDoDatabase(this.getApplicationContext());
 
@@ -85,7 +91,7 @@ public class ToDoActivity extends Activity
             public void onClick(View v)
             {
                 Intent intent = new Intent(ToDoActivity.this, PreferencesActivity.class);
-                ToDoActivity.this.startActivity(intent);
+                ToDoActivity.this.startActivityForResult(intent, 0);
             }
         });
 
@@ -110,6 +116,7 @@ public class ToDoActivity extends Activity
         title.setText(db.getTitle(mAppWidgetId));
         title.addTextChangedListener(new MyTitleTextWatcher(title));
         title.setBackgroundResource(R.drawable.input_background);
+        
         redraw(this, FOCUS.GIVE_TO_LAST);
     }
     
@@ -130,10 +137,15 @@ public class ToDoActivity extends Activity
             db = null;
         }
 
-        Log.i(LOG_TAG, "Sending intent");
+        Log.i(LOG_TAG, "Sending intents to all widgets");
         
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-        ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, mAppWidgetId);
+        ComponentName THIS_APPWIDGET = new ComponentName(getApplicationContext(), ToDoWidgetProvider.class);
+        int [] ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
+        for (int i : ids)
+        {
+        	ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i);
+        }
         
         setConfigureResult(RESULT_OK);
         finish();
@@ -148,6 +160,9 @@ public class ToDoActivity extends Activity
         toggle.setImageDrawable(getResources().getDrawable(btn));
         toggle.setId(n.id);
         toggle.setOnClickListener(new StatusClickListener(c));
+        
+        toggle.setVisibility(View.VISIBLE);
+        if (pm.isEmptyIcon()) toggle.setVisibility(View.GONE);
         row.addView(toggle);
         
         EditText note = createInput(c);
@@ -159,7 +174,7 @@ public class ToDoActivity extends Activity
         row.addView(note);
 
         ImageView delete = createImage(c);
-        delete.setImageDrawable(getResources().getDrawable(R.drawable.delete));
+        delete.setImageDrawable(getResources().getDrawable(R.drawable.action_delete));
         delete.setId(n.id);
         delete.setOnClickListener(new DeleteClickListener(c));
         row.addView(delete);
@@ -229,7 +244,8 @@ public class ToDoActivity extends Activity
         row.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.WRAP_CONTENT,
                 TableRow.LayoutParams.WRAP_CONTENT));
-        row.setGravity(Gravity.CENTER_HORIZONTAL);
+        row.setGravity(Gravity.CENTER);
+        row.setVerticalGravity(Gravity.TOP);
         row.setPadding(0, 0, 0, 0);
         return row;
     }
@@ -243,17 +259,17 @@ public class ToDoActivity extends Activity
     private static ImageView createImage(Context c)
     {
         ImageView iv = new ImageView(c);
-        iv.setLayoutParams(new TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT));
-        iv.setPadding(4, 0, 4, 0);
+        iv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.FILL_PARENT));
+        iv.setScaleType(ScaleType.FIT_START);
+        Log.i(LOG_TAG, "setting scale type");
+        iv.setPadding(0, 0, 0, 0);
         return iv;
     }
     
     private static EditText createInput(Context c)
     {
         EditText et = new EditText(c);
-        et.setWidth(200);
+        et.setWidth((int)(scale * 200));
         return et;
     }
     
@@ -265,6 +281,18 @@ public class ToDoActivity extends Activity
         final Intent data = new Intent();
         data.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
         setResult(resultCode, data);
+    }
+
+    @Override
+    protected void onActivityResult(int reqCode, int resultCode, Intent result)
+    {
+        // we don't care about the result, just refresh
+        Log.i(LOG_TAG,"onActivityResult");
+        
+        // reload settings
+        pm = new PreferenceManager(this, db);
+        
+        redraw(ToDoActivity.this, FOCUS.GIVE_TO_LAST);
     }
     
     class DeleteClickListener implements View.OnClickListener

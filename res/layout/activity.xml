@@ -24,11 +24,6 @@ android:layout_gravity="center_horizontal"
         android:background="@drawable/input_background"
         android:inputType="text"
         android:textSize="20dp"/>
-        
-        <ImageView android:id="@+id/configurebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/configure"/>
             
     </LinearLayout>
     
@@ -59,25 +54,28 @@ android:layout_gravity="center_horizontal"
         android:layout_weight="0"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <ImageView android:id="@+id/donebutton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:src="@drawable/done"/>
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:src="@drawable/action_save"/>
 
         <ImageView android:id="@+id/addnotebutton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:src="@drawable/add"/>
-
+            android:src="@drawable/action_add"/>
+        
+        <ImageView android:id="@+id/configurebutton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:src="@drawable/action_configure"/>
+            
     </LinearLayout>
 </LinearLayout>

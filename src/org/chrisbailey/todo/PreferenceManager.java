@@ -9,13 +9,13 @@ import android.widget.TextView;
 
 public class PreferenceManager 
 {
-    private static final String BACKGROUND_DRAWABLE_PREFIX = "background";
-    private static final String ACTIVE_DRAWABLE_PREFIX = "icon_active";
-    private static final String FINISHED_DRAWABLE_PREFIX = "icon_finished";
+    public static final String BACKGROUND_DRAWABLE_PREFIX = "background";
+    public static final String ACTIVE_DRAWABLE_PREFIX = "icon_active";
+    public static final String FINISHED_DRAWABLE_PREFIX = "icon_finished";
     
     private static final String LOG_TAG = "ReferenceManager";
 
-    private int currentBackground = -1;    
+    private int currentBackground = -1;
     private int currentBackgroundRef = -1;
     private int currentIcon = -1;
     private int activeIconRef = -1;
@@ -113,7 +113,9 @@ public class PreferenceManager
             {
                 if (f[i].getName().startsWith(str))
                 {
-                    drawables.add(f[i].getInt(null));
+                    String name = f[i].getName().replace(str, "");
+                    Log.i(LOG_TAG, "adding " +name);
+                    drawables.add(Integer.parseInt(name));
                 }
             }
          }
@@ -130,16 +132,16 @@ public class PreferenceManager
     
     public void setBackground(int i)
     {
-    	if (i < 0) i = 0;
+    	if (i < 0) i = 1;
     	currentBackground = i;
-    	currentBackgroundRef = getBackgroundId(currentBackground);
+    	currentBackgroundRef = getBackgroundRef(currentBackground);
     }
     public void setIcons(int i)
     {
-    	if (i < 0) i = 0;
+    	if (i < 0) i = 1;
     	currentIcon = i;
-    	activeIconRef = getActiveIconId(currentIcon);
-    	finishedIconRef = getFinishedIconId(currentIcon);
+    	activeIconRef = getActiveIconRef(currentIcon);
+    	finishedIconRef = getFinishedIconRef(currentIcon);
     }
 
     /**
@@ -175,44 +177,36 @@ public class PreferenceManager
     	return finishedIconRef;
     }
 
-    private static int getActiveIconId(int i)
+    private static int getActiveIconRef(int i)
     {
-        DrawableField f = new DrawableField(ACTIVE_DRAWABLE_PREFIX);
-        return f.getDrawableField(i);
+        return getDrawableField(i, ACTIVE_DRAWABLE_PREFIX);
     }
 
-    private static int getFinishedIconId(int i)
+    private static int getFinishedIconRef(int i)
     {
-        DrawableField f = new DrawableField(FINISHED_DRAWABLE_PREFIX);
-        return f.getDrawableField(i);
+        return getDrawableField(i, FINISHED_DRAWABLE_PREFIX);
     }
-    private static int getBackgroundId(int i)
+    private static int getBackgroundRef(int i)
     {
-        DrawableField f = new DrawableField(BACKGROUND_DRAWABLE_PREFIX);
-        return f.getDrawableField(i);
+        return getDrawableField(i, BACKGROUND_DRAWABLE_PREFIX);
     }
     
-    public static class DrawableField
+    public static int getDrawableField(int i, String field)
     {
-        String field;
-        
-        public DrawableField(String s)
+        try 
         {
-            field = s;
-        }
-        
-        public int getDrawableField(int i)
+//                i++;
+            Log.i(LOG_TAG,"Getting field " + field+i);
+            return R.drawable.class.getField(field+i).getInt(null);
+        } catch (Exception e)
         {
-            try 
-            {
-                i++;
-                return R.drawable.class.getField(field+i).getInt(null);
-            } catch (Exception e)
-            {
-                Log.e(LOG_TAG,"Error obtaining drawable",e);
-            }
-            return -1;
+            Log.e(LOG_TAG,"Error obtaining drawable",e);
         }
+        return -1;
     }
     
+    public boolean isEmptyIcon()
+    {
+        return currentIcon == 9;
+    }
 }
