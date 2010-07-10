@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 public class PreferenceManager 
 {
-    public static final String BACKGROUND_DRAWABLE_PREFIX = "background";
-    public static final String ACTIVE_DRAWABLE_PREFIX = "icon_active";
-    public static final String FINISHED_DRAWABLE_PREFIX = "icon_finished";
+    public static final String BACKGROUND_DRAWABLE_PREFIX = "background_";
+    public static final String ACTIVE_DRAWABLE_PREFIX = "icon_active_";
+    public static final String FINISHED_DRAWABLE_PREFIX = "icon_finished_";
     
     private static final String LOG_TAG = "ReferenceManager";
 
@@ -23,6 +23,9 @@ public class PreferenceManager
     private int currentActiveColor = -1;
     private int currentFinishedColor = -1;
     private int currentSize = -1;
+    
+    private int defaultPadding = 1;
+    private int topPadding = defaultPadding;
     
     public PreferenceManager(Context c, ToDoDatabase db)
     {
@@ -55,6 +58,11 @@ public class PreferenceManager
     	db.setPrefColorFinished(currentFinishedColor);
     	db.setPrefIcon(currentIcon);
     	db.setPrefSize(currentSize);
+    }
+    
+    public int getTopPadding()
+    {
+    	return topPadding;
     }
     
     public void setSize(int i)
@@ -114,6 +122,7 @@ public class PreferenceManager
                 if (f[i].getName().startsWith(str))
                 {
                     String name = f[i].getName().replace(str, "");
+                    if (name.contains("_")) name = name.replace(name.substring(name.lastIndexOf("_")),""); 
                     Log.i(LOG_TAG, "adding " +name);
                     drawables.add(Integer.parseInt(name));
                 }
@@ -177,27 +186,44 @@ public class PreferenceManager
     	return finishedIconRef;
     }
 
-    private static int getActiveIconRef(int i)
+    private int getActiveIconRef(int i)
     {
         return getDrawableField(i, ACTIVE_DRAWABLE_PREFIX);
     }
 
-    private static int getFinishedIconRef(int i)
+    private int getFinishedIconRef(int i)
     {
         return getDrawableField(i, FINISHED_DRAWABLE_PREFIX);
     }
-    private static int getBackgroundRef(int i)
+    private int getBackgroundRef(int i)
     {
-        return getDrawableField(i, BACKGROUND_DRAWABLE_PREFIX);
+    	return getDrawableField(i, BACKGROUND_DRAWABLE_PREFIX); 
     }
     
-    public static int getDrawableField(int i, String field)
+    public int getDrawableField(int i, String field)
     {
         try 
         {
-//                i++;
-            Log.i(LOG_TAG,"Getting field " + field+i);
-            return R.drawable.class.getField(field+i).getInt(null);
+        	field = field + i;
+        	Log.i(LOG_TAG,"Looking for field " + field);
+	        Field [] fields = R.drawable.class.getFields();
+	        for (Field f : fields)
+	        {
+	        	if (f.getName().startsWith(field))
+    			{
+
+	        		String name = f.getName().replace(field,"");
+	        		
+	        		if (name.length() > 0)
+	        		{
+	        			name = name.substring(1); // remove leading _
+	        			topPadding = Integer.parseInt(name);
+	        			Log.i(LOG_TAG,"topPadding is " + topPadding);
+	        		}
+	        		Log.i(LOG_TAG,"Getting field " + f.getName());
+        			return f.getInt(null);
+	        	}
+	        }
         } catch (Exception e)
         {
             Log.e(LOG_TAG,"Error obtaining drawable",e);

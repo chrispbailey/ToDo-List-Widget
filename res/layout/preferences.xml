@@ -46,7 +46,7 @@
 					android:layout_alignParentRight="true" android:background="@drawable/shape" />
 
 				<ImageView android:id="@+id/active_color_icon"
-					android:background="@drawable/icon_active1" android:layout_width="20dp"
+					android:background="@drawable/icon_active_1" android:layout_width="20dp"
 					android:layout_height="20dp" android:layout_marginTop="10dp"
 					android:layout_marginBottom="10dp" android:layout_marginRight="10dp"
 					android:layout_alignParentTop="true" android:layout_toLeftOf="@id/pick_color_active" />
@@ -59,10 +59,10 @@
 					android:layout_below="@id/pick_color_active" android:background="@drawable/shape" />
 
 				<ImageView android:id="@+id/finished_color_icon"
-					android:background="@drawable/icon_finished1" android:layout_width="20dp"
-					android:layout_height="20dp" android:layout_marginTop="10dp"
-					android:layout_marginBottom="10dp" android:layout_marginRight="10dp"
-					android:layout_toLeftOf="@id/pick_color_finished"
+					android:background="@drawable/icon_finished_1"
+					android:layout_width="20dp" android:layout_height="20dp"
+					android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+					android:layout_marginRight="10dp" android:layout_toLeftOf="@id/pick_color_finished"
 					android:layout_below="@id/active_color_icon" />
 
 			</RelativeLayout>
@@ -88,11 +88,20 @@
 					<ImageView android:id="@+id/preview"
 						android:layout_width="fill_parent" android:layout_height="fill_parent"
 						android:layout_alignParentTop="true"
-						android:layout_alignParentBottom="true" android:src="@drawable/background1"
-						android:scaleType="fitXY" />
+						android:layout_alignParentBottom="true" android:scaleType="fitXY" />
 
-					<RelativeLayout android:padding="6dp"
+					<RelativeLayout android:paddingLeft="6dp"
+						android:paddingRight="6dp" android:paddingBottom="6dp"
 						android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+						<TextView android:id="@+id/padding1"
+							android:layout_width="fill_parent" android:layout_height="6dp"
+							android:layout_alignParentLeft="true"
+							android:layout_alignParentTop="true" />
+
+						<TextView android:id="@+id/padding2"
+							android:layout_width="fill_parent" android:layout_height="4dp"
+							android:layout_below="@id/padding1" />
 
 						<TextView android:id="@+id/notetitle"
 							android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -100,29 +109,29 @@
 							android:shadowRadius="0.2" android:shadowDy="1.2"
 							android:shadowDx="1.2" android:shadowColor="#AAAAAAFF"
 							android:textStyle="bold" android:text="Lorem"
-							android:layout_alignParentTop="true" />
+							android:layout_below="@id/padding2" />
 
-						<ImageView android:id="@+id/noteimage_1" android:src="@drawable/icon_active1"
+						<ImageView android:id="@+id/noteimage_1" android:src="@drawable/icon_active_1"
 							android:layout_width="20dp" android:layout_height="20dp"
-							android:layout_below="@id/notetitle"
-							android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+							android:layout_below="@id/notetitle" android:layout_marginTop="3dp"
+							android:layout_alignParentLeft="true" />
 
 						<TextView android:id="@+id/note_1" android:text="Ipsum"
 							android:minWidth="20dp" android:layout_width="wrap_content"
 							android:layout_height="wrap_content" android:layout_below="@id/notetitle"
-							android:layout_toRightOf="@id/noteimage_1"
-							android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_1" />
+							android:layout_toRightOf="@id/noteimage_1" android:paddingLeft="3dp"
+							android:layout_alignTop="@id/noteimage_1" />
 
-						<ImageView android:id="@+id/noteimage_2" android:src="@drawable/icon_finished1"
+						<ImageView android:id="@+id/noteimage_2" android:src="@drawable/icon_finished_1"
 							android:layout_width="20dp" android:layout_height="20dp"
-							android:layout_below="@+id/noteimage_1"
-							android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+							android:layout_below="@+id/noteimage_1" android:layout_marginTop="3dp"
+							android:layout_alignParentLeft="true" />
 
 						<TextView android:id="@+id/note_2" android:text="Dolor"
 							android:minWidth="20dp" android:layout_width="wrap_content"
 							android:layout_height="wrap_content" android:layout_below="@id/note_1"
-							android:layout_toRightOf="@id/noteimage_2"
-							android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_2" />
+							android:layout_toRightOf="@id/noteimage_2" android:paddingLeft="3dp"
+							android:layout_alignTop="@id/noteimage_2" />
 
 					</RelativeLayout>
 

@@ -40,10 +40,12 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
     private ImageView preview;
     private ImageView ivActiveIcon;
     private ImageView ivFinishedIcon;
-    public static TextView tvTitle;
-    public static ArrayList<TextView> tvNotes;
-    public static ArrayList<ImageView> ivIcons;
-
+    private static TextView tvTitle;
+    private static ArrayList<TextView> tvNotes;
+    private static ArrayList<ImageView> ivIcons;
+    private TextView padding1;
+    private TextView padding2;
+    
     private static final String NOTE_VIEW_PREFIX = "note_";
     private static final String ICON_VIEW_PREFIX = "noteimage_";
     
@@ -249,6 +251,9 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
                 preview = (ImageView) findViewById(R.id.preview);
                 tvTitle = (TextView) findViewById(R.id.notetitle);
 
+                padding1 = (TextView) findViewById(R.id.padding1);
+                padding2 = (TextView) findViewById(R.id.padding2);
+                
                 // bold & underline as per the real widget
                 tvTitle.setText(Html.fromHtml("<b><u>"+tvTitle.getText().toString()+"</u></b>"));
                 tvNotes = new ArrayList<TextView>();
@@ -262,9 +267,23 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
                     ivIcons.add((ImageView) findViewById(getIconId(i)));
                 }
             }
-
+            pm.setBackground(pm.getBackgroundId());
+            
             preview.setImageResource(pm.getBackground());
+            
+            // set top padding
+            padding1.setVisibility(View.GONE);
+            padding2.setVisibility(View.GONE);
 
+            int padding = pm.getTopPadding();
+            Log.i(LOG_TAG,"getTopPadding " + padding);
+            if (padding == 1) padding1.setVisibility(View.VISIBLE);
+            if (padding == 2)
+           	{
+            	padding1.setVisibility(View.VISIBLE);
+            	padding2.setVisibility(View.VISIBLE);
+           	}
+            
             tvTitle.setTextColor(pm.getActiveColor());
             tvTitle.setTextSize(pm.getTitleSize());
 
@@ -375,11 +394,10 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         public View getView(int position, View convertView, ViewGroup parent)
         {
             ImageView i = new ImageView(mContext);
-            i.setImageResource(PreferenceManager.getDrawableField(mDrawables[position], mField));
+            i.setImageResource(pm.getDrawableField(mDrawables[position], mField));
             i.setLayoutParams(new Gallery.LayoutParams(mWidth, mHeight));
             i.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             i.setBackgroundResource(mGalleryItemBackground);
-
             return i;
         }
     }

@@ -64,18 +64,18 @@ android:layout_gravity="center_horizontal"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:src="@drawable/action_save"/>
-
-        <ImageView android:id="@+id/addnotebutton"
+            
+        <ImageView android:id="@+id/configurebutton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/action_add"/>
-        
-        <ImageView android:id="@+id/configurebutton"
+            android:src="@drawable/action_configure"/>
+            
+        <ImageView android:id="@+id/addnotebutton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:src="@drawable/action_configure"/>
+            android:src="@drawable/action_add"/>
             
     </LinearLayout>
 </LinearLayout>

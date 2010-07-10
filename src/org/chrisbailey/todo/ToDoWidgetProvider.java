@@ -77,6 +77,17 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     
             views.setImageViewResource(R.id.widget_background, pm.getBackground());
     
+            // set top padding
+            views.setViewVisibility(R.id.padding1, View.GONE);
+            views.setViewVisibility(R.id.padding2, View.GONE);
+            int padding = pm.getTopPadding();
+            if (padding == 1) views.setViewVisibility(R.id.padding1, View.VISIBLE);
+            if (padding == 2)
+           	{
+            	views.setViewVisibility(R.id.padding1, View.VISIBLE);
+            	views.setViewVisibility(R.id.padding2, View.VISIBLE);
+           	}
+            
             // set the note title
             String title = db.getTitle(appWidgetId);
             title.trim();
