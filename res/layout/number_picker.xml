@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/timepicker_down_btn" />
 
-    <EditText android:id="@+id/timepicker_input"
+    <TextView android:id="@+id/timepicker_input"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

@@ -26,7 +26,6 @@ import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -90,7 +89,7 @@ public class NumberPicker extends LinearLayout {
         }
     };
 
-    private final EditText mText;
+    private final TextView mText;
     private final InputFilter mNumberInputFilter;
 
     private String[] mDisplayedValues;
@@ -202,7 +201,7 @@ public class NumberPicker extends LinearLayout {
         mDecrementButton.setOnLongClickListener(longClickListener);
         mDecrementButton.setNumberPicker(this);
 
-        mText = (EditText) findViewById(R.id.timepicker_input);
+        mText = (TextView) findViewById(R.id.timepicker_input);
         mText.setOnFocusChangeListener(focusListener);
         mText.setFilters(new InputFilter[] {inputFilter});
         mText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
@@ -355,7 +354,6 @@ public class NumberPicker extends LinearLayout {
         } else {
             mText.setText(mDisplayedValues[mCurrent - mStart]);
         }
-        mText.setSelection(mText.getText().length());
     }
 
     private void validateCurrentView(CharSequence str) {
