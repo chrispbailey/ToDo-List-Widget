@@ -80,9 +80,6 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
             }
         });
         
-        Log.i(LOG_TAG,"a:"+colorPickerActive);
-        Log.i(LOG_TAG,"b:"+colorPickerActive.getBackground());
-        
         setBackgroundColor(colorPickerActive,pm.getActiveColor());
         
         colorPickerFinished = (View) findViewById(R.id.pick_color_finished);
@@ -183,7 +180,7 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
     {
         int color = pm.getActiveColor();
         if (!activeColorChooser) color = pm.getFinishedColor();
-        Log.i(LOG_TAG,"default color is " + color);
+        if (ToDoActivity.debug) Log.i(LOG_TAG,"default color is " + color);
         
         ((ColorPickerDialog) dialog).setColor(color);
     }
@@ -196,7 +193,7 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
     
     public void onColorChanged(int color) 
     {
-        Log.i(LOG_TAG,"Color changed to " + color);
+        if (ToDoActivity.debug) Log.i(LOG_TAG,"Color changed to " + color);
         if (activeColorChooser)
         {
             setBackgroundColor(colorPickerActive,color);
@@ -214,15 +211,15 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
 
     private void setBackgroundColor(View v, int c)
     {
-        Log.i(LOG_TAG,v.getBackground().toString());
-    	GradientDrawable shape = (GradientDrawable) v.getBackground();
+        if (ToDoActivity.debug) Log.i(LOG_TAG,v.getBackground().toString());
+        GradientDrawable shape = (GradientDrawable) v.getBackground();
         shape.setColor(c);
         v.setBackgroundDrawable(shape);
     }
     
     public void onNumberChanged(NumberPicker picker, int oldVal, int newVal)
     {
-        Log.i(LOG_TAG,"Font size changed to " + newVal);
+        if (ToDoActivity.debug) Log.i(LOG_TAG,"Font size changed to " + newVal);
         pm.setSize(newVal);
         updateIcons(2);
     }
@@ -230,10 +227,9 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
     @SuppressWarnings("unchecked")
     public void onItemClick(AdapterView parent, View v, int position, long id) 
     {
-        Log.i(LOG_TAG,"Background changed to [" +position + "]");
         if (parent.getId() == R.id.background_selector)
         {
-        	pm.setBackground(imageBackgrounds[position]);
+            pm.setBackground(imageBackgrounds[position]);
         }
         else
         {
@@ -276,13 +272,12 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
             padding2.setVisibility(View.GONE);
 
             int padding = pm.getTopPadding();
-            Log.i(LOG_TAG,"getTopPadding " + padding);
             if (padding == 1) padding1.setVisibility(View.VISIBLE);
             if (padding == 2)
-           	{
-            	padding1.setVisibility(View.VISIBLE);
-            	padding2.setVisibility(View.VISIBLE);
-           	}
+            {
+                padding1.setVisibility(View.VISIBLE);
+                padding2.setVisibility(View.VISIBLE);
+            }
             
             tvTitle.setTextColor(pm.getActiveColor());
             tvTitle.setTextSize(pm.getTitleSize());
@@ -348,7 +343,6 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
             try 
             {
                 i++;
-                Log.i(LOG_TAG, "Looking up " + field+i);
                 return R.id.class.getField(field+i).getInt(null);
             } catch (Exception e)
             {

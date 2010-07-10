@@ -33,6 +33,7 @@ public class ToDoActivity extends Activity
     
     public static final String UPDATE_INTENT = "android.appwidget.action.APPWIDGET_UPDATE";
     private static final String LOG_TAG = "ToDoActivity";
+    static final boolean debug = false;
     private static float scale;
 
     private PreferenceManager pm;
@@ -51,7 +52,7 @@ public class ToDoActivity extends Activity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        Log.d(LOG_TAG, "onCreate");
+        if (debug) Log.d(LOG_TAG, "onCreate");
         
         super.onCreate(savedInstanceState);
         
@@ -107,7 +108,7 @@ public class ToDoActivity extends Activity
         
         // If they gave us an intent without the widget id, just bail.
         if (mAppWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
-            Log.d(LOG_TAG, "Invalid app id, finishing");
+            if (debug) Log.d(LOG_TAG, "Invalid app id, finishing");
             finish();
         }
         
@@ -137,7 +138,7 @@ public class ToDoActivity extends Activity
             db = null;
         }
 
-        Log.i(LOG_TAG, "Sending intents to all widgets");
+        if (debug) Log.i(LOG_TAG, "Sending intents to all widgets");
         
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
         ComponentName THIS_APPWIDGET = new ComponentName(getApplicationContext(), ToDoWidgetProvider.class);
@@ -261,7 +262,6 @@ public class ToDoActivity extends Activity
         ImageView iv = new ImageView(c);
         iv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.FILL_PARENT));
         iv.setScaleType(ScaleType.FIT_START);
-        Log.i(LOG_TAG, "setting scale type");
         iv.setPadding(0, 0, 0, 0);
         return iv;
     }
@@ -287,7 +287,7 @@ public class ToDoActivity extends Activity
     protected void onActivityResult(int reqCode, int resultCode, Intent result)
     {
         // we don't care about the result, just refresh
-        Log.i(LOG_TAG,"onActivityResult");
+        if (debug) Log.i(LOG_TAG,"onActivityResult");
         
         // reload settings
         pm = new PreferenceManager(this, db);

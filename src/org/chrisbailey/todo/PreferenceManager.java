@@ -52,62 +52,62 @@ public class PreferenceManager
      */
     public void save(ToDoDatabase db)
     {
-    	Log.i(LOG_TAG, "Saving: bg:" + currentBackground + " icon:" + currentIcon + " Acolor:"+currentActiveColor+" Fcolor:"+currentFinishedColor+" size:"+currentSize);
-    	db.setPrefBackground(currentBackground);
-    	db.setPrefColorActive(currentActiveColor);
-    	db.setPrefColorFinished(currentFinishedColor);
-    	db.setPrefIcon(currentIcon);
-    	db.setPrefSize(currentSize);
+        if (ToDoActivity.debug) Log.i(LOG_TAG, "Saving: bg:" + currentBackground + " icon:" + currentIcon + " Acolor:"+currentActiveColor+" Fcolor:"+currentFinishedColor+" size:"+currentSize);
+        db.setPrefBackground(currentBackground);
+        db.setPrefColorActive(currentActiveColor);
+        db.setPrefColorFinished(currentFinishedColor);
+        db.setPrefIcon(currentIcon);
+        db.setPrefSize(currentSize);
     }
     
     public int getTopPadding()
     {
-    	return topPadding;
+        return topPadding;
     }
     
     public void setSize(int i)
     {
-    	currentSize = i;
+        currentSize = i;
     }
     
     public int getSize()
     {
-    	return currentSize;
+        return currentSize;
     }
     
     public int getTitleSize()
     {
-    	return currentSize+2;
+        return currentSize+2;
     }
         
     public int getActiveColor()
     {
-    	return currentActiveColor;
+        return currentActiveColor;
     }
     
     public void setActiveColor(int i)
     {
-    	currentActiveColor = i;
+        currentActiveColor = i;
     }
     
     public int getFinishedColor()
     {
-    	return currentFinishedColor;
+        return currentFinishedColor;
     }
     
     public void setFinishedColor(int i)
     {
-    	currentFinishedColor = i;
+        currentFinishedColor = i;
     }
     
     int[] getAllBackgrounds()
     {
-    	return getAllDrawables(BACKGROUND_DRAWABLE_PREFIX);
+        return getAllDrawables(BACKGROUND_DRAWABLE_PREFIX);
     }
     
     public int[] getAllIcons()
     {
-    	return getAllDrawables(ACTIVE_DRAWABLE_PREFIX);
+        return getAllDrawables(ACTIVE_DRAWABLE_PREFIX);
     }
     
     private int[] getAllDrawables(String str)
@@ -123,7 +123,6 @@ public class PreferenceManager
                 {
                     String name = f[i].getName().replace(str, "");
                     if (name.contains("_")) name = name.replace(name.substring(name.lastIndexOf("_")),""); 
-                    Log.i(LOG_TAG, "adding " +name);
                     drawables.add(Integer.parseInt(name));
                 }
             }
@@ -141,16 +140,16 @@ public class PreferenceManager
     
     public void setBackground(int i)
     {
-    	if (i < 0) i = 1;
-    	currentBackground = i;
-    	currentBackgroundRef = getBackgroundRef(currentBackground);
+        if (i < 0) i = 1;
+        currentBackground = i;
+        currentBackgroundRef = getBackgroundRef(currentBackground);
     }
     public void setIcons(int i)
     {
-    	if (i < 0) i = 1;
-    	currentIcon = i;
-    	activeIconRef = getActiveIconRef(currentIcon);
-    	finishedIconRef = getFinishedIconRef(currentIcon);
+        if (i < 0) i = 1;
+        currentIcon = i;
+        activeIconRef = getActiveIconRef(currentIcon);
+        finishedIconRef = getFinishedIconRef(currentIcon);
     }
 
     /**
@@ -159,7 +158,7 @@ public class PreferenceManager
      */
     public int getBackground()
     {
-    	return currentBackgroundRef;
+        return currentBackgroundRef;
     }
     
     /**
@@ -169,21 +168,21 @@ public class PreferenceManager
      */
     public int getBackgroundId()
     {
-    	return currentBackground;
+        return currentBackground;
     }
     
     public int getIconId()
     {
-    	return currentIcon;
+        return currentIcon;
     }
     
     public int getActiveIcon()
     {
-    	return activeIconRef;
+        return activeIconRef;
     }
     public int getFinishedIcon()
     {
-    	return finishedIconRef;
+        return finishedIconRef;
     }
 
     private int getActiveIconRef(int i)
@@ -197,33 +196,30 @@ public class PreferenceManager
     }
     private int getBackgroundRef(int i)
     {
-    	return getDrawableField(i, BACKGROUND_DRAWABLE_PREFIX); 
+        return getDrawableField(i, BACKGROUND_DRAWABLE_PREFIX); 
     }
     
     public int getDrawableField(int i, String field)
     {
         try 
         {
-        	field = field + i;
-        	Log.i(LOG_TAG,"Looking for field " + field);
-	        Field [] fields = R.drawable.class.getFields();
-	        for (Field f : fields)
-	        {
-	        	if (f.getName().startsWith(field))
-    			{
+            field = field + i;
+            Field [] fields = R.drawable.class.getFields();
+            for (Field f : fields)
+            {
+                if (f.getName().startsWith(field))
+                {
 
-	        		String name = f.getName().replace(field,"");
-	        		
-	        		if (name.length() > 0)
-	        		{
-	        			name = name.substring(1); // remove leading _
-	        			topPadding = Integer.parseInt(name);
-	        			Log.i(LOG_TAG,"topPadding is " + topPadding);
-	        		}
-	        		Log.i(LOG_TAG,"Getting field " + f.getName());
-        			return f.getInt(null);
-	        	}
-	        }
+                    String name = f.getName().replace(field,"");
+                    
+                    if (name.length() > 0)
+                    {
+                        name = name.substring(1); // remove leading _
+                        topPadding = Integer.parseInt(name);
+                    }
+                    return f.getInt(null);
+                }
+            }
         } catch (Exception e)
         {
             Log.e(LOG_TAG,"Error obtaining drawable",e);

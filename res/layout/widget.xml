@@ -30,7 +30,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_1" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Ipsum"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/notetitle" android:layout_toRightOf="@id/noteimage_1"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_1" />
 
@@ -40,7 +40,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_2" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_1" android:layout_toRightOf="@id/noteimage_2"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_2" />
 
@@ -50,7 +50,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_3" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_2" android:layout_toRightOf="@id/noteimage_3"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_3" />
 
@@ -60,7 +60,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_4" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_3" android:layout_toRightOf="@id/noteimage_4"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_4" />
 
@@ -70,7 +70,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_5" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_4" android:layout_toRightOf="@id/noteimage_5"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_5" />
 
@@ -80,7 +80,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_6" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_5" android:layout_toRightOf="@id/noteimage_6"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_6" />
 
@@ -90,7 +90,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_7" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_6" android:layout_toRightOf="@id/noteimage_7"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_7" />
 
@@ -100,7 +100,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_8" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_7" android:layout_toRightOf="@id/noteimage_8"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_8" />
 
@@ -110,7 +110,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_9" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_8" android:layout_toRightOf="@id/noteimage_9"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_9" />
 
@@ -120,7 +120,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_10" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_9" android:layout_toRightOf="@id/noteimage_10"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_10" />
 
@@ -130,7 +130,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_11" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_10" android:layout_toRightOf="@id/noteimage_11"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_11" />
 
@@ -140,7 +140,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_12" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_11" android:layout_toRightOf="@id/noteimage_12"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_12" />
 
@@ -150,7 +150,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_13" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_12" android:layout_toRightOf="@id/noteimage_13"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_13" />
 
@@ -160,7 +160,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_14" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_13" android:layout_toRightOf="@id/noteimage_14"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_14" />
 
@@ -170,7 +170,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_15" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_14" android:layout_toRightOf="@id/noteimage_15"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_15" />
 
@@ -180,7 +180,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_16" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_15" android:layout_toRightOf="@id/noteimage_16"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_16" />
 
@@ -190,7 +190,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_17" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_16" android:layout_toRightOf="@id/noteimage_17"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_17" />
 
@@ -200,7 +200,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_18" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_17" android:layout_toRightOf="@id/noteimage_18"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_18" />
 
@@ -210,7 +210,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_19" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_18" android:layout_toRightOf="@id/noteimage_19"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_19" />
 
@@ -220,7 +220,7 @@
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_20" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Dolor"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/note_10" android:layout_toRightOf="@id/noteimage_20"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_20" />
 

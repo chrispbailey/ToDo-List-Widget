@@ -23,7 +23,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     {
         int N = appWidgetIds.length;
         
-        Log.i(LOG_TAG, "updating " + N + " widgets");
+        if (ToDoActivity.debug) Log.i(LOG_TAG, "updating " + N + " widgets");
 
         for (int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
@@ -38,7 +38,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     {
         int N = appWidgetIds.length;
         
-        Log.i(LOG_TAG, "deleting " + N + " widgets");
+        if (ToDoActivity.debug) Log.i(LOG_TAG, "deleting " + N + " widgets");
 
         ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
         for (int i=0; i<N; i++) {
