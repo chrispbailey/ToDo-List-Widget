@@ -6,6 +6,7 @@
 	<ImageView android:id="@+id/widget_background"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
+		android:src="@drawable/background_1_1"
 		android:scaleType="fitXY" />
 
 	<RelativeLayout android:paddingLeft="6dp"
@@ -22,11 +23,11 @@
 			android:layout_height="wrap_content" android:gravity="center_horizontal"
 			android:paddingLeft="0dp" android:paddingRight="0dp"
 			android:paddingTop="0dp" android:paddingBottom="3dp"
-			android:textStyle="bold" android:text="Lorem" android:layout_below="@id/padding2" />
+			android:textStyle="bold" android:layout_below="@id/padding2" />
 
 		<ImageView android:id="@+id/noteimage_1"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/notetitle"
+			android:layout_below="@id/notetitle"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_1" android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
 
 		<ImageView android:id="@+id/noteimage_2"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_1"
+			android:layout_below="@id/note_1"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_2" android:layout_width="wrap_content"
@@ -46,7 +47,7 @@
 
 		<ImageView android:id="@+id/noteimage_3"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_2"
+			android:layout_below="@id/note_2"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_3" android:layout_width="wrap_content"
@@ -56,7 +57,7 @@
 
 		<ImageView android:id="@+id/noteimage_4"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_3"
+			android:layout_below="@id/note_3"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_4" android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
 
 		<ImageView android:id="@+id/noteimage_5"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_4"
+			android:layout_below="@id/note_4"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_5" android:layout_width="wrap_content"
@@ -76,7 +77,7 @@
 
 		<ImageView android:id="@+id/noteimage_6"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_5"
+			android:layout_below="@id/note_5"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_6" android:layout_width="wrap_content"
@@ -86,7 +87,7 @@
 
 		<ImageView android:id="@+id/noteimage_7"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_6"
+			android:layout_below="@id/note_6"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_7" android:layout_width="wrap_content"
@@ -96,7 +97,7 @@
 
 		<ImageView android:id="@+id/noteimage_8"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_7"
+			android:layout_below="@id/note_7"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_8" android:layout_width="wrap_content"
@@ -106,7 +107,7 @@
 
 		<ImageView android:id="@+id/noteimage_9"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_8"
+			android:layout_below="@id/note_8"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_9" android:layout_width="wrap_content"
@@ -116,7 +117,7 @@
 
 		<ImageView android:id="@+id/noteimage_10"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_9"
+			android:layout_below="@id/note_9"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_10" android:layout_width="wrap_content"
@@ -126,7 +127,7 @@
 
 		<ImageView android:id="@+id/noteimage_11"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_10"
+			android:layout_below="@id/note_10"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_11" android:layout_width="wrap_content"
@@ -136,7 +137,7 @@
 
 		<ImageView android:id="@+id/noteimage_12"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_11"
+			android:layout_below="@id/note_11"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_12" android:layout_width="wrap_content"
@@ -146,7 +147,7 @@
 
 		<ImageView android:id="@+id/noteimage_13"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_12"
+			android:layout_below="@id/note_12"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_13" android:layout_width="wrap_content"
@@ -156,7 +157,7 @@
 
 		<ImageView android:id="@+id/noteimage_14"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_13"
+			android:layout_below="@id/note_13"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_14" android:layout_width="wrap_content"
@@ -166,7 +167,7 @@
 
 		<ImageView android:id="@+id/noteimage_15"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_14"
+			android:layout_below="@id/note_14"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_15" android:layout_width="wrap_content"
@@ -176,7 +177,7 @@
 
 		<ImageView android:id="@+id/noteimage_16"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_15"
+			android:layout_below="@id/note_15"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_16" android:layout_width="wrap_content"
@@ -186,7 +187,7 @@
 
 		<ImageView android:id="@+id/noteimage_17"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_16"
+			android:layout_below="@id/note_16"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_17" android:layout_width="wrap_content"
@@ -196,7 +197,7 @@
 
 		<ImageView android:id="@+id/noteimage_18"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_17"
+			android:layout_below="@id/note_17"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_18" android:layout_width="wrap_content"
@@ -206,7 +207,7 @@
 
 		<ImageView android:id="@+id/noteimage_19"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_17"
+			android:layout_below="@id/note_17"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_19" android:layout_width="wrap_content"
@@ -216,7 +217,7 @@
 
 		<ImageView android:id="@+id/noteimage_20"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:src="@drawable/icon_active_1" android:layout_below="@id/note_19"
+			android:layout_below="@id/note_19"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
 		<TextView android:id="@+id/note_20" android:layout_width="wrap_content"

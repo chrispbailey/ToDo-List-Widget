@@ -2,6 +2,7 @@ package org.chrisbailey.todo;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import android.content.Context;
 import android.util.Log;
@@ -131,6 +132,12 @@ public class PreferenceManager
             Log.e(LOG_TAG,"Error obtaining drawable",e);
          }
          
+		try
+		{
+			Collections.sort(drawables);
+		}
+		catch (Exception e) { e.printStackTrace(); }
+        
         int [] drawableReferences = new int[drawables.size()];
         int i = 0;
         for (Integer integer : drawables) drawableReferences[i++] = integer;
@@ -203,18 +210,22 @@ public class PreferenceManager
     {
         try 
         {
-            field = field + i;
-            Field [] fields = R.drawable.class.getFields();
+        	if (field.equals(BACKGROUND_DRAWABLE_PREFIX)) field = field + i + "_";
+        	else field = field + i;
+        	
+        	if (ToDoActivity.debug) Log.i(LOG_TAG,"Looking for " + field);
+
+        	Field [] fields = R.drawable.class.getFields();
             for (Field f : fields)
             {
                 if (f.getName().startsWith(field))
                 {
-
+                	if (ToDoActivity.debug) Log.i(LOG_TAG,"Getting field " + f.getName());
                     String name = f.getName().replace(field,"");
                     
                     if (name.length() > 0)
                     {
-                        name = name.substring(1); // remove leading _
+                        name = name.substring(name.lastIndexOf("_")+1); // remove leading _
                         topPadding = Integer.parseInt(name);
                     }
                     return f.getInt(null);

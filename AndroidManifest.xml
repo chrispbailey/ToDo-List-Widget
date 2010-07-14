@@ -14,12 +14,7 @@
 
       <activity android:name="ToDoActivity" 
             android:label="@string/app_name" 
-            android:theme="@android:style/Theme.Dialog">
-          <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-              <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-          </intent-filter>
-      </activity>
+            android:theme="@android:style/Theme.Dialog"/>
       
       <activity android:name="PreferencesActivity" android:label="@string/app_name"/>
 
@@ -50,5 +45,5 @@
                      android:resource="@xml/todowidget2x4" />
       </receiver>
     </application>
- -->
+
 </manifest> 

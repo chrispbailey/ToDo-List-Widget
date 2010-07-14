@@ -11,12 +11,13 @@
 		android:paddingBottom="10dp">
 
 		<ImageView android:id="@+id/ok_button" android:layout_width="48dp"
-			android:layout_height="48dp" android:layout_weight="0.5"
-			android:src="@drawable/action_save" />
+			android:background="@drawable/buttons" android:layout_height="48dp"
+			android:layout_weight="0.5" android:src="@drawable/action_save" />
 
 		<ImageView android:id="@+id/cancel_button"
-			android:layout_width="48dp" android:layout_height="48dp"
-			android:layout_weight="0.5" android:src="@drawable/action_cancel" />
+			android:background="@drawable/buttons" android:layout_width="48dp"
+			android:layout_height="48dp" android:layout_weight="0.5"
+			android:src="@drawable/action_cancel" />
 
 	</LinearLayout>
 

@@ -11,6 +11,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,9 +34,8 @@ public class ToDoActivity extends Activity
     
     public static final String UPDATE_INTENT = "android.appwidget.action.APPWIDGET_UPDATE";
     private static final String LOG_TAG = "ToDoActivity";
-    static final boolean debug = false;
+    static final boolean debug = true;
     private static float scale;
-
     private PreferenceManager pm;
     
     EditText title;
@@ -76,7 +76,7 @@ public class ToDoActivity extends Activity
                 redraw(ToDoActivity.this, FOCUS.GIVE_TO_LAST_WITH_KEYBOARD);
             }
         });
-        
+
         ImageView done = (ImageView)findViewById(R.id.donebutton);
         done.setOnClickListener(new View.OnClickListener()
         {
@@ -156,14 +156,11 @@ public class ToDoActivity extends Activity
     {
         TableRow row = createRow(c);
         
-        ImageView toggle = createImage(c);
         int btn = pm.getActiveIcon();
-        toggle.setImageDrawable(getResources().getDrawable(btn));
+        ImageView toggle = createImage(c, getResources().getDrawable(btn));
         toggle.setId(n.id);
         toggle.setOnClickListener(new StatusClickListener(c));
         
-        toggle.setVisibility(View.VISIBLE);
-        if (pm.isEmptyIcon()) toggle.setVisibility(View.GONE);
         row.addView(toggle);
         
         EditText note = createInput(c);
@@ -174,8 +171,7 @@ public class ToDoActivity extends Activity
         note.addTextChangedListener(new MyTextWatcher(note));
         row.addView(note);
 
-        ImageView delete = createImage(c);
-        delete.setImageDrawable(getResources().getDrawable(R.drawable.action_delete));
+        ImageView delete = createImage(c, getResources().getDrawable(R.drawable.action_delete));
         delete.setId(n.id);
         delete.setOnClickListener(new DeleteClickListener(c));
         row.addView(delete);
@@ -245,7 +241,6 @@ public class ToDoActivity extends Activity
         row.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.WRAP_CONTENT,
                 TableRow.LayoutParams.WRAP_CONTENT));
-        row.setGravity(Gravity.CENTER);
         row.setVerticalGravity(Gravity.TOP);
         row.setPadding(0, 0, 0, 0);
         return row;
@@ -257,11 +252,12 @@ public class ToDoActivity extends Activity
      * @param c
      * @return
      */
-    private static ImageView createImage(Context c)
+    private static ImageView createImage(Context c, Drawable drawable)
     {
         ImageView iv = new ImageView(c);
-        iv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.FILL_PARENT));
-        iv.setScaleType(ScaleType.FIT_START);
+        iv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT));
+        iv.setImageDrawable(drawable);
+        iv.setScaleType(ScaleType.CENTER);
         iv.setPadding(0, 0, 0, 0);
         return iv;
     }
