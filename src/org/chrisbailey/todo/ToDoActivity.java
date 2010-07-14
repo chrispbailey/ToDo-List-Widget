@@ -145,7 +145,19 @@ public class ToDoActivity extends Activity
         int [] ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
         for (int i : ids)
         {
-        	ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i);
+            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i);
+        }
+        THIS_APPWIDGET = new ComponentName(getApplicationContext(), MediumToDoWidget.class);
+        ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
+        for (int i : ids)
+        {
+            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i);
+        }
+        THIS_APPWIDGET = new ComponentName(getApplicationContext(), LargeToDoWidget.class);
+        ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
+        for (int i : ids)
+        {
+            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i);
         }
         
         setConfigureResult(RESULT_OK);
@@ -196,8 +208,8 @@ public class ToDoActivity extends Activity
     
     public void redraw(ToDoActivity c, FOCUS focus)
     {
-    	title.setTextColor(pm.getActiveColor());
-    	
+        title.setTextColor(pm.getActiveColor());
+        
         TableLayout table = (TableLayout) c.findViewById(R.id.table_layout);
         
         table.removeAllViews();
