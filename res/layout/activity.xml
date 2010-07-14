@@ -68,13 +68,6 @@ android:layout_gravity="center_horizontal"
             android:background="@drawable/buttons"
             android:src="@drawable/action_save"/>
             
-        <ImageView android:id="@+id/configurebutton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="@drawable/buttons"
-            android:src="@drawable/action_configure"/>
-            
         <ImageView android:id="@+id/addnotebutton"
             android:layout_width="48dp"
             android:layout_height="48dp"

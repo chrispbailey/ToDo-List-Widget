@@ -18,6 +18,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -37,6 +39,8 @@ public class ToDoActivity extends Activity
     static final boolean debug = true;
     private static float scale;
     private PreferenceManager pm;
+    
+    private static final int MENU_PREFERENCES = 0;
     
     EditText title;
     
@@ -85,16 +89,6 @@ public class ToDoActivity extends Activity
                 done();
             }
         });
-        
-        ImageView configure = (ImageView)findViewById(R.id.configurebutton);
-        configure.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(ToDoActivity.this, PreferencesActivity.class);
-                ToDoActivity.this.startActivityForResult(intent, 0);
-            }
-        });
 
         
         // request the widget get updated
@@ -119,6 +113,24 @@ public class ToDoActivity extends Activity
         title.setBackgroundResource(R.drawable.input_background);
         
         redraw(this, FOCUS.GIVE_TO_LAST);
+    }
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add(0, MENU_PREFERENCES, 0, "")
+            .setIcon(android.R.drawable.ic_menu_manage);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case MENU_PREFERENCES:
+                Intent intent = new Intent(ToDoActivity.this, PreferencesActivity.class);
+                ToDoActivity.this.startActivityForResult(intent, 0);
+                return true;
+        }
+        
+        return false;
     }
     
     @Override
