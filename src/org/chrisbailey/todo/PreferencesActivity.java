@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView.ScaleType;
 
 public class PreferencesActivity extends Activity implements ColorPickerDialog.OnColorChangedListener, NumberPicker.OnNumberChangedListener, OnItemClickListener {
 
@@ -132,7 +133,7 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         
         // init the background selector
         Gallery backgroundSelector = (Gallery) findViewById(R.id.background_selector);
-        backgroundSelector.setAdapter(new ImageAdapter(this, 150, 100, imageBackgrounds, PreferenceManager.BACKGROUND_DRAWABLE_PREFIX));
+        backgroundSelector.setAdapter(new ImageAdapter(this, 150, 100, imageBackgrounds, PreferenceManager.BACKGROUND_DRAWABLE_PREFIX, ScaleType.FIT_CENTER));
         backgroundSelector.setOnItemClickListener(this);
         
         // set the currently selected background as the default
@@ -144,7 +145,7 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         
         // init the icon selector
         Gallery iconSelector = (Gallery) findViewById(R.id.icon_selector);
-        iconSelector.setAdapter(new ImageAdapter(this, 70, 70, imageIcons, PreferenceManager.ACTIVE_DRAWABLE_PREFIX));
+        iconSelector.setAdapter(new ImageAdapter(this, 70, 70, imageIcons, PreferenceManager.ACTIVE_DRAWABLE_PREFIX, ScaleType.CENTER));
         iconSelector.setOnItemClickListener(this);
 
         // set the currently selected active icon as the default
@@ -361,18 +362,20 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         int mHeight = 150;
         int mWidth = 100;
         String mField;
+        ScaleType mScaleType;
         
         /** The parent context */
         private Context mContext;
 
         /** Simple Constructor saving the 'parent' context. */
-        public ImageAdapter(Context c, int width, int height, int drawables [], String field)
+        public ImageAdapter(Context c, int width, int height, int drawables [], String field, ScaleType type)
         {
             mWidth = width;
             mHeight = height;
             mContext = c;
             mDrawables = drawables;
             mField = field;
+            mScaleType = type;
             TypedArray a = obtainStyledAttributes(R.styleable.default_gallery);
             mGalleryItemBackground = a.getResourceId(R.styleable.default_gallery_android_galleryItemBackground, 0);
             a.recycle();
@@ -390,7 +393,7 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
             ImageView i = new ImageView(mContext);
             i.setImageResource(pm.getDrawableField(mDrawables[position], mField));
             i.setLayoutParams(new Gallery.LayoutParams(mWidth, mHeight));
-            i.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            i.setScaleType(mScaleType);
             i.setBackgroundResource(mGalleryItemBackground);
             return i;
         }
