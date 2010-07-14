@@ -71,22 +71,24 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     {
         try
         {
+            if (ToDoActivity.debug) Log.i(LOG_TAG, "updating widget #" + appWidgetId);
+            
             ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
             PreferenceManager pm = new PreferenceManager(context, db);
             RemoteViews views = new RemoteViews(context.getPackageName(), manager.getAppWidgetInfo(appWidgetId).initialLayout);
-    
+
             views.setImageViewResource(R.id.widget_background, pm.getBackground());
-    
+
             // set top padding
             views.setViewVisibility(R.id.padding1, View.GONE);
             views.setViewVisibility(R.id.padding2, View.GONE);
             int padding = pm.getTopPadding();
             if (padding == 1) views.setViewVisibility(R.id.padding1, View.VISIBLE);
             if (padding == 2)
-           	{
-            	views.setViewVisibility(R.id.padding1, View.VISIBLE);
-            	views.setViewVisibility(R.id.padding2, View.VISIBLE);
-           	}
+            {
+                views.setViewVisibility(R.id.padding1, View.VISIBLE);
+                views.setViewVisibility(R.id.padding2, View.VISIBLE);
+            }
             
             // set the note title
             String title = db.getTitle(appWidgetId);
