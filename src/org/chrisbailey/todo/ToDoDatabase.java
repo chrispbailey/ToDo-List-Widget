@@ -605,7 +605,7 @@ public class ToDoDatabase extends SQLiteOpenHelper
     
     public void close()
     {
-        Log.i(LOG_TAG, "Closing db");
+        if (ToDoActivity.debug) Log.d(LOG_TAG, "Closing db");
         getWritableDatabase().close();
         super.close();
     }
