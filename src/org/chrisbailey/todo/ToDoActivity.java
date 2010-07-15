@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -36,11 +37,9 @@ public class ToDoActivity extends Activity
     
     public static final String UPDATE_INTENT = "android.appwidget.action.APPWIDGET_UPDATE";
     private static final String LOG_TAG = "ToDoActivity";
-    static final boolean debug = true;
+    static final boolean debug = false;
     private static float scale;
     private PreferenceManager pm;
-    
-    private static final int MENU_PREFERENCES = 0;
     
     EditText title;
     
@@ -114,17 +113,19 @@ public class ToDoActivity extends Activity
         
         redraw(this, FOCUS.GIVE_TO_LAST);
     }
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        menu.add(0, MENU_PREFERENCES, 0, "")
-            .setIcon(android.R.drawable.ic_menu_manage);
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.editormenu, menu);
         return true;
     }
+    
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch (item.getItemId())
         {
-            case MENU_PREFERENCES:
+            case R.id.menu_configure:
                 Intent intent = new Intent(ToDoActivity.this, PreferencesActivity.class);
                 ToDoActivity.this.startActivityForResult(intent, 0);
                 return true;
