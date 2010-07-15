@@ -32,7 +32,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
-    
+
     @Override
     public void onDeleted(Context context, int[] appWidgetIds)
     {
@@ -75,7 +75,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             
             ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
             PreferenceManager pm = new PreferenceManager(context, db);
-            RemoteViews views = new RemoteViews(context.getPackageName(), manager.getAppWidgetInfo(appWidgetId).initialLayout);
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
             views.setImageViewResource(R.id.widget_background, pm.getBackground());
 
@@ -160,7 +160,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         }
         catch (Exception e) 
         {
-            // had an error from user but nothing can be done.
+            e.printStackTrace();
         }
     }
 }
