@@ -6,7 +6,7 @@
 	<ImageView android:id="@+id/widget_background"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
-		android:src="@drawable/background_1_1"
+		android:src="@drawable/background_border"
 		android:scaleType="fitXY" />
 
 	<RelativeLayout android:paddingLeft="6dp"
