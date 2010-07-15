@@ -35,7 +35,6 @@ public class ToDoActivity extends Activity
     // reference to the database
     public ToDoDatabase db;
     
-    public static final String UPDATE_INTENT = "android.appwidget.action.APPWIDGET_UPDATE";
     private static final String LOG_TAG = "ToDoActivity";
     static final boolean debug = false;
     private static float scale;
