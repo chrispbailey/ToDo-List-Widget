@@ -17,6 +17,10 @@ public class ToDoWidgetProvider extends AppWidgetProvider
 {
     public static final int MAX_NOTES = 20;
     public static String LOG_TAG = "ToDoWidgetProvider";
+    public int offSet = 0;
+    
+    public static final String BUTTON_UP = "btn.up";
+    public static final String BUTTON_DOWN = "btn.down";
     
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
@@ -56,6 +60,28 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     public void onReceive(Context context, Intent intent) { 
         final String action = intent.getAction();
         Bundle extras = intent.getExtras();
+        if (ToDoActivity.debug) Log.i(LOG_TAG,"Action:"+action);
+        
+        boolean refresh = false;
+        if (BUTTON_UP.equals(action))
+        {
+            offSet--;
+            if (offSet <= 0) offSet = 0;
+            refresh = true;
+        }
+        if (BUTTON_DOWN.equals(action))
+        {
+            offSet++;
+            refresh = true;
+        }
+        
+        if (refresh)
+        {
+                int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID); 
+        
+                updateAppWidget(context, AppWidgetManager.getInstance(context), appWidgetId);
+        }
+        
         if (AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)) { 
             final int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, 
                                                   AppWidgetManager.INVALID_APPWIDGET_ID); 
@@ -71,7 +97,11 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     {
         try
         {
-            if (ToDoActivity.debug) Log.i(LOG_TAG, "updating widget #" + appWidgetId);
+            if (ToDoActivity.debug)
+            {
+                Log.i(LOG_TAG, "updating widget #" + appWidgetId);
+                Log.i(LOG_TAG, "offset is " + offSet);
+            }
             
             ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
             PreferenceManager pm = new PreferenceManager(context, db);
@@ -111,19 +141,25 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     
             int noteField;
             int imageField;
+            int j = 0;
             
-            for (int i=0; i< MAX_NOTES; i++)
+            int maxCurrNotes = notes.size();
+            // don't scroll past last item
+            if (offSet >= maxCurrNotes && maxCurrNotes > 0) offSet = maxCurrNotes-1;
+            
+            for (int i=offSet; i< MAX_NOTES; i++)
             {
                 try
                 {
-                    noteField = R.id.class.getDeclaredField("note_"+(i+1)).getInt(null);
-                    imageField = R.id.class.getDeclaredField("noteimage_"+(i+1)).getInt(null);
+                    j++;
+                    noteField = R.id.class.getDeclaredField("note_"+(j)).getInt(null);
+                    imageField = R.id.class.getDeclaredField("noteimage_"+(j)).getInt(null);
                     views.setViewVisibility(noteField, View.INVISIBLE);
                     views.setViewVisibility(imageField, View.INVISIBLE);
                     
                     views.setFloat(noteField, "setTextSize", pm.getSize());
                     
-                    if (i >= notes.size()) { continue; }
+                    if (i >= maxCurrNotes) { continue; }
                     
                     Note n = notes.get(i);
                     if (n.text != null && !n.text.equals(""))
@@ -155,6 +191,20 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent, 0);
             
             views.setOnClickPendingIntent(R.id.widget_layout, pendingIntent);
+            
+            intent = new Intent(context, ToDoWidgetProvider.class);
+            intent.setAction(BUTTON_UP);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            intent.putExtra(BUTTON_UP, 1);
+            pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
+            views.setOnClickPendingIntent(R.id.widget_scroll_up, pendingIntent);
+
+            intent = new Intent(context, ToDoWidgetProvider.class);
+            intent.setAction(BUTTON_DOWN);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            intent.putExtra(BUTTON_DOWN, 1);
+            pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
+            views.setOnClickPendingIntent(R.id.widget_scroll_down, pendingIntent);
             
             manager.updateAppWidget(appWidgetId, views);
         }

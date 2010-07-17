@@ -3,6 +3,16 @@
 	android:id="@+id/widget_layout" android:padding="6dp"
 	android:layout_width="fill_parent" android:layout_height="fill_parent">
 
+  <ImageView android:id="@+id/widget_scroll_up"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+    android:src="@drawable/action_scroll_up"/>
+
+  <ImageView android:id="@+id/widget_scroll_down"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+    android:src="@drawable/action_scroll_down"/>
+
 	<ImageView android:id="@+id/widget_background"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
