@@ -3,6 +3,7 @@ package org.chrisbailey.todo;
 import java.util.LinkedList;
 
 import org.chrisbailey.todo.Note.Status;
+import org.chrisbailey.todo.ToDoWidgetProvider.MOVE;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -36,7 +37,7 @@ public class ToDoActivity extends Activity
     public ToDoDatabase db;
     
     private static final String LOG_TAG = "ToDoActivity";
-    static final boolean debug = false;
+    static final boolean debug = true;
     private static float scale;
     private PreferenceManager pm;
     
@@ -157,19 +158,19 @@ public class ToDoActivity extends Activity
         int [] ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
         for (int i : ids)
         {
-            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i);
+            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
         }
         THIS_APPWIDGET = new ComponentName(getApplicationContext(), MediumToDoWidget.class);
         ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
         for (int i : ids)
         {
-            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i);
+            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
         }
         THIS_APPWIDGET = new ComponentName(getApplicationContext(), LargeToDoWidget.class);
         ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
         for (int i : ids)
         {
-            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i);
+            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
         }
         
         setConfigureResult(RESULT_OK);

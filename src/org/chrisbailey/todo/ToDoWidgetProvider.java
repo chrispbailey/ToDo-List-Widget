@@ -17,10 +17,11 @@ public class ToDoWidgetProvider extends AppWidgetProvider
 {
     public static final int MAX_NOTES = 20;
     public static String LOG_TAG = "ToDoWidgetProvider";
-    public int offSet = 0;
     
     public static final String BUTTON_UP = "btn.up";
     public static final String BUTTON_DOWN = "btn.down";
+    
+    public static enum MOVE { UP, DOWN, NONE };
     
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
@@ -31,7 +32,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
 
         for (int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
-            updateAppWidget(context, appWidgetManager, appWidgetId);
+            updateAppWidget(context, appWidgetManager, appWidgetId, MOVE.NONE);
         }
         
         super.onUpdate(context, appWidgetManager, appWidgetIds);
@@ -61,30 +62,20 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         final String action = intent.getAction();
         Bundle extras = intent.getExtras();
         if (ToDoActivity.debug) Log.i(LOG_TAG,"Action:"+action);
-        
-        boolean refresh = false;
+
         if (BUTTON_UP.equals(action))
         {
-            offSet--;
-            if (offSet <= 0) offSet = 0;
-            refresh = true;
+        	int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+            updateAppWidget(context, AppWidgetManager.getInstance(context), appWidgetId, MOVE.UP);
         }
         if (BUTTON_DOWN.equals(action))
         {
-            offSet++;
-            refresh = true;
-        }
-        
-        if (refresh)
-        {
-                int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID); 
-        
-                updateAppWidget(context, AppWidgetManager.getInstance(context), appWidgetId);
+        	int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+            updateAppWidget(context, AppWidgetManager.getInstance(context), appWidgetId, MOVE.DOWN);
         }
         
         if (AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)) { 
-            final int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, 
-                                                  AppWidgetManager.INVALID_APPWIDGET_ID); 
+        	int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
             if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) { 
                 this.onDeleted(context, new int[] { appWidgetId }); 
             } 
@@ -93,18 +84,54 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         } 
     } 
 
-    public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId)
+    public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId, MOVE move)
     {
         try
         {
             if (ToDoActivity.debug)
             {
                 Log.i(LOG_TAG, "updating widget #" + appWidgetId);
-                Log.i(LOG_TAG, "offset is " + offSet);
             }
             
+            // create a database connection
             ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
+            
+            // read all required info from db
             PreferenceManager pm = new PreferenceManager(context, db);
+            String title = db.getTitle(appWidgetId);
+            
+            int offset = db.getOffset(appWidgetId);
+            
+            // get all notes
+            LinkedList<Note> notes = db.getAllNotes(appWidgetId);
+
+            int maxCurrNotes = notes.size();
+            
+            // update the offset
+            if (move == MOVE.UP)
+            {
+            	offset--;
+            	
+            	// stop moving into negative numbers
+            	if (offset <= 0) offset = 0;
+            }
+            if (move == MOVE.DOWN)
+            {
+            	offset++;
+
+            	// don't scroll past last item
+                if (offset >= maxCurrNotes && maxCurrNotes > 0) offset = maxCurrNotes-1;            
+            }
+            if (move != MOVE.NONE)
+            {
+            	db.setOffset(appWidgetId, offset);
+            }
+            
+        	// now close the db
+            db.close();
+            db = null;
+            
+            // update the ui
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
             views.setImageViewResource(R.id.widget_background, pm.getBackground());
@@ -121,9 +148,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             }
             
             // set the note title
-            String title = db.getTitle(appWidgetId);
-            title.trim();
-            views.setTextViewText(R.id.notetitle, Html.fromHtml("<b><u>"+title+"</u></b>"));
+            views.setTextViewText(R.id.notetitle, Html.fromHtml("<b><u>"+title.trim()+"</u></b>"));
             views.setViewVisibility(R.id.notetitle, View.VISIBLE);
             views.setTextColor(R.id.notetitle, pm.getActiveColor());
             views.setFloat(R.id.notetitle, "setTextSize", pm.getTitleSize());
@@ -132,22 +157,19 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             {
                 views.setViewVisibility(R.id.notetitle, View.GONE);
             }
-            
-            // set the note items
-            LinkedList<Note> notes = db.getAllNotes(appWidgetId);
-            
-            db.close();
-            db = null;
-    
+                
             int noteField;
             int imageField;
-            int j = 0;
+            int j = 0;            
             
-            int maxCurrNotes = notes.size();
-            // don't scroll past last item
-            if (offSet >= maxCurrNotes && maxCurrNotes > 0) offSet = maxCurrNotes-1;
+
+            // set the scrolling button visibility
+            views.setViewVisibility(R.id.widget_scroll_up, View.VISIBLE);
+            views.setViewVisibility(R.id.widget_scroll_down, View.VISIBLE);
+            if (offset == 0) views.setViewVisibility(R.id.widget_scroll_up, View.GONE);
+            if (offset == maxCurrNotes - 1) views.setViewVisibility(R.id.widget_scroll_down, View.GONE);
             
-            for (int i=offSet; i< MAX_NOTES; i++)
+            for (int i=offset; j< MAX_NOTES; i++)
             {
                 try
                 {

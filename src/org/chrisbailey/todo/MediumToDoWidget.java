@@ -1,6 +1,3 @@
 package org.chrisbailey.todo;
 
-public class MediumToDoWidget extends ToDoWidgetProvider
-{
-
-}
+public class MediumToDoWidget extends ToDoWidgetProvider { }

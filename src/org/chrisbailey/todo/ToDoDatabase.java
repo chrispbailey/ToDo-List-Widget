@@ -30,6 +30,8 @@ public class ToDoDatabase extends SQLiteOpenHelper
     public static final String PREF_COLOR_ACTIVE = "pref_color_active";
     public static final String PREF_COLOR_FINISHED = "pref_color_finished";
 
+    public static final String FIELD_OFFSET = "offset_";
+    
     // SQL create query
     private final static String CREATE_SQL = 
        "CREATE TABLE " + VARIABLE_TABLE_NAME + " (name TEXT PRIMARY KEY, value TEXT);\n" +
@@ -273,6 +275,19 @@ public class ToDoDatabase extends SQLiteOpenHelper
     public void setPrefColorFinished(int value)
     {
     	setIntVariable(PREF_COLOR_FINISHED, value);
+    }
+    
+    public int getOffset(int widgetId)
+    {
+    	int i = getIntVariable(FIELD_OFFSET+widgetId);
+    	if (i < 1) return 0;
+    	return i;
+    }
+    
+    public void setOffset(int widgetId, int offset)
+    {
+    	if (offset <= 0) offset = 0;
+    	setIntVariable(FIELD_OFFSET+widgetId, offset);
     }
     
     /**
