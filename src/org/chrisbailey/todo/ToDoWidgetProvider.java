@@ -20,6 +20,8 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     
     public static final String BUTTON_UP = "btn.up";
     public static final String BUTTON_DOWN = "btn.down";
+    public static final String BUTTON_UP = "org.chrisbailey.todo.btn.up";
+    public static final String BUTTON_DOWN = "org.chrisbailey.todo.btn.down";
     
     public static enum MOVE { UP, DOWN, NONE };
     
