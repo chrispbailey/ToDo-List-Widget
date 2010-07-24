@@ -18,8 +18,6 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     public static final int MAX_NOTES = 20;
     public static String LOG_TAG = "ToDoWidgetProvider";
     
-    public static final String BUTTON_UP = "btn.up";
-    public static final String BUTTON_DOWN = "btn.down";
     public static final String BUTTON_UP = "org.chrisbailey.todo.btn.up";
     public static final String BUTTON_DOWN = "org.chrisbailey.todo.btn.down";
     
@@ -166,10 +164,10 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             
 
             // set the scrolling button visibility
-            views.setViewVisibility(R.id.widget_scroll_up, View.VISIBLE);
-            views.setViewVisibility(R.id.widget_scroll_down, View.VISIBLE);
-            if (offset == 0) views.setViewVisibility(R.id.widget_scroll_up, View.GONE);
-            if (offset == maxCurrNotes - 1) views.setViewVisibility(R.id.widget_scroll_down, View.GONE);
+            views.setViewVisibility(R.id.widget_scroll_up, View.GONE);
+            views.setViewVisibility(R.id.widget_scroll_down, View.GONE);
+            if (offset > 0) views.setViewVisibility(R.id.widget_scroll_up, View.VISIBLE);
+            if (maxCurrNotes > 1 && offset < maxCurrNotes-1) views.setViewVisibility(R.id.widget_scroll_down, View.VISIBLE);
             
             for (int i=offset; j< MAX_NOTES; i++)
             {
