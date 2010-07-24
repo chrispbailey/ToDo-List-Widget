@@ -12,13 +12,13 @@
 	<ImageView android:id="@+id/widget_scroll_up"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-		android:src="@drawable/action_scroll_up" android:paddingRight="6dp" android:paddingTop="6dp"
+		android:src="@drawable/action_scroll_up" android:paddingRight="7dp" android:paddingTop="7dp"
 		android:visibility="gone"/>
 	
 	<ImageView android:id="@+id/widget_scroll_down"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-		android:src="@drawable/action_scroll_down" android:paddingRight="6dp" android:paddingBottom="6dp"
+		android:src="@drawable/action_scroll_down" android:paddingRight="7dp" android:paddingBottom="7dp"
 		android:visibility="gone"/>
 
 	<RelativeLayout android:paddingLeft="6dp"
