@@ -10,16 +10,16 @@
 		android:scaleType="fitXY" />
 
 	<ImageView android:id="@+id/widget_scroll_up"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:layout_height="39dp"
 		android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-		android:src="@drawable/action_scroll_up" android:paddingRight="7dp" android:paddingTop="7dp"
-		android:visibility="gone"/>
+		android:src="@drawable/background_99_0" android:paddingRight="7dp" android:paddingTop="7dp"
+		android:paddingBottom="7dp" android:scaleType="fitEnd"/>
 	
 	<ImageView android:id="@+id/widget_scroll_down"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:layout_height="39dp"
 		android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-		android:src="@drawable/action_scroll_down" android:paddingRight="7dp" android:paddingBottom="7dp"
-		android:visibility="gone"/>
+		android:src="@drawable/background_99_0" android:paddingRight="7dp" android:paddingBottom="7dp"
+		android:paddingTop="7dp" android:scaleType="fitEnd"/>
 
 	<RelativeLayout android:paddingLeft="6dp"
 		android:paddingRight="6dp" android:paddingBottom="6dp"
