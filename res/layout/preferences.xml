@@ -8,7 +8,8 @@
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:orientation="horizontal" android:layout_alignParentBottom="true"
 		android:layout_centerHorizontal="true" android:paddingTop="10dp"
-		android:paddingBottom="10dp">
+		android:paddingBottom="10dp"
+		android:background="#FF323232">
 
 		<ImageView android:id="@+id/ok_button" android:layout_width="48dp"
 			android:background="@drawable/buttons" android:layout_height="48dp"
