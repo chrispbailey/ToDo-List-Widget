@@ -2,6 +2,8 @@ package org.chrisbailey.todo;
 
 import java.util.LinkedList;
 
+import org.chrisbailey.todo.Note.Status;
+
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -20,6 +22,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
     
     public static final String BUTTON_UP = "org.chrisbailey.todo.btn.up";
     public static final String BUTTON_DOWN = "org.chrisbailey.todo.btn.down";
+    public static final String TOGGLE = "org.chrisbailey.todo.toggle_";
     
     public static enum MOVE { UP, DOWN, NONE };
     
@@ -65,17 +68,23 @@ public class ToDoWidgetProvider extends AppWidgetProvider
 
         if (BUTTON_UP.equals(action))
         {
-        	int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+            int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
             updateAppWidget(context, AppWidgetManager.getInstance(context), appWidgetId, MOVE.UP);
         }
         if (BUTTON_DOWN.equals(action))
         {
-        	int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+            int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
             updateAppWidget(context, AppWidgetManager.getInstance(context), appWidgetId, MOVE.DOWN);
         }
-        
+        if (action.startsWith(TOGGLE))
+        {
+            int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+            int noteid = Integer.parseInt(action.substring(TOGGLE.length()));
+            toggleNote(context, noteid);
+            updateAppWidget(context, AppWidgetManager.getInstance(context), appWidgetId, MOVE.NONE);
+        }
         if (AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)) { 
-        	int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+            int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
             if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) { 
                 this.onDeleted(context, new int[] { appWidgetId }); 
             } 
@@ -84,6 +93,16 @@ public class ToDoWidgetProvider extends AppWidgetProvider
         } 
     } 
 
+    public static void toggleNote(Context context, int noteId)
+    {
+     // create a database connection
+        ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
+        Note n = db.getNote(noteId);
+        n.status = n.status == Status.CREATED ? Status.FINISHED : Status.CREATED;
+        db.updateNote(n);
+        db.close();
+    }
+    
     public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId, MOVE move)
     {
         try
@@ -192,6 +211,13 @@ public class ToDoWidgetProvider extends AppWidgetProvider
                         int imageDrawable = pm.getActiveIcon();
                         if (n.status == Note.Status.FINISHED) imageDrawable = pm.getFinishedIcon();
                         views.setImageViewResource(imageField, imageDrawable);
+                        Intent intent = new Intent(context, ToDoWidgetProvider.class);
+                        intent.setAction(TOGGLE+n.id);
+                        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+                        intent.putExtra(TOGGLE+n.id, 1);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
+                        views.setOnClickPendingIntent(imageField, pendingIntent);
+
                         int textColor = pm.getActiveColor();
                         if (n.status == Note.Status.FINISHED) textColor = pm.getFinishedColor();
                         views.setTextViewText(noteField, n.text);
