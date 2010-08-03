@@ -45,6 +45,16 @@
           <meta-data android:name="android.appwidget.provider"
                      android:resource="@xml/todowidget2x4" />
       </receiver>
+
+      <receiver android:name="SquareToDoWidget" android:label="@string/app_name_3x3">
+          <intent-filter>
+              <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+              <action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />
+          </intent-filter>
+          <meta-data android:name="android.appwidget.provider"
+                     android:resource="@xml/todowidget3x3" />
+      </receiver>
+
     </application>
 
 </manifest> 

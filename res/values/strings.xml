@@ -4,5 +4,6 @@
     <string name="app_name_2x2">ToDo List Widget 2x2</string>
     <string name="app_name_2x3">ToDo List Widget 2x3</string>
     <string name="app_name_2x4">ToDo List Widget 2x4</string>
+    <string name="app_name_3x3">ToDo List Widget 3x3</string>
     <string name="delete_confirm">Are you sure you want to delete this note [note]?</string>
 </resources>

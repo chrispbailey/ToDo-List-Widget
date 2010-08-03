@@ -4,5 +4,6 @@
     <string name="app_name_2x2">备忘录桌面Widget 2x2</string>
     <string name="app_name_2x3">备忘录桌面Widget 2x3</string>
     <string name="app_name_2x4">备忘录桌面Widget 2x4</string>
+    <string name="app_name_3x3">备忘录桌面Widget 3x3</string>
     <string name="delete_confirm">你确定要删除此项目吗 [note]?</string>
 </resources>
