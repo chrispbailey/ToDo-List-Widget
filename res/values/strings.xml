@@ -6,4 +6,7 @@
     <string name="app_name_2x4">ToDo List Widget 2x4</string>
     <string name="app_name_3x3">ToDo List Widget 3x3</string>
     <string name="delete_confirm">Are you sure you want to delete this note [note]?</string>
+	<string name="config_intro">Welcome to the config app. Select the widgets to appear in the Add new Widget list.</string>
+	<string name="config_save_warning_title">Please note</string>
+	<string name="config_save_warning_message">For these changes to take affect, you will need to reboot your device.</string>
 </resources>
