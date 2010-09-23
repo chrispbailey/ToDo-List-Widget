@@ -6,6 +6,19 @@ import java.util.List;
 import org.chrisbailey.todo.LargeToDoWidget;
 import org.chrisbailey.todo.MediumToDoWidget;
 import org.chrisbailey.todo.R;
+import org.chrisbailey.todo.SmallToDoWidget;
+import org.chrisbailey.todo.ToDoWidget1x1;
+import org.chrisbailey.todo.ToDoWidget1x2;
+import org.chrisbailey.todo.ToDoWidget1x3;
+import org.chrisbailey.todo.ToDoWidget1x4;
+import org.chrisbailey.todo.ToDoWidget3x1;
+import org.chrisbailey.todo.ToDoWidget3x2;
+import org.chrisbailey.todo.ToDoWidget3x3;
+import org.chrisbailey.todo.ToDoWidget3x4;
+import org.chrisbailey.todo.ToDoWidget4x1;
+import org.chrisbailey.todo.ToDoWidget4x2;
+import org.chrisbailey.todo.ToDoWidget4x3;
+import org.chrisbailey.todo.ToDoWidget4x4;
 import org.chrisbailey.todo.ToDoWidgetProvider;
 
 import android.app.Activity;
@@ -15,21 +28,20 @@ import android.appwidget.AppWidgetProvider;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.ComponentName;
 import android.content.DialogInterface;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class WidgetConfiguration extends Activity implements View.OnClickListener {
 	public static final String LOG_TAG = "WidgetConfiguration";
 	public  int ID = 0;
-	ImageButton saveButton;
+	ImageView saveButton;
+	ImageView cancelButton;
 	PackageManager pm;
 	
 	ArrayList <Widget> widgetList = new ArrayList<Widget>();
@@ -48,21 +60,44 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
         LinearLayout layout = (LinearLayout)findViewById(R.id.widgetListLayout);
 
         // add our widgets dynamically
-        Widget w = new Widget(ToDoWidgetProvider.class, this, R.string.app_name_2x2);
-        layout.addView(w.cb);
-        widgetList.add(w);
-        w = new Widget(MediumToDoWidget.class, this, R.string.app_name_2x3);
-        layout.addView(w.cb);
-        widgetList.add(w);
-        w = new Widget(LargeToDoWidget.class, this, R.string.app_name_2x4);
-        layout.addView(w.cb);
-        widgetList.add(w);
+        addWidget(layout, ToDoWidget1x1.class, R.string.app_name_1x1);
+        addWidget(layout, ToDoWidget1x2.class, R.string.app_name_1x2);
+        addWidget(layout, ToDoWidget1x3.class, R.string.app_name_1x3);
+        addWidget(layout, ToDoWidget1x4.class, R.string.app_name_1x4);
+        addWidget(layout, SmallToDoWidget.class, R.string.app_name_2x1);
+        addWidget(layout, ToDoWidgetProvider.class, R.string.app_name_2x2);
+        addWidget(layout, MediumToDoWidget.class, R.string.app_name_2x3);
+        addWidget(layout, LargeToDoWidget.class, R.string.app_name_2x4);
+        addWidget(layout, ToDoWidget3x1.class, R.string.app_name_3x1);
+        addWidget(layout, ToDoWidget3x2.class, R.string.app_name_3x2);
+        addWidget(layout, ToDoWidget3x3.class, R.string.app_name_3x3);
+        addWidget(layout, ToDoWidget3x4.class, R.string.app_name_3x4);
+        addWidget(layout, ToDoWidget4x1.class, R.string.app_name_4x1);
+        addWidget(layout, ToDoWidget4x2.class, R.string.app_name_4x2);
+        addWidget(layout, ToDoWidget4x3.class, R.string.app_name_4x3);
+        addWidget(layout, ToDoWidget4x4.class, R.string.app_name_4x4);
 
-        saveButton = (ImageButton)findViewById(R.id.config_save_button);
+        // add click listener to save button
+        
+        saveButton = (ImageView)findViewById(R.id.config_save_button);
         saveButton.setOnClickListener(this);
         saveButton.setId(++ID);
+        
+        cancelButton = (ImageView)findViewById(R.id.config_cancel_button);
+        cancelButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				finish();
+			}
+		});
     }
-
+    
+    private void addWidget(LinearLayout layout, Class<? extends AppWidgetProvider> c, int res)
+    {
+    	Widget w = new Widget(c, this, res);
+        layout.addView(w.cb);
+        widgetList.add(w);
+    }
+    
     public boolean amIEnabled(ComponentName name)
     {
 	        AppWidgetManager mgnr = AppWidgetManager.getInstance(this.getApplicationContext());
@@ -106,9 +141,12 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 			           public void onClick(DialogInterface dialog, int id) {
 			        	   for (Widget w : widgetList)
 				   			{
-					       		Log.i(LOG_TAG, "Setting " + w.label + " to " + w.cb.isChecked());
-					    		int state = w.cb.isChecked() ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED :  PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
-					    		toggleWidget(w.componentName, state);
+			        		   if (w.state != w.cb.isChecked())
+			        		   {
+						       		Log.i(LOG_TAG, "Setting " + w.label + " to " + w.cb.isChecked());
+						    		int state = w.cb.isChecked() ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED :  PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+						    		toggleWidget(w.componentName, state);
+			        		   }
 				   			}
 			        	   finish();
 			           }
@@ -131,8 +169,10 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 					if (w.instances > 0 && !w.cb.isChecked())
 					{
 						AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-						dialog.setTitle(getResources().getString(R.string.config_disable_warning_title));
-						dialog.setMessage(getResources().getString(R.string.config_disable_warning_message));
+						dialog.setTitle(getResources().getString(android.R.string.dialog_alert_title));
+						String message = getResources().getString(R.string.config_disable_warning_message);
+						message = message.replace("[num]", w.instances+"");
+						dialog.setMessage(message);
 						dialog.setPositiveButton(getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {
 					           public void onClick(DialogInterface dialog, int id) {
 					        	   dialog.dismiss();
@@ -146,12 +186,6 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 		}
 	}
 
-	/*
-	public void toggleCheckbox(Widget w)
-	{
-		w.cb.setEnabled(false);
-	}
-*/
 	/**
 	 * Enables or disables the widget 
 	 */
@@ -164,12 +198,12 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 	{
 		CheckBox cb;
 		boolean state;
-		Class<AppWidgetProvider> widgetClass;
+		Class<? extends AppWidgetProvider> widgetClass;
 		ComponentName componentName;
 		String label;
 		int instances = 0;
 		
-		public Widget(Class c, WidgetConfiguration config, int res)
+		public Widget(Class<? extends AppWidgetProvider> c, WidgetConfiguration config, int res)
 		{
 			widgetClass = c;
 			componentName = new ComponentName(getApplicationContext(), widgetClass);

@@ -61,7 +61,7 @@
 			<meta-data android:name="android.appwidget.provider"
 				android:resource="@xml/todowidget2x4" />
 		</receiver>
-<!-- 
+
 		<receiver android:name="ToDoWidget1x1" android:label="@string/app_name_1x1">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -169,7 +169,7 @@
 			<meta-data android:name="android.appwidget.provider"
 				android:resource="@xml/todowidget4x4" />
 		</receiver>
- -->
+
 
 	</application>
 

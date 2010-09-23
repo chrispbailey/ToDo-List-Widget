@@ -4,17 +4,40 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-	<TextView android:id="@+id/IntroText"
+    
+	<TextView android:id="@+id/config_intro_text"
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content" 
 	    android:text="@string/config_intro"
 	    android:layout_alignParentTop="true"
+	    android:gravity="center_horizontal"
+	    android:padding="3dp"
 	    />
+    
+	<!-- Action buttons -->
+	<LinearLayout android:id="@+id/config_button_layout"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:orientation="horizontal" android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true" android:paddingTop="10dp"
+		android:paddingBottom="10dp">
+
+		<ImageView android:id="@+id/config_save_button" android:layout_width="48dp"
+			android:background="@drawable/buttons" android:layout_height="48dp"
+			android:layout_weight="0.5" android:src="@drawable/action_save" />
+
+		<ImageView android:id="@+id/config_cancel_button"
+			android:background="@drawable/buttons" android:layout_width="48dp"
+			android:layout_height="48dp" android:layout_weight="0.5"
+			android:src="@drawable/action_cancel" />
+
+	</LinearLayout>
 	    
     <ScrollView 
-	    android:layout_below="@id/IntroText"
+    	android:layout_above="@id/config_button_layout"
+	    android:layout_below="@id/config_intro_text"
 	    android:layout_height="fill_parent"
-	    android:layout_width="fill_parent">
+	    android:layout_width="fill_parent"
+	    android:paddingLeft="5dp">
 
 		<LinearLayout 
 			android:id="@+id/widgetListLayout"
@@ -23,10 +46,5 @@
     		android:layout_height="fill_parent">
 		</LinearLayout>
     </ScrollView>
-    
-    <ImageButton android:id="@+id/config_save_button"
-	    android:layout_alignParentBottom="true"
-	    android:src="@drawable/action_save"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"/>
+
 </RelativeLayout>
