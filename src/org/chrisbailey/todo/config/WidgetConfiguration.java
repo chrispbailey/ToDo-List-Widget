@@ -135,7 +135,7 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 			if (changed)
 			{
 				AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-				dialog.setTitle(getResources().getString(R.string.config_save_warning_title));
+				dialog.setTitle(getResources().getString(android.R.string.dialog_alert_title));
 				dialog.setMessage(getResources().getString(R.string.config_save_warning_message));
 				dialog.setPositiveButton(getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {
 			           public void onClick(DialogInterface dialog, int id) {
@@ -169,7 +169,7 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 					if (w.instances > 0 && !w.cb.isChecked())
 					{
 						AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-						dialog.setTitle(getResources().getString(android.R.string.dialog_alert_title));
+						dialog.setTitle(getResources().getString(R.string.config_disable_warning_title));
 						String message = getResources().getString(R.string.config_disable_warning_message);
 						message = message.replace("[num]", w.instances+"");
 						dialog.setMessage(message);
