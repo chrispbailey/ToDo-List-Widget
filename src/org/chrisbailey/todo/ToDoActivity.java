@@ -393,9 +393,13 @@ public class ToDoActivity extends Activity
 
         public void afterTextChanged(Editable s)
         {
-            Note n = db.getNote(et.getId());
-            n.text = et.getText().toString();
-            db.updateNote(n);
+        	try
+        	{
+	            Note n = db.getNote(et.getId());
+	            n.text = et.getText().toString();
+	            db.updateNote(n);
+        	}
+        	catch (NullPointerException npe) { /* do nothing */ }
         }
 
         public void beforeTextChanged(CharSequence s, int start, int count,
