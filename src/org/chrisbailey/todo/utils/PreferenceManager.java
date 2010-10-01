@@ -1,8 +1,12 @@
-package org.chrisbailey.todo;
+package org.chrisbailey.todo.utils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import org.chrisbailey.todo.R;
+import org.chrisbailey.todo.activities.ToDoActivity;
+import org.chrisbailey.todo.db.ToDoDatabase;
 
 import android.content.Context;
 import android.util.Log;
@@ -24,7 +28,7 @@ public class PreferenceManager
     private int currentActiveColor = -1;
     private int currentFinishedColor = -1;
     private int currentSize = -1;
-    
+    private boolean scrollButtons = true;
     private int defaultPadding = 1;
     private int topPadding = defaultPadding;
     
@@ -45,6 +49,8 @@ public class PreferenceManager
         i = db.getPrefSize();
         if (i == -1) i = (int) new TextView(c).getTextSize();
         setSize(i);
+        
+        scrollButtons = db.getScrollButtons();
     }
     
     /**
@@ -59,6 +65,7 @@ public class PreferenceManager
         db.setPrefColorFinished(currentFinishedColor);
         db.setPrefIcon(currentIcon);
         db.setPrefSize(currentSize);
+        db.setScrollButtons(scrollButtons);
     }
     
     public int getTopPadding()
@@ -101,7 +108,7 @@ public class PreferenceManager
         currentFinishedColor = i;
     }
     
-    int[] getAllBackgrounds()
+    public int[] getAllBackgrounds()
     {
         return getAllDrawables(BACKGROUND_DRAWABLE_PREFIX);
     }
@@ -241,5 +248,15 @@ public class PreferenceManager
     public boolean isEmptyIcon()
     {
         return currentIcon == 9;
+    }
+    
+    public boolean getScrollButtons()
+    {
+    	return scrollButtons;
+    }
+    
+    public void setScrollButtons(boolean b)
+    {
+    	scrollButtons = b;
     }
 }

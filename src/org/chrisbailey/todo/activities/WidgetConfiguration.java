@@ -1,4 +1,4 @@
-package org.chrisbailey.todo.config;
+package org.chrisbailey.todo.activities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,7 +120,7 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
     {
     	AppWidgetManager mgnr = AppWidgetManager.getInstance(this.getApplicationContext());
     	int [] instanceWidgets = mgnr.getAppWidgetIds(name);
-    	Log.i(LOG_TAG, name.getClassName() + " has " + instanceWidgets.length);
+    	if (ToDoActivity.debug) Log.i(LOG_TAG, name.getClassName() + " has " + instanceWidgets.length);
 		return instanceWidgets.length;
     }
     
@@ -143,7 +143,7 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 				   			{
 			        		   if (w.state != w.cb.isChecked())
 			        		   {
-						       		Log.i(LOG_TAG, "Setting " + w.label + " to " + w.cb.isChecked());
+			        			   if (ToDoActivity.debug) Log.i(LOG_TAG, "Setting " + w.label + " to " + w.cb.isChecked());
 						    		int state = w.cb.isChecked() ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED :  PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 						    		toggleWidget(w.componentName, state);
 			        		   }
@@ -170,7 +170,9 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 					{
 						AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 						dialog.setTitle(getResources().getString(R.string.config_disable_warning_title));
-						String message = getResources().getString(R.string.config_disable_warning_message);
+						int res = R.string.config_disable_warning_message_single;
+						if (w.instances > 1) res = R.string.config_disable_warning_message_plural;
+						String message = getResources().getString(res);
 						message = message.replace("[num]", w.instances+"");
 						dialog.setMessage(message);
 						dialog.setPositiveButton(getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {

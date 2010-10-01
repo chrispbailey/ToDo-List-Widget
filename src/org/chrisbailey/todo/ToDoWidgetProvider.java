@@ -2,7 +2,11 @@ package org.chrisbailey.todo;
 
 import java.util.LinkedList;
 
-import org.chrisbailey.todo.Note.Status;
+import org.chrisbailey.todo.activities.ToDoActivity;
+import org.chrisbailey.todo.db.ToDoDatabase;
+import org.chrisbailey.todo.utils.Note;
+import org.chrisbailey.todo.utils.PreferenceManager;
+import org.chrisbailey.todo.utils.Note.Status;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -119,6 +123,8 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             PreferenceManager pm = new PreferenceManager(context, db);
             String title = db.getTitle(appWidgetId);
             
+            boolean showScrollButtons = pm.getScrollButtons();
+            
             int offset = db.getOffset(appWidgetId);
             
             // get all notes
@@ -182,12 +188,18 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             int j = 0;
             
 
-            // set the scrolling button visibility
             views.setImageViewResource(R.id.widget_scroll_up, R.drawable.background_99_0);
             views.setImageViewResource(R.id.widget_scroll_down, R.drawable.background_99_0);
-            if (offset > 0) views.setImageViewResource(R.id.widget_scroll_up, R.drawable.action_scroll_up);
-            if (maxCurrNotes > 1 && offset < maxCurrNotes-1) views.setImageViewResource(R.id.widget_scroll_down, R.drawable.action_scroll_down);
-            
+            if (showScrollButtons)
+            {
+            	// set the scrolling button visibility
+            	if (offset > 0) views.setImageViewResource(R.id.widget_scroll_up, R.drawable.action_scroll_up);
+            	if (maxCurrNotes > 1 && offset < maxCurrNotes-1) views.setImageViewResource(R.id.widget_scroll_down, R.drawable.action_scroll_down);
+            }
+
+            Log.i(LOG_TAG,"MAX_NOTES:" +MAX_NOTES);
+            Log.i(LOG_TAG,"offset:" +offset);
+            Log.i(LOG_TAG,"showScrollButtons:"+ (showScrollButtons?"on":"off"));
             for (int i=offset; j< MAX_NOTES; i++)
             {
                 try
@@ -240,19 +252,22 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             
             views.setOnClickPendingIntent(R.id.widget_layout, pendingIntent);
             
-            intent = new Intent(context, ToDoWidgetProvider.class);
-            intent.setAction(BUTTON_UP);
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            intent.putExtra(BUTTON_UP, 1);
-            pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
-            views.setOnClickPendingIntent(R.id.widget_scroll_up, pendingIntent);
-
-            intent = new Intent(context, ToDoWidgetProvider.class);
-            intent.setAction(BUTTON_DOWN);
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            intent.putExtra(BUTTON_DOWN, 1);
-            pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
-            views.setOnClickPendingIntent(R.id.widget_scroll_down, pendingIntent);
+            if (showScrollButtons)
+            {
+	            intent = new Intent(context, ToDoWidgetProvider.class);
+	            intent.setAction(BUTTON_UP);
+	            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+	            intent.putExtra(BUTTON_UP, 1);
+	            pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
+	            views.setOnClickPendingIntent(R.id.widget_scroll_up, pendingIntent);
+	
+	            intent = new Intent(context, ToDoWidgetProvider.class);
+	            intent.setAction(BUTTON_DOWN);
+	            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+	            intent.putExtra(BUTTON_DOWN, 1);
+	            pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
+	            views.setOnClickPendingIntent(R.id.widget_scroll_down, pendingIntent);
+            }
             
             manager.updateAppWidget(appWidgetId, views);
         }

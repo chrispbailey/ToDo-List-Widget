@@ -1,7 +1,10 @@
-package org.chrisbailey.todo;
+package org.chrisbailey.todo.activities;
 
 import java.util.ArrayList;
 
+import org.chrisbailey.todo.R;
+import org.chrisbailey.todo.db.ToDoDatabase;
+import org.chrisbailey.todo.utils.PreferenceManager;
 import org.chrisbailey.todo.widgets.ColorPickerDialog;
 import org.chrisbailey.todo.widgets.NumberPicker;
 
@@ -20,12 +23,13 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView.ScaleType;
 
-public class PreferencesActivity extends Activity implements ColorPickerDialog.OnColorChangedListener, NumberPicker.OnNumberChangedListener, OnItemClickListener {
+public class PreferencesActivity extends Activity implements ColorPickerDialog.OnColorChangedListener, NumberPicker.OnNumberChangedListener, OnItemClickListener, View.OnClickListener {
 
     // static dialog indicators
     public static final int DIALOG_SELECT_COLOR = 1;
@@ -41,12 +45,14 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
     private ImageView preview;
     private ImageView ivActiveIcon;
     private ImageView ivFinishedIcon;
+    private ImageView ivScrollUp;
+    private ImageView ivScrollDown;
     private static TextView tvTitle;
     private static ArrayList<TextView> tvNotes;
     private static ArrayList<ImageView> ivIcons;
     private TextView padding1;
     private TextView padding2;
-    
+    private LinearLayout scrollButtonLayout;
     private static final String NOTE_VIEW_PREFIX = "note_";
     private static final String ICON_VIEW_PREFIX = "noteimage_";
     
@@ -128,6 +134,13 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
             }
         });
         
+        scrollButtonLayout = (LinearLayout) findViewById(R.id.scroll_buttons_enable);
+        scrollButtonLayout.setOnClickListener(this);
+        ivScrollUp = (ImageView) findViewById(R.id.scroll_buttons_up);
+        ivScrollDown = (ImageView) findViewById(R.id.scroll_buttons_down);
+        // set default state
+        setScrollButtonState(pm.getScrollButtons());
+        
         // generate the list of drawable options (background & icons)
         initDrawableLists();
         
@@ -189,8 +202,34 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
     protected void initDrawableLists()
     {
         imageBackgrounds = pm.getAllBackgrounds();
-        imageIcons = pm.getAllIcons();
+        imageIcons = pm.getAllIcons();db = new ToDoDatabase(PreferencesActivity.this);
+        pm.save(db);
+        db.close();
+        db = null;
     }
+    
+    /* Fired when scroll button option clicked */
+	public void onClick(View v) {
+		boolean b = !pm.getScrollButtons();
+		setScrollButtonState(b);
+		pm.setScrollButtons(b);
+	}
+	
+	private void setScrollButtonState(boolean b)
+	{
+		if (b)
+		{
+			ivScrollUp.setVisibility(View.VISIBLE);
+			ivScrollDown.setVisibility(View.VISIBLE);
+			scrollButtonLayout.setBackgroundResource(R.drawable.border_on);
+		}
+		else
+		{
+			ivScrollUp.setVisibility(View.INVISIBLE);
+			ivScrollDown.setVisibility(View.INVISIBLE);
+			scrollButtonLayout.setBackgroundResource(R.drawable.border_off);
+		}
+	}
     
     public void onColorChanged(int color) 
     {

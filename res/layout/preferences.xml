@@ -40,6 +40,25 @@
 					android:layout_height="80dp" android:layout_alignParentTop="true"
 					android:layout_alignParentBottom="true" />
 
+				<!-- Scroll buttons -->
+				<LinearLayout android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="5dp"
+					android:layout_marginLeft="10dp"
+					android:layout_alignParentTop="true"
+					android:layout_toRightOf="@id/font_size_selector"
+					android:gravity="center"
+					android:id="@+id/scroll_buttons_enable">
+					<ImageView android:id="@+id/scroll_buttons_up"
+						android:layout_width="30dp" android:layout_height="30dp"
+						android:background="@drawable/action_scroll_up" />
+					<ImageView android:id="@+id/scroll_buttons_down"
+						android:layout_width="30dp" android:layout_height="30dp"
+						android:background="@drawable/action_scroll_down" />
+	
+				</LinearLayout>
+			
 				<!-- ACTIVE item color selector -->
 				<ImageView android:id="@+id/pick_color_active"
 					android:layout_width="30dp" android:layout_height="30dp"

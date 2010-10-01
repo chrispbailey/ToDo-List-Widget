@@ -1,4 +1,4 @@
-package org.chrisbailey.todo;
+package org.chrisbailey.todo.utils;
 
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Note
 {
-    enum Status { CREATED(0), FINISHED(1);
+		public enum Status { CREATED(0), FINISHED(1);
 
         private static final Map<Integer,Status> lookup = new HashMap<Integer,Status>();
     

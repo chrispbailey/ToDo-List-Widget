@@ -1,9 +1,11 @@
-package org.chrisbailey.todo;
+package org.chrisbailey.todo.db;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import org.chrisbailey.todo.Note.Status;
+import org.chrisbailey.todo.activities.ToDoActivity;
+import org.chrisbailey.todo.utils.Note;
+import org.chrisbailey.todo.utils.Note.Status;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -29,6 +31,7 @@ public class ToDoDatabase extends SQLiteOpenHelper
     public static final String PREF_SIZE = "pref_size";
     public static final String PREF_COLOR_ACTIVE = "pref_color_active";
     public static final String PREF_COLOR_FINISHED = "pref_color_finished";
+    public static final String PREF_SCROLLBUTTONS = "pref_scroll_buttons";
 
     public static final String FIELD_OFFSET = "offset_";
     
@@ -106,6 +109,18 @@ public class ToDoDatabase extends SQLiteOpenHelper
         String s = getVariable(name);
         if (s == null) return -1;
         return Integer.parseInt(s);
+    }
+    
+//    private boolean getBoolVariable(String name)
+//    {
+//        String s = getVariable(name);
+//        if (s == null || s.equals("false")) return false;
+//        return true;
+//    }
+    
+    private void setBoolVariable(String name, boolean b)
+    {
+    	setStringVariable(name, b ? "true" : "false");
     }
     
     /**
@@ -288,6 +303,18 @@ public class ToDoDatabase extends SQLiteOpenHelper
     {
     	if (offset <= 0) offset = 0;
     	setIntVariable(FIELD_OFFSET+widgetId, offset);
+    }
+    
+    public boolean getScrollButtons()
+    {
+    	String s = getVariable(PREF_SCROLLBUTTONS);
+    	if (s == null) return true; // set default to enabled
+    	else return s.equals("true");
+    }
+    
+    public void setScrollButtons(boolean b)
+    {
+    	setBoolVariable(PREF_SCROLLBUTTONS, b);
     }
     
     /**

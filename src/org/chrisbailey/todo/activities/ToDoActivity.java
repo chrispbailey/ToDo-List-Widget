@@ -1,9 +1,16 @@
-package org.chrisbailey.todo;
+package org.chrisbailey.todo.activities;
 
 import java.util.LinkedList;
 
-import org.chrisbailey.todo.Note.Status;
+import org.chrisbailey.todo.LargeToDoWidget;
+import org.chrisbailey.todo.MediumToDoWidget;
+import org.chrisbailey.todo.R;
+import org.chrisbailey.todo.ToDoWidgetProvider;
 import org.chrisbailey.todo.ToDoWidgetProvider.MOVE;
+import org.chrisbailey.todo.db.ToDoDatabase;
+import org.chrisbailey.todo.utils.Note;
+import org.chrisbailey.todo.utils.PreferenceManager;
+import org.chrisbailey.todo.utils.Note.Status;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -37,7 +44,7 @@ public class ToDoActivity extends Activity
     public ToDoDatabase db;
     
     private static final String LOG_TAG = "ToDoActivity";
-    static final boolean debug = false;
+    public static final boolean debug = false;
     private static float scale;
     private PreferenceManager pm;
     
@@ -206,7 +213,7 @@ public class ToDoActivity extends Activity
         return row;
     }
     
-    public void toggleRow(TableRow row, Status status)
+    public void toggleRow(TableRow row, Note.Status status)
     {
         int btn = pm.getActiveIcon();
         if (status == Status.FINISHED) btn = pm.getFinishedIcon();
