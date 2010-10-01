@@ -99,12 +99,16 @@ public class ToDoWidgetProvider extends AppWidgetProvider
 
     public static void toggleNote(Context context, int noteId)
     {
-     // create a database connection
-        ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
-        Note n = db.getNote(noteId);
-        n.status = n.status == Status.CREATED ? Status.FINISHED : Status.CREATED;
-        db.updateNote(n);
-        db.close();
+    	try
+    	{
+    		// create a database connection
+	        ToDoDatabase db = new ToDoDatabase(context.getApplicationContext());
+	        Note n = db.getNote(noteId);
+	        n.status = n.status == Status.CREATED ? Status.FINISHED : Status.CREATED;
+	        db.updateNote(n);
+	        db.close();
+    	}
+    	catch (NullPointerException npe) { /* do nothing */ }
     }
     
     public static void updateAppWidget(Context context, AppWidgetManager manager, int appWidgetId, MOVE move)
