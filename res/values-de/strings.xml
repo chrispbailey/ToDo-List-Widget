@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- GERMAN -->
+    <string name="menu_preferences">Einstellungen</string>
     <string name="delete_confirm">Sind Sie sicher, dass Sie diese Notiz löschen [note]?</string>
+	<string name="config_intro"> \'Widget auswählen\'.</string>
+    <string name="config_activity_name"></string>
+	<string name="config_disable_warning_title"></string>
+	<string name="config_disable_warning_message_single"></string>
+	<string name="config_disable_warning_message_plural"></string>
+	<string name="config_save_warning_message"></string>
 </resources>

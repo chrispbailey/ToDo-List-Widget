@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- FRENCH -->
+    <string name="menu_preferences">Paramétres</string>
     <string name="delete_confirm">Etes-vous sûr de vouloir supprimer cette note [note]?</string>
+	<string name="config_intro">Selectionner les tailles a apparaitre dans la liste \'Choisir un widget\'. Apres le choix de vos options, redemarrez l\'appareil pour que ces changements soient pris en compte.</string>
+    <string name="config_activity_name">Configuration du ToDoList</string>
+	<string name="config_disable_warning_title">Avertissement</string>
+	<string name="config_disable_warning_message_single">Vous avez actuellement 1 widget actifs utilisant cette taille. Si vous desactivez cette taille, ces widgets seront egalement enleves</string>
+	<string name="config_disable_warning_message_plural">Vous avez actuellement [num] widgets actifs utilisant cette taille. Si vous desactivez cette taille, ces widgets seront egalement enleves</string>
+	<string name="config_save_warning_message">Pour que ces changements prennent effet, vous devez redemarrer votre appareil.</string>
 </resources>

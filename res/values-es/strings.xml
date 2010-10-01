@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- SPANISH -->
+    <string name="menu_preferences">Ajustes</string>
     <string name="delete_confirm">¿Está seguro que desea eliminar esta nota [note]?</string>
+	<string name="config_intro"> \'Seleccionar widget\'.</string>
+    <string name="config_activity_name"></string>
+	<string name="config_disable_warning_title"></string>
+	<string name="config_disable_warning_message_single"></string>
+	<string name="config_disable_warning_message_plural"></string>
+	<string name="config_save_warning_message"></string>
 </resources>

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- ITALIAN -->
+    <string name="menu_preferences">Preferenze</string>
     <string name="delete_confirm">Sei sicuro di voler eliminare questa nota [note]?</string>
+	<string name="config_intro">Seleziona il formato desiderato da utilizzare nella \'Add Widget\' lista. Dopo aver scelto tale opzione, dovrai riavviare il tuo dispositivo per fare in modo che i cambiamenti abbiano effetto.</string>
+    <string name="config_activity_name">ToDoList Configurazione</string>
+	<string name="config_disable_warning_title">Avvertenza</string>
+	<string name="config_disable_warning_message_single">Al momento sono presenti 1 widget attivo che utilizza tale formato.  Se disattivi il formato, anche questi widgets verranno rimossi</string>
+	<string name="config_disable_warning_message_plural">Al momento sono presenti [num] widget attivi che utilizzano tale formato.  Se disattivi il formato, anche questi widgets verranno rimossi</string>
+	<string name="config_save_warning_message">Per far sì che questi cambiamenti abbiano effetto, dovrai riavviare il tuo dispositivo.</string>
 </resources>
