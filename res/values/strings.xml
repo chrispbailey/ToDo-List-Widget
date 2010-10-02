@@ -24,5 +24,5 @@
 	<string name="config_disable_warning_title">Warning</string>
 	<string name="config_disable_warning_message_single">You currently have 1 active widget using this size. If you disable this size, this widget will also be removed</string>
 	<string name="config_disable_warning_message_plural">You currently have [num] active widgets using this size. If you disable this size, these widgets will also be removed</string>
-	<string name="config_save_warning_message">For these changes to take affect, you will need to reboot your device.</string>
+	<string name="config_save_warning_message">For these changes to take affect, you need to reboot your device.</string>
 </resources>
