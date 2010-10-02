@@ -37,7 +37,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class WidgetConfiguration extends Activity implements View.OnClickListener {
+public class SizesConfiguration extends Activity implements View.OnClickListener {
 	public static final String LOG_TAG = "WidgetConfiguration";
 	public  int ID = 0;
 	ImageView saveButton;
@@ -53,7 +53,7 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
         
         Log.i(LOG_TAG,"onCreate");
         
-        setContentView(R.layout.config);
+        setContentView(R.layout.sizes_configuration);
         
         pm = this.getPackageManager(); 
 
@@ -205,7 +205,7 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 		String label;
 		int instances = 0;
 		
-		public Widget(Class<? extends AppWidgetProvider> c, WidgetConfiguration config, int res)
+		public Widget(Class<? extends AppWidgetProvider> c, SizesConfiguration config, int res)
 		{
 			widgetClass = c;
 			componentName = new ComponentName(getApplicationContext(), widgetClass);
@@ -215,7 +215,7 @@ public class WidgetConfiguration extends Activity implements View.OnClickListene
 			createCheckbox(config,res);
 		}
 		
-		private void createCheckbox(WidgetConfiguration c, int res)
+		private void createCheckbox(SizesConfiguration c, int res)
 		{
 			cb = new CheckBox(c);
 			cb.setText(label);

@@ -1,8 +1,6 @@
-package org.chrisbailey.todo.utils;
+package org.chrisbailey.todo.activities;
 
 import org.chrisbailey.todo.R;
-import org.chrisbailey.todo.activities.PreferencesActivity;
-import org.chrisbailey.todo.activities.WidgetConfiguration;
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -21,18 +19,18 @@ public class ToDoWidgetConfigTab extends TabActivity {
 	    Intent intent;  // Reusable Intent for each tab
 
 	    // Create an Intent to launch an Activity for the tab (to be reused)
-	    intent = new Intent().setClass(this, WidgetConfiguration.class);
+	    intent = new Intent().setClass(this, SizesConfiguration.class);
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("config").setIndicator("Sizes",
-	                      res.getDrawable(android.R.drawable.btn_star_big_off))
+	    spec = tabHost.newTabSpec("config").setIndicator("",
+	                      res.getDrawable(R.drawable.ic_menu_clear_playlist))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
 	    // Do the same for the other tabs
 	    intent = new Intent().setClass(this, PreferencesActivity.class);
-	    spec = tabHost.newTabSpec("preferences").setIndicator("Prefs",
-	                      res.getDrawable(android.R.drawable.btn_star_big_off))
+	    spec = tabHost.newTabSpec("preferences").setIndicator("",
+	                      res.getDrawable(android.R.drawable.ic_menu_preferences))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
