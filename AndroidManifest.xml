@@ -20,7 +20,7 @@
 
 		<activity android:name=".activities.SizesConfiguration" android:label="@string/app_name" />
 
-		<activity android:name=".utils.ToDoWidgetConfigTab" android:icon="@drawable/icon_configure"
+		<activity android:name=".activities.ToDoWidgetConfigTab" android:icon="@drawable/icon_configure"
 			android:label="@string/config_activity_name" android:finishOnTaskLaunch="true" android:noHistory="true"
 			android:theme="@android:style/Theme.NoTitleBar">
 			<intent-filter>
