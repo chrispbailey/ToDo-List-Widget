@@ -41,7 +41,7 @@ public class ToDoActivity extends Activity
     public ToDoDatabase db;
     
     private static final String LOG_TAG = "ToDoActivity";
-    public static final boolean debug = true;
+    public static final boolean debug = false;
     private static float scale;
     private PreferenceManager pm;
     
