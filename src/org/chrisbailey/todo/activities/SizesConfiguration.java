@@ -51,8 +51,6 @@ public class SizesConfiguration extends Activity implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        Log.i(LOG_TAG,"onCreate");
-        
         setContentView(R.layout.sizes_configuration);
         
         pm = this.getPackageManager(); 
