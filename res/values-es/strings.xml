@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- SPANISH -->
-    <string name="menu_preferences">Ajustes</string>
-    <string name="delete_confirm">¿Está seguro que desea eliminar esta nota [note]?</string>
-	<string name="config_intro"> \'Seleccionar widget\'.</string>
-    <string name="config_activity_name"></string>
-	<string name="config_disable_warning_title"></string>
-	<string name="config_disable_warning_message_single"></string>
-	<string name="config_disable_warning_message_plural"></string>
-	<string name="config_save_warning_message"></string>
+	<string name="menu_preferences">Ajustes</string>
+	<string name="delete_confirm">¿Está seguro que desea eliminar esta nota [note]?</string>
+	<string name="config_intro">Seleccione el formato deseado para ser utilizado en la lista de \'Seleccionar widget\'. Después de elegir esta opción, tendrá que reiniciar el dispositivo para asegurarse de que los cambios surtan efecto.</string>
+	<string name="config_activity_name">ToDoList Configuración</string>
+	<string name="config_disable_warning_title">Advertencia</string>
+	<string name="config_disable_warning_message_single">Tiene actualmente un widget activo utilizando este tamaño. Si deshabilita este tamaño, este control también se eliminará</string>
+	<string name="config_disable_warning_message_plural">Usted Actualmente tiene [num] activos widgets utilizando este tamaño. Si deshabilita este tamaño, estos reproductores también serán eliminados</string>
+	<string name="config_save_warning_message">Para que estos cambios surtan efecto, deberá reiniciar el dispositivo.</string>
 </resources>

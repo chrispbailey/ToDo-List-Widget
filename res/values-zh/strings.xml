@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">备忘录桌面Widget</string>
-    <string name="app_name_1x1">备忘录桌面Widget 1x1</string>
-    <string name="app_name_1x2">备忘录桌面Widget 1x2</string>
-    <string name="app_name_1x3">备忘录桌面Widget 1x3</string>
-    <string name="app_name_1x4">备忘录桌面Widget 1x4</string>
-    <string name="app_name_2x1">备忘录桌面Widget 2x1</string>
-    <string name="app_name_2x2">备忘录桌面Widget 2x2</string>
-    <string name="app_name_2x3">备忘录桌面Widget 2x3</string>
-    <string name="app_name_2x4">备忘录桌面Widget 2x4</string>
-    <string name="app_name_3x1">备忘录桌面Widget 3x1</string>
-    <string name="app_name_3x2">备忘录桌面Widget 3x2</string>
-    <string name="app_name_3x3">备忘录桌面Widget 3x3</string>
-    <string name="app_name_3x4">备忘录桌面Widget 3x4</string>
-    <string name="app_name_4x1">备忘录桌面Widget 4x1</string>
-    <string name="app_name_4x2">备忘录桌面Widget 4x2</string>
-    <string name="app_name_4x3">备忘录桌面Widget 4x3</string>
-    <string name="app_name_4x4">备忘录桌面Widget 4x4</string>
-    <string name="delete_confirm">你确定要删除此项目吗 [note]?</string>
-    <string name="menu_preferences">设置</string>
-	<string name="config_intro"> \'Seleccionar widget\'.</string>
-    <string name="config_activity_name"></string>
-	<string name="config_disable_warning_title">警告</string>
-	<string name="config_disable_warning_message_single"></string>
-	<string name="config_disable_warning_message_plural"></string>
-	<string name="config_save_warning_message"></string>
+	<!-- CHINESE -->
+	<string name="app_name">备忘录桌面Widget</string>
+	<string name="app_name_1x1">备忘录桌面Widget 1x1</string>
+	<string name="app_name_1x2">备忘录桌面Widget 1x2</string>
+	<string name="app_name_1x3">备忘录桌面Widget 1x3</string>
+	<string name="app_name_1x4">备忘录桌面Widget 1x4</string>
+	<string name="app_name_2x1">备忘录桌面Widget 2x1</string>
+	<string name="app_name_2x2">备忘录桌面Widget 2x2</string>
+	<string name="app_name_2x3">备忘录桌面Widget 2x3</string>
+	<string name="app_name_2x4">备忘录桌面Widget 2x4</string>
+	<string name="app_name_3x1">备忘录桌面Widget 3x1</string>
+	<string name="app_name_3x2">备忘录桌面Widget 3x2</string>
+	<string name="app_name_3x3">备忘录桌面Widget 3x3</string>
+	<string name="app_name_3x4">备忘录桌面Widget 3x4</string>
+	<string name="app_name_4x1">备忘录桌面Widget 4x1</string>
+	<string name="app_name_4x2">备忘录桌面Widget 4x2</string>
+	<string name="app_name_4x3">备忘录桌面Widget 4x3</string>
+	<string name="app_name_4x4">备忘录桌面Widget 4x4</string>
+	<string name="delete_confirm">你确定要删除此项目吗 [note]?</string>
+	<string name="menu_preferences">设置</string>
+	<string name="config_intro">欢迎到备忘录（小部件）设置界面。选择你需要的尺寸，所选的尺寸会出现在" 添加（小部件) " 列表. 选择完成后,请重启你的手机(或其他设备)然后你的选项才会生效</string>
+	<string name="config_activity_name">备忘录（小部件）设置</string>
+	<string name="config_disable_warning_title">注意</string>
+	<string name="config_disable_warning_message_single">你现在有[num]个（小部件) 使用这个尺寸. 如果你取消这个尺寸,这些（小部件）会被删除</string>
+	<string name="config_disable_warning_message_plural">你现在有[num]个（小部件) 使用这个尺寸. 如果你取消这个尺寸,这些（小部件）会被删除</string>
+	<string name="config_save_warning_message">为了使你的设置更改生效, 请重启你的手机(或其他设备)</string>
 </resources>
