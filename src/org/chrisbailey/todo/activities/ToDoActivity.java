@@ -2,8 +2,6 @@ package org.chrisbailey.todo.activities;
 
 import java.util.LinkedList;
 
-import org.chrisbailey.todo.LargeToDoWidget;
-import org.chrisbailey.todo.MediumToDoWidget;
 import org.chrisbailey.todo.R;
 import org.chrisbailey.todo.ToDoWidgetProvider;
 import org.chrisbailey.todo.ToDoWidgetProvider.MOVE;
@@ -15,7 +13,6 @@ import org.chrisbailey.todo.utils.Note.Status;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -44,7 +41,7 @@ public class ToDoActivity extends Activity
     public ToDoDatabase db;
     
     private static final String LOG_TAG = "ToDoActivity";
-    public static final boolean debug = false;
+    public static final boolean debug = true;
     private static float scale;
     private PreferenceManager pm;
     
@@ -158,28 +155,10 @@ public class ToDoActivity extends Activity
             db = null;
         }
 
-        if (debug) Log.i(LOG_TAG, "Sending intents to all widgets");
+        if (debug) Log.i(LOG_TAG, "Sending intents to widget #" + mAppWidgetId);
         
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-        ComponentName THIS_APPWIDGET = new ComponentName(getApplicationContext(), ToDoWidgetProvider.class);
-        int [] ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
-        for (int i : ids)
-        {
-            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
-        }
-        THIS_APPWIDGET = new ComponentName(getApplicationContext(), MediumToDoWidget.class);
-        ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
-        for (int i : ids)
-        {
-            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
-        }
-        THIS_APPWIDGET = new ComponentName(getApplicationContext(), LargeToDoWidget.class);
-        ids = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
-        for (int i : ids)
-        {
-            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
-        }
-        
+        ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, mAppWidgetId, MOVE.NONE);
         setConfigureResult(RESULT_OK);
         finish();
     }
