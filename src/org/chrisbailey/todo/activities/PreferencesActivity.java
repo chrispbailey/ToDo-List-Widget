@@ -2,7 +2,24 @@ package org.chrisbailey.todo.activities;
 
 import java.util.ArrayList;
 
+import org.chrisbailey.todo.LargeToDoWidget;
+import org.chrisbailey.todo.MediumToDoWidget;
 import org.chrisbailey.todo.R;
+import org.chrisbailey.todo.SmallToDoWidget;
+import org.chrisbailey.todo.ToDoWidget1x1;
+import org.chrisbailey.todo.ToDoWidget1x2;
+import org.chrisbailey.todo.ToDoWidget1x3;
+import org.chrisbailey.todo.ToDoWidget1x4;
+import org.chrisbailey.todo.ToDoWidget3x1;
+import org.chrisbailey.todo.ToDoWidget3x2;
+import org.chrisbailey.todo.ToDoWidget3x3;
+import org.chrisbailey.todo.ToDoWidget3x4;
+import org.chrisbailey.todo.ToDoWidget4x1;
+import org.chrisbailey.todo.ToDoWidget4x2;
+import org.chrisbailey.todo.ToDoWidget4x3;
+import org.chrisbailey.todo.ToDoWidget4x4;
+import org.chrisbailey.todo.ToDoWidgetProvider;
+import org.chrisbailey.todo.ToDoWidgetProvider.MOVE;
 import org.chrisbailey.todo.db.ToDoDatabase;
 import org.chrisbailey.todo.utils.PreferenceManager;
 import org.chrisbailey.todo.widgets.ColorPickerDialog;
@@ -10,6 +27,8 @@ import org.chrisbailey.todo.widgets.NumberPicker;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
@@ -117,12 +136,7 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         {
             public void onClick(View v)
             {
-                db = new ToDoDatabase(PreferencesActivity.this);
-                pm.save(db);
-                db.close();
-                db = null;
-                setResult(0, null);
-                finish();
+            	saveAndClose();
             }
         });
         
@@ -173,6 +187,46 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         
         // update
         updateIcons(2);
+    }
+    
+    private void saveAndClose()
+    {
+        db = new ToDoDatabase(PreferencesActivity.this);
+        pm.save(db);
+        db.close();
+        db = null;
+        setResult(0, null);
+
+        // refresh any visible widgets
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());        
+        refreshWidgets(appWidgetManager, ToDoWidgetProvider.class);
+        refreshWidgets(appWidgetManager, LargeToDoWidget.class);
+        refreshWidgets(appWidgetManager, MediumToDoWidget.class);
+        refreshWidgets(appWidgetManager, SmallToDoWidget.class);
+        refreshWidgets(appWidgetManager, ToDoWidget1x1.class);
+        refreshWidgets(appWidgetManager, ToDoWidget1x2.class);
+        refreshWidgets(appWidgetManager, ToDoWidget1x3.class);
+        refreshWidgets(appWidgetManager, ToDoWidget1x4.class);
+        refreshWidgets(appWidgetManager, ToDoWidget3x1.class);
+        refreshWidgets(appWidgetManager, ToDoWidget3x2.class);
+        refreshWidgets(appWidgetManager, ToDoWidget3x3.class);
+        refreshWidgets(appWidgetManager, ToDoWidget3x4.class);
+        refreshWidgets(appWidgetManager, ToDoWidget4x1.class);
+        refreshWidgets(appWidgetManager, ToDoWidget4x2.class);
+        refreshWidgets(appWidgetManager, ToDoWidget4x3.class);
+        refreshWidgets(appWidgetManager, ToDoWidget4x4.class);
+        finish();
+    }
+    
+    private void refreshWidgets(AppWidgetManager appWidgetManager, Class <? extends ToDoWidgetProvider> c)
+    {
+    	ComponentName component = new ComponentName(getApplicationContext(), c);
+        int [] ids = appWidgetManager.getAppWidgetIds(component);
+        for (int i : ids)
+        {
+        	if (ToDoActivity.debug) Log.i(LOG_TAG, "Sending intents to widget #" + ids);
+            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
+        }
     }
     
     @Override
