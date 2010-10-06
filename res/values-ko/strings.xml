@@ -20,10 +20,10 @@
 	<string name="app_name_4x4">ToDo 위젯 4x4</string>
 	<string name="menu_preferences">설정</string>
 	<string name="delete_confirm">(정말) 삭제하시겠습니까 [note]?</string>
-	<string name="config_intro"> \'위젯 선택\'.</string>
-	<string name="config_activity_name"></string>
+	<string name="config_intro"> 위젯 설정 유틸리티입니다. \'위젯 선택\' 목록에 보여지게 될 크기를 선택하세요. 변경된 사항을 적용하기 위해 재부팅해야 합니다</string>
+	<string name="config_activity_name">위젯 설정</string>
 	<string name="config_disable_warning_title">경고</string>
-	<string name="config_disable_warning_message_single"></string>
-	<string name="config_disable_warning_message_plural"></string>
-	<string name="config_save_warning_message"></string>
+	<string name="config_disable_warning_message_single">현재 위 크기로 1 개의 활성화된 위젯이 있습니다. 해당 크기를 비활성화할 경우 해당 위젯 또한 삭제됩니다</string>
+	<string name="config_disable_warning_message_plural">현재 위 크기로 [num] 개의 활성화된 위젯이 있습니다. 해당 크기를 비활성화할 경우 해당 위젯 또한 삭제됩니다</string>
+	<string name="config_save_warning_message">변경된 사항을 적용하기 위해 재부팅해야 합니다</string>
 </resources>
