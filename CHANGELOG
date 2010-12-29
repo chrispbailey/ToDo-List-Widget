@@ -1,0 +1,33 @@
+Version: 1.7.1 (29th December, 2010)
+* Refactoring widget class names
+* Branching and moving to GitHub
+
+Version: 1.7 (10th December, 2010)
+* Adding Korean translation for settings screen
+* Removing unneeded permissions
+
+Version: 1.6 (4th October, 2010)
+* Adding more widget sizes (1x1,1x2,1x3,1x4,2x1,3x1,3x2,3x3,3x4,4x1,4x2,4x3,4x4)
+* Adding tabbed configuration activity allowing enabling/disabling of all widget sizes & easy access to preferences screen
+* Adding enable/disable scroll button option to preferences screen
+* Minor bug fixes
+
+Version: 1.4 (24th July, 2010)
+* Added new scroll buttons 
+
+Version: 1.3 (17th July, 2010)
+* This release brings a new customisation menu option. You can customise text size, colours, tick icons and background images.
+* Also moved to a different icon set
+
+Version: 1.2 (2nd July, 2010)
+* New rounded background
+* Optional titles for notes
+* 3 widget sizes: 2x2, 2x3, 2x4
+* Korean & Chinese translations
+
+Version: 1.1 (24th June, 2010)
+* Adding support for all screen resolutions
+* Adding Korean & Chinese translations
+
+Version: 1.0 (22nd June, 2010)
+* First release on Android market

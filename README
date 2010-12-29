@@ -1,9 +1,15 @@
-This is the open source Android ToDo List Widget app.
+This is the Android 'ToDo List Widget' application
 
+HISTORY
+This app was released on the market in June 2010. 
+In December 2010 I released the code as open source under the GPL v3.0 license
 More information about the published app can be found at <http://chris.bailey.name>
+See the CHANGELOG file for complete version history
 
+DEVELOPERS
 For developers, you'll need the Android SDK, Eclipse and the ADT plugin.
 Information about obtaining these can be found at:
 <http://developer.android.com/sdk/installing.html>
 
+--
 Chris Bailey
