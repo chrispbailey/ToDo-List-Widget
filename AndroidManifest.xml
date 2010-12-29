@@ -42,7 +42,7 @@
 			</intent-filter>
 		</activity>
 
-		<receiver android:name="SmallToDoWidget" android:label="@string/app_name_2x1">
+		<receiver android:name="ToDoWidget2x1" android:label="@string/app_name_2x1">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 				<action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />
@@ -51,7 +51,7 @@
 				android:resource="@xml/todowidget2x1" />
 		</receiver>
 
-		<receiver android:name="ToDoWidgetProvider" android:label="@string/app_name_2x2">
+		<receiver android:name="ToDoWidget2x2" android:label="@string/app_name_2x2">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 				<action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />
@@ -60,7 +60,7 @@
 				android:resource="@xml/todowidget2x2" />
 		</receiver>
 
-		<receiver android:name="MediumToDoWidget" android:label="@string/app_name_2x3">
+		<receiver android:name="ToDoWidget2x3" android:label="@string/app_name_2x3">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 				<action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />
@@ -69,7 +69,7 @@
 				android:resource="@xml/todowidget2x3" />
 		</receiver>
 
-		<receiver android:name="LargeToDoWidget" android:label="@string/app_name_2x4">
+		<receiver android:name="ToDoWidget2x4" android:label="@string/app_name_2x4">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 				<action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />

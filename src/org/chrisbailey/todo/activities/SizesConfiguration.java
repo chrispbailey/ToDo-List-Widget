@@ -20,10 +20,10 @@ package org.chrisbailey.todo.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.chrisbailey.todo.LargeToDoWidget;
-import org.chrisbailey.todo.MediumToDoWidget;
+import org.chrisbailey.todo.ToDoWidget2x4;
+import org.chrisbailey.todo.ToDoWidget2x3;
 import org.chrisbailey.todo.R;
-import org.chrisbailey.todo.SmallToDoWidget;
+import org.chrisbailey.todo.ToDoWidget2x1;
 import org.chrisbailey.todo.ToDoWidget1x1;
 import org.chrisbailey.todo.ToDoWidget1x2;
 import org.chrisbailey.todo.ToDoWidget1x3;
@@ -36,7 +36,7 @@ import org.chrisbailey.todo.ToDoWidget4x1;
 import org.chrisbailey.todo.ToDoWidget4x2;
 import org.chrisbailey.todo.ToDoWidget4x3;
 import org.chrisbailey.todo.ToDoWidget4x4;
-import org.chrisbailey.todo.ToDoWidgetProvider;
+import org.chrisbailey.todo.ToDoWidget2x2;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -79,10 +79,10 @@ public class SizesConfiguration extends Activity implements View.OnClickListener
         addWidget(layout, ToDoWidget1x2.class, R.string.app_name_1x2);
         addWidget(layout, ToDoWidget1x3.class, R.string.app_name_1x3);
         addWidget(layout, ToDoWidget1x4.class, R.string.app_name_1x4);
-        addWidget(layout, SmallToDoWidget.class, R.string.app_name_2x1);
-        addWidget(layout, ToDoWidgetProvider.class, R.string.app_name_2x2);
-        addWidget(layout, MediumToDoWidget.class, R.string.app_name_2x3);
-        addWidget(layout, LargeToDoWidget.class, R.string.app_name_2x4);
+        addWidget(layout, ToDoWidget2x1.class, R.string.app_name_2x1);
+        addWidget(layout, ToDoWidget2x2.class, R.string.app_name_2x2);
+        addWidget(layout, ToDoWidget2x3.class, R.string.app_name_2x3);
+        addWidget(layout, ToDoWidget2x4.class, R.string.app_name_2x4);
         addWidget(layout, ToDoWidget3x1.class, R.string.app_name_3x1);
         addWidget(layout, ToDoWidget3x2.class, R.string.app_name_3x2);
         addWidget(layout, ToDoWidget3x3.class, R.string.app_name_3x3);

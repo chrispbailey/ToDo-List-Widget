@@ -17,4 +17,4 @@
  ******************************************************************************/
 package org.chrisbailey.todo;
 
-public class ToDoWidget4x3 extends ToDoWidgetProvider { }
+public class ToDoWidget4x3 extends ToDoWidget2x2 { }

@@ -19,10 +19,10 @@ package org.chrisbailey.todo.activities;
 
 import java.util.ArrayList;
 
-import org.chrisbailey.todo.LargeToDoWidget;
-import org.chrisbailey.todo.MediumToDoWidget;
+import org.chrisbailey.todo.ToDoWidget2x4;
+import org.chrisbailey.todo.ToDoWidget2x3;
 import org.chrisbailey.todo.R;
-import org.chrisbailey.todo.SmallToDoWidget;
+import org.chrisbailey.todo.ToDoWidget2x1;
 import org.chrisbailey.todo.ToDoWidget1x1;
 import org.chrisbailey.todo.ToDoWidget1x2;
 import org.chrisbailey.todo.ToDoWidget1x3;
@@ -35,8 +35,8 @@ import org.chrisbailey.todo.ToDoWidget4x1;
 import org.chrisbailey.todo.ToDoWidget4x2;
 import org.chrisbailey.todo.ToDoWidget4x3;
 import org.chrisbailey.todo.ToDoWidget4x4;
-import org.chrisbailey.todo.ToDoWidgetProvider;
-import org.chrisbailey.todo.ToDoWidgetProvider.MOVE;
+import org.chrisbailey.todo.ToDoWidget2x2;
+import org.chrisbailey.todo.ToDoWidget2x2.MOVE;
 import org.chrisbailey.todo.db.ToDoDatabase;
 import org.chrisbailey.todo.utils.PreferenceManager;
 import org.chrisbailey.todo.widgets.ColorPickerDialog;
@@ -216,10 +216,10 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
 
         // refresh any visible widgets
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());        
-        refreshWidgets(appWidgetManager, ToDoWidgetProvider.class);
-        refreshWidgets(appWidgetManager, LargeToDoWidget.class);
-        refreshWidgets(appWidgetManager, MediumToDoWidget.class);
-        refreshWidgets(appWidgetManager, SmallToDoWidget.class);
+        refreshWidgets(appWidgetManager, ToDoWidget2x2.class);
+        refreshWidgets(appWidgetManager, ToDoWidget2x4.class);
+        refreshWidgets(appWidgetManager, ToDoWidget2x3.class);
+        refreshWidgets(appWidgetManager, ToDoWidget2x1.class);
         refreshWidgets(appWidgetManager, ToDoWidget1x1.class);
         refreshWidgets(appWidgetManager, ToDoWidget1x2.class);
         refreshWidgets(appWidgetManager, ToDoWidget1x3.class);
@@ -235,14 +235,14 @@ public class PreferencesActivity extends Activity implements ColorPickerDialog.O
         finish();
     }
     
-    private void refreshWidgets(AppWidgetManager appWidgetManager, Class <? extends ToDoWidgetProvider> c)
+    private void refreshWidgets(AppWidgetManager appWidgetManager, Class <? extends ToDoWidget2x2> c)
     {
     	ComponentName component = new ComponentName(getApplicationContext(), c);
         int [] ids = appWidgetManager.getAppWidgetIds(component);
         for (int i : ids)
         {
         	if (ToDoActivity.debug) Log.i(LOG_TAG, "Sending intents to widget #" + ids);
-            ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
+            ToDoWidget2x2.updateAppWidget(getApplicationContext(), appWidgetManager, i, MOVE.NONE);
         }
     }
     

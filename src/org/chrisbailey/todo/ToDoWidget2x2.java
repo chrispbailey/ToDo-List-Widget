@@ -36,7 +36,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
-public class ToDoWidgetProvider extends AppWidgetProvider
+public class ToDoWidget2x2 extends AppWidgetProvider
 {
     public static final int MAX_NOTES = 20;
     public static String LOG_TAG = "ToDoWidgetProvider";
@@ -248,7 +248,7 @@ public class ToDoWidgetProvider extends AppWidgetProvider
                         int imageDrawable = pm.getActiveIcon();
                         if (n.status == Note.Status.FINISHED) imageDrawable = pm.getFinishedIcon();
                         views.setImageViewResource(imageField, imageDrawable);
-                        Intent intent = new Intent(context, ToDoWidgetProvider.class);
+                        Intent intent = new Intent(context, ToDoWidget2x2.class);
                         intent.setAction(TOGGLE+n.id);
                         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
                         intent.putExtra(TOGGLE+n.id, 1);
@@ -279,14 +279,14 @@ public class ToDoWidgetProvider extends AppWidgetProvider
             
             if (showScrollButtons)
             {
-	            intent = new Intent(context, ToDoWidgetProvider.class);
+	            intent = new Intent(context, ToDoWidget2x2.class);
 	            intent.setAction(BUTTON_UP);
 	            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
 	            intent.putExtra(BUTTON_UP, 1);
 	            pendingIntent = PendingIntent.getBroadcast(context, appWidgetId, intent, 0);
 	            views.setOnClickPendingIntent(R.id.widget_scroll_up, pendingIntent);
 	
-	            intent = new Intent(context, ToDoWidgetProvider.class);
+	            intent = new Intent(context, ToDoWidget2x2.class);
 	            intent.setAction(BUTTON_DOWN);
 	            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
 	            intent.putExtra(BUTTON_DOWN, 1);

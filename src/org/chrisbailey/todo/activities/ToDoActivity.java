@@ -20,8 +20,8 @@ package org.chrisbailey.todo.activities;
 import java.util.LinkedList;
 
 import org.chrisbailey.todo.R;
-import org.chrisbailey.todo.ToDoWidgetProvider;
-import org.chrisbailey.todo.ToDoWidgetProvider.MOVE;
+import org.chrisbailey.todo.ToDoWidget2x2;
+import org.chrisbailey.todo.ToDoWidget2x2.MOVE;
 import org.chrisbailey.todo.db.ToDoDatabase;
 import org.chrisbailey.todo.utils.Note;
 import org.chrisbailey.todo.utils.PreferenceManager;
@@ -175,7 +175,7 @@ public class ToDoActivity extends Activity
         if (debug) Log.i(LOG_TAG, "Sending intents to widget #" + mAppWidgetId);
         
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-        ToDoWidgetProvider.updateAppWidget(getApplicationContext(), appWidgetManager, mAppWidgetId, MOVE.NONE);
+        ToDoWidget2x2.updateAppWidget(getApplicationContext(), appWidgetManager, mAppWidgetId, MOVE.NONE);
         setConfigureResult(RESULT_OK);
         finish();
     }
