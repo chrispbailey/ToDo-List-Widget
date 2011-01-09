@@ -27,7 +27,7 @@
 	<application android:icon="@drawable/icon" android:label="@string/app_name">
 
 		<activity android:name=".activities.ToDoActivity" android:label="@string/app_name"
-			android:theme="@android:style/Theme.Dialog" />
+			android:theme="@android:style/Theme.Dialog" android:windowSoftInputMode="adjustResize"/>
 
 		<activity android:name=".activities.PreferencesActivity" android:label="@string/app_name" />
 

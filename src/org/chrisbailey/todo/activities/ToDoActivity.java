@@ -36,6 +36,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
@@ -294,6 +295,7 @@ public class ToDoActivity extends Activity
     {
         EditText et = new EditText(c);
         et.setWidth((int)(scale * 200));
+        et.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
         return et;
     }
     
