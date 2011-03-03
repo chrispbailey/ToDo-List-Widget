@@ -7,8 +7,8 @@ import org.chrisbailey.todo.ToDoWidgetProvider;
 import org.chrisbailey.todo.ToDoWidgetProvider.MOVE;
 import org.chrisbailey.todo.db.ToDoDatabase;
 import org.chrisbailey.todo.utils.Note;
-import org.chrisbailey.todo.utils.PreferenceManager;
 import org.chrisbailey.todo.utils.Note.Status;
+import org.chrisbailey.todo.utils.PreferenceManager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
@@ -31,9 +32,9 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.ImageView.ScaleType;
 
 public class ToDoActivity extends Activity
 {
@@ -277,6 +278,7 @@ public class ToDoActivity extends Activity
     {
         EditText et = new EditText(c);
         et.setWidth((int)(scale * 200));
+        et.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
         return et;
     }
     
