@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<!-- GERMAN -->
-	<string name="menu_preferences">Einstellungen</string>
-	<string name="delete_confirm">Sind Sie sicher, dass Sie diese Notiz löschen [note]?</string>
-	<string name="config_intro">Bitte wählen Sie die Größen, die Sie in der \'Widget auswählen\'-Liste erscheinen soll. Nach Auswahl Ihrer Optionen, werden Sie zum Neustart müssen Sie das Gerät, damit die Änderungen wirksam werden.</string>
-	<string name="config_activity_name">ToDoList Konfiguration</string>
-	<string name="config_disable_warning_title">Warnung</string>
-	<string name="config_disable_warning_message_single">Derzeit haben Sie 1 aktive Widget Hilfe dieser Größe. Wenn Sie diese Größe deaktivieren, wird dieses Widget auch entfernt werden</string>
-	<string name="config_disable_warning_message_plural">Sie haben derzeit [num] aktive Widgets mit Hilfe dieser Größe. Wenn Sie diese Größe deaktivieren, werden diese Widgets auch entfernt werden</string>
-	<string name="config_save_warning_message">Für diese Änderungen wirksam werden, werden Sie zum Neustart des Geräts benötigen.</string>
+    <!-- GERMAN -->
+    <string name="menu_preferences">Einstellungen</string>
+    <string name="delete_confirm">Soll diese Aufgabe wirklich gelöscht werden: [note]?</string>
+    <string name="config_intro">Welche Größen sollen beim Hinzufügen des Widgets zur Auswahl stehen? Damit die Änderungen wirksam werden, muss das Gerät neu gestartet werden.</string>
+    <string name="config_activity_name">ToDo List Konfiguration</string>
+    <string name="config_disable_warning_title">Warnung</string>
+    <string name="config_disable_warning_message_single">Es gibt ein aktives Widget dieser Größe. Wird diese Größe deaktiviert, wird dieses Widget entfernt.</string>
+    <string name="config_disable_warning_message_plural">Es gibt [num] aktive Widgets dieser Größe. Wird diese Größe deaktiviert, werden diese Widgets entfernt.</string>
+    <string name="config_save_warning_message">Damit diese Änderungen wirksam werden, muss das Gerät neu gestartet werden!</string>
 </resources>
