@@ -21,7 +21,7 @@ import android.widget.RemoteViews;
 
 public class ToDoWidgetProvider extends AppWidgetProvider
 {
-    public static final int MAX_NOTES = 20;
+    public static final int MAX_NOTES = 25;
     public static String LOG_TAG = "ToDoWidgetProvider";
     
     public static final String BUTTON_UP = "org.chrisbailey.todo.btn.up";

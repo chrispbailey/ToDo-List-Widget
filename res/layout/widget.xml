@@ -212,6 +212,7 @@
 			android:layout_below="@id/note_17"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
+    <!--  18 -->
 		<TextView android:id="@+id/note_18" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/note_17" android:layout_toRightOf="@id/noteimage_18"
@@ -219,9 +220,10 @@
 
 		<ImageView android:id="@+id/noteimage_19"
 			android:layout_width="20dp" android:layout_height="20dp"
-			android:layout_below="@id/note_17"
+			android:layout_below="@id/note_18"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
+    <!--  19 -->
 		<TextView android:id="@+id/note_19" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/note_18" android:layout_toRightOf="@id/noteimage_19"
@@ -232,11 +234,71 @@
 			android:layout_below="@id/note_19"
 			android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 
+    <!--  20 -->
 		<TextView android:id="@+id/note_20" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_below="@id/note_10" android:layout_toRightOf="@id/noteimage_20"
+			android:layout_below="@id/note_19" android:layout_toRightOf="@id/noteimage_20"
 			android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_20" />
 
+    <ImageView android:id="@+id/noteimage_21"
+      android:layout_width="20dp" android:layout_height="20dp"
+      android:layout_below="@id/note_20"
+      android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+
+    <!--  21 -->
+    <TextView android:id="@+id/note_21" android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/note_20" android:layout_toRightOf="@id/noteimage_21"
+      android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_21" />
+    
+    <ImageView android:id="@+id/noteimage_22"
+      android:layout_width="20dp" android:layout_height="20dp"
+      android:layout_below="@id/note_21"
+      android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+
+    <!--  22 -->
+    <TextView android:id="@+id/note_22" android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/note_21" android:layout_toRightOf="@id/noteimage_22"
+      android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_22" />
+    
+    <ImageView android:id="@+id/noteimage_23"
+      android:layout_width="20dp" android:layout_height="20dp"
+      android:layout_below="@id/note_22"
+      android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+
+    <!--  23 -->
+    <TextView android:id="@+id/note_23" android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/note_10" android:layout_toRightOf="@id/noteimage_23"
+      android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_23" />
+    
+    <ImageView android:id="@+id/noteimage_24"
+      android:layout_width="20dp" android:layout_height="20dp"
+      android:layout_below="@id/note_23"
+      android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+
+    <!--  24 -->
+    <TextView android:id="@+id/note_24" android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/note_10" android:layout_toRightOf="@id/noteimage_24"
+      android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_24" />
+    
+    <ImageView android:id="@+id/noteimage_25"
+      android:layout_width="20dp" android:layout_height="20dp"
+      android:layout_below="@id/note_24"
+      android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
+
+    <!--  25 -->
+    <TextView android:id="@+id/note_25" android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/note_10" android:layout_toRightOf="@id/noteimage_25"
+      android:paddingLeft="3dp" android:layout_alignTop="@id/noteimage_25" />
+
+    <ImageView android:id="@+id/noteimage_26"
+      android:layout_width="20dp" android:layout_height="20dp"
+      android:layout_below="@id/note_25"
+      android:layout_marginTop="3dp" android:layout_alignParentLeft="true" />
 	</RelativeLayout>
 
 </RelativeLayout>
