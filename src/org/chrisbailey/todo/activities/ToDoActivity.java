@@ -202,13 +202,13 @@ public class ToDoActivity extends Activity
         toggle.setImageDrawable(getResources().getDrawable(btn));
         
         EditText note = (EditText) row.getChildAt(1);
-        if (status == Note.Status.FINISHED) note.setTextColor(pm.getFinishedColor());
-        else note.setTextColor(pm.getActiveColor());
+        if (status == Note.Status.FINISHED) note.setTextColor(getResources().getColor(R.color.default_finished_color));
+        else note.setTextColor(getResources().getColor(R.color.default_active_color));
     }
     
     public void redraw(ToDoActivity c, FOCUS focus)
     {
-        title.setTextColor(pm.getActiveColor());
+        title.setTextColor(getResources().getColor(R.color.default_active_color));
         
         TableLayout table = (TableLayout) c.findViewById(R.id.table_layout);
         
