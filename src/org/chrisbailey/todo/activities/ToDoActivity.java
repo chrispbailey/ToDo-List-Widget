@@ -359,6 +359,8 @@ public class ToDoActivity extends Activity
         
         public void onClick(View v)
         {
+        	try
+        	{
             ImageView b = ((ImageView)v);
             Note n = db.getNote(b.getId());
             
@@ -367,6 +369,11 @@ public class ToDoActivity extends Activity
             db.updateNote(n);
             
             toggleRow((TableRow)(v.getParent()), n.status);
+        	}
+        	catch (NullPointerException npe)
+        	{
+        		// Do nothing
+        	}
         }
     }
     
@@ -409,9 +416,13 @@ public class ToDoActivity extends Activity
         @Override
         public void afterTextChanged(Editable s)
         {
+        	try
+        	{
             int id= et.getId();
             String str = et.getText().toString();
             db.setTitle(id, str);
+        	}
+        	catch (NullPointerException npe) { /* do nothing */ }
         }
     }
     
