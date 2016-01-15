@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
-    
-	<TextView android:id="@+id/config_intro_text"
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content" 
-	    android:text="@string/config_intro"
-	    android:layout_alignParentTop="true"
-	    android:gravity="center_horizontal"
-	    android:padding="3dp"
-	    />
-    
-	<!-- Action buttons -->
-	<LinearLayout android:id="@+id/config_button_layout"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:orientation="horizontal" android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true" android:paddingTop="10dp"
-		android:paddingBottom="10dp"
-		android:background="#FF323232">
+    android:orientation="vertical" >
 
-		<ImageView android:id="@+id/config_save_button" android:layout_width="48dp"
-			android:background="@drawable/buttons" android:layout_height="48dp"
-			android:layout_weight="0.5" android:src="@drawable/action_save" />
+    <TextView
+        android:id="@+id/config_intro_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:padding="3dp"
+        android:text="@string/config_intro" />
 
-		<ImageView android:id="@+id/config_cancel_button"
-			android:background="@drawable/buttons" android:layout_width="48dp"
-			android:layout_height="48dp" android:layout_weight="0.5"
-			android:src="@drawable/action_cancel" />
+    <!-- Action buttons -->
 
-	</LinearLayout>
-	    
-    <ScrollView 
-    	android:layout_above="@id/config_button_layout"
-	    android:layout_below="@id/config_intro_text"
-	    android:layout_height="fill_parent"
-	    android:layout_width="fill_parent"
-	    android:paddingLeft="5dp">
+    <LinearLayout
+        android:id="@+id/config_button_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#FF323232"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
 
-		<LinearLayout 
-			android:id="@+id/widgetListLayout"
-			android:orientation="vertical"
-			android:layout_width="fill_parent"
-    		android:layout_height="fill_parent">
-		</LinearLayout>
+        <ImageView
+            android:id="@+id/config_save_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/buttons"
+            android:src="@drawable/action_save" />
+
+        <ImageView
+            android:id="@+id/config_cancel_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/buttons"
+            android:src="@drawable/action_cancel" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/config_button_layout"
+        android:layout_below="@id/config_intro_text"
+        android:paddingLeft="5dp" >
+
+        <LinearLayout
+            android:id="@+id/widgetListLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>

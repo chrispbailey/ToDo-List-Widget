@@ -1,0 +1,202 @@
+org.chrisbailey.todo.R$attr
+org.chrisbailey.todo.R$color
+org.chrisbailey.todo.R$drawable:
+    public static final int action_add
+    public static final int action_cancel
+    public static final int action_delete
+    public static final int action_save
+    public static final int action_scroll_down
+    public static final int action_scroll_up
+    public static final int background_10_0
+    public static final int background_1_1
+    public static final int background_30_1
+    public static final int background_40_1
+    public static final int background_50_2
+    public static final int background_5_1
+    public static final int background_99_0
+    public static final int backgroundborder
+    public static final int border_off
+    public static final int border_on
+    public static final int buttons
+    public static final int buttonstyle
+    public static final int example_background
+    public static final int ic_menu_clear_playlist
+    public static final int icon
+    public static final int icon_active_1
+    public static final int icon_active_2
+    public static final int icon_active_4
+    public static final int icon_active_5
+    public static final int icon_active_6
+    public static final int icon_active_9
+    public static final int icon_configure
+    public static final int icon_finished_1
+    public static final int icon_finished_2
+    public static final int icon_finished_4
+    public static final int icon_finished_5
+    public static final int icon_finished_6
+    public static final int icon_finished_9
+    public static final int input_background
+    public static final int shape
+    public static final int timepicker_down_btn
+    public static final int timepicker_down_disabled
+    public static final int timepicker_down_disabled_focused
+    public static final int timepicker_down_normal
+    public static final int timepicker_down_pressed
+    public static final int timepicker_down_selected
+    public static final int timepicker_input
+    public static final int timepicker_input_disabled
+    public static final int timepicker_input_normal
+    public static final int timepicker_input_pressed
+    public static final int timepicker_input_selected
+    public static final int timepicker_up_btn
+    public static final int timepicker_up_disabled
+    public static final int timepicker_up_disabled_focused
+    public static final int timepicker_up_normal
+    public static final int timepicker_up_pressed
+    public static final int timepicker_up_selected
+org.chrisbailey.todo.R$id:
+    public static final int active_color_icon
+    public static final int addnotebutton
+    public static final int background
+    public static final int background_selector
+    public static final int button_layout
+    public static final int cancel_button
+    public static final int colorcircle
+    public static final int config_button_layout
+    public static final int config_cancel_button
+    public static final int config_intro_text
+    public static final int config_save_button
+    public static final int decrement
+    public static final int donebutton
+    public static final int edittitle
+    public static final int finished_color_icon
+    public static final int font_size_selector
+    public static final int icon_selector
+    public static final int increment
+    public static final int menu_configure
+    public static final int note_1
+    public static final int note_10
+    public static final int note_11
+    public static final int note_12
+    public static final int note_13
+    public static final int note_14
+    public static final int note_15
+    public static final int note_16
+    public static final int note_17
+    public static final int note_18
+    public static final int note_19
+    public static final int note_2
+    public static final int note_20
+    public static final int note_21
+    public static final int note_22
+    public static final int note_23
+    public static final int note_24
+    public static final int note_25
+    public static final int note_3
+    public static final int note_4
+    public static final int note_5
+    public static final int note_6
+    public static final int note_7
+    public static final int note_8
+    public static final int note_9
+    public static final int noteimage_1
+    public static final int noteimage_10
+    public static final int noteimage_11
+    public static final int noteimage_12
+    public static final int noteimage_13
+    public static final int noteimage_14
+    public static final int noteimage_15
+    public static final int noteimage_16
+    public static final int noteimage_17
+    public static final int noteimage_18
+    public static final int noteimage_19
+    public static final int noteimage_2
+    public static final int noteimage_20
+    public static final int noteimage_21
+    public static final int noteimage_22
+    public static final int noteimage_23
+    public static final int noteimage_24
+    public static final int noteimage_25
+    public static final int noteimage_26
+    public static final int noteimage_3
+    public static final int noteimage_4
+    public static final int noteimage_5
+    public static final int noteimage_6
+    public static final int noteimage_7
+    public static final int noteimage_8
+    public static final int noteimage_9
+    public static final int notetitle
+    public static final int ok_button
+    public static final int padding1
+    public static final int padding2
+    public static final int pick_color_active
+    public static final int pick_color_finished
+    public static final int preview
+    public static final int saturation
+    public static final int scroll_buttons_down
+    public static final int scroll_buttons_enable
+    public static final int scroll_buttons_up
+    public static final int table_layout
+    public static final int timepicker_input
+    public static final int value
+    public static final int widgetListLayout
+    public static final int widget_background
+    public static final int widget_layout
+    public static final int widget_scroll_down
+    public static final int widget_scroll_up
+org.chrisbailey.todo.R$layout
+org.chrisbailey.todo.R$menu
+org.chrisbailey.todo.R$string
+org.chrisbailey.todo.R$styleable:
+    public static final int default_gallery_android_galleryItemBackground
+org.chrisbailey.todo.R$xml
+org.chrisbailey.todo.ToDoWidgetProvider:
+    public static final int MAX_NOTES
+    public static final java.lang.String BUTTON_UP
+    public static final java.lang.String BUTTON_DOWN
+    public static final java.lang.String TOGGLE
+org.chrisbailey.todo.activities.PreferencesActivity:
+    public static final int DIALOG_SELECT_COLOR
+    public static final java.lang.String LOG_TAG
+    private static final java.lang.String NOTE_VIEW_PREFIX
+    private static final java.lang.String ICON_VIEW_PREFIX
+org.chrisbailey.todo.activities.SizesConfiguration:
+    public static final java.lang.String LOG_TAG
+org.chrisbailey.todo.activities.ToDoActivity:
+    private static final java.lang.String LOG_TAG
+    public static final boolean debug
+org.chrisbailey.todo.db.ToDoDatabase:
+    private static final java.lang.String DATABASE_NAME
+    private static final int DATABASE_VERSION
+    public static final java.lang.String VARIABLE_TABLE_NAME
+    public static final java.lang.String NOTE_TABLE_NAME
+    public static final java.lang.String PREF_BACKGROUND
+    public static final java.lang.String PREF_ICONS
+    public static final java.lang.String PREF_SIZE
+    public static final java.lang.String PREF_COLOR_ACTIVE
+    public static final java.lang.String PREF_COLOR_FINISHED
+    public static final java.lang.String PREF_SCROLLBUTTONS
+    public static final java.lang.String FIELD_OFFSET
+    private static final java.lang.String CREATE_SQL
+    private static final java.lang.String LOG_TAG
+    private static final java.lang.String TITLE_KEY
+org.chrisbailey.todo.utils.Note:
+    private static final int EMPTYNOTE
+org.chrisbailey.todo.utils.PreferenceManager:
+    public static final java.lang.String BACKGROUND_DRAWABLE_PREFIX
+    public static final java.lang.String ACTIVE_DRAWABLE_PREFIX
+    public static final java.lang.String FINISHED_DRAWABLE_PREFIX
+    private static final java.lang.String LOG_TAG
+org.chrisbailey.todo.widgets.ColorCircle:
+    private static final float CENTER_RADIUS_SCALE
+    152:152:public int getColor()
+org.chrisbailey.todo.widgets.ColorPickerDialog:
+    70:75:public int toGray(int)
+org.chrisbailey.todo.widgets.ColorPickerDialog$ColorPickerState
+org.chrisbailey.todo.widgets.NumberPicker:
+    242:243:public void setFormatter(org.chrisbailey.todo.widgets.NumberPicker$Formatter)
+    296:297:public void setSpeed(long)
+    504:504:public int getCurrent()
+    512:512:protected int getEndRange()
+    520:520:protected int getBeginRange()
+org.chrisbailey.todo.widgets.Widget

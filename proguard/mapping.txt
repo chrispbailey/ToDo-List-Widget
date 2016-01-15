@@ -1,0 +1,391 @@
+org.chrisbailey.todo.LargeToDoWidget -> org.chrisbailey.todo.LargeToDoWidget:
+org.chrisbailey.todo.MediumToDoWidget -> org.chrisbailey.todo.MediumToDoWidget:
+org.chrisbailey.todo.R -> org.chrisbailey.todo.d:
+org.chrisbailey.todo.R$drawable -> org.chrisbailey.todo.a:
+org.chrisbailey.todo.R$id -> org.chrisbailey.todo.b:
+org.chrisbailey.todo.R$styleable -> org.chrisbailey.todo.e:
+    int[] default_gallery -> a
+org.chrisbailey.todo.SmallToDoWidget -> org.chrisbailey.todo.SmallToDoWidget:
+org.chrisbailey.todo.ToDoWidget1x1 -> org.chrisbailey.todo.ToDoWidget1x1:
+org.chrisbailey.todo.ToDoWidget1x2 -> org.chrisbailey.todo.ToDoWidget1x2:
+org.chrisbailey.todo.ToDoWidget1x3 -> org.chrisbailey.todo.ToDoWidget1x3:
+org.chrisbailey.todo.ToDoWidget1x4 -> org.chrisbailey.todo.ToDoWidget1x4:
+org.chrisbailey.todo.ToDoWidget3x1 -> org.chrisbailey.todo.ToDoWidget3x1:
+org.chrisbailey.todo.ToDoWidget3x2 -> org.chrisbailey.todo.ToDoWidget3x2:
+org.chrisbailey.todo.ToDoWidget3x3 -> org.chrisbailey.todo.ToDoWidget3x3:
+org.chrisbailey.todo.ToDoWidget3x4 -> org.chrisbailey.todo.ToDoWidget3x4:
+org.chrisbailey.todo.ToDoWidget4x1 -> org.chrisbailey.todo.ToDoWidget4x1:
+org.chrisbailey.todo.ToDoWidget4x2 -> org.chrisbailey.todo.ToDoWidget4x2:
+org.chrisbailey.todo.ToDoWidget4x3 -> org.chrisbailey.todo.ToDoWidget4x3:
+org.chrisbailey.todo.ToDoWidget4x4 -> org.chrisbailey.todo.ToDoWidget4x4:
+org.chrisbailey.todo.ToDoWidgetProvider -> org.chrisbailey.todo.ToDoWidgetProvider:
+    java.lang.String LOG_TAG -> a
+    void onUpdate(android.content.Context,android.appwidget.AppWidgetManager,int[]) -> onUpdate
+    void onDeleted(android.content.Context,int[]) -> onDeleted
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+    void updateAppWidget(android.content.Context,android.appwidget.AppWidgetManager,int,org.chrisbailey.todo.ToDoWidgetProvider$MOVE) -> a
+org.chrisbailey.todo.ToDoWidgetProvider$MOVE -> org.chrisbailey.todo.c:
+    org.chrisbailey.todo.ToDoWidgetProvider$MOVE UP -> a
+    org.chrisbailey.todo.ToDoWidgetProvider$MOVE DOWN -> b
+    org.chrisbailey.todo.ToDoWidgetProvider$MOVE NONE -> c
+    org.chrisbailey.todo.ToDoWidgetProvider$MOVE[] ENUM$VALUES -> d
+    org.chrisbailey.todo.ToDoWidgetProvider$MOVE[] values() -> values
+    org.chrisbailey.todo.ToDoWidgetProvider$MOVE valueOf(java.lang.String) -> valueOf
+org.chrisbailey.todo.activities.PreferencesActivity -> org.chrisbailey.todo.activities.PreferencesActivity:
+    android.view.View colorPickerActive -> a
+    android.view.View colorPickerFinished -> b
+    int[] imageBackgrounds -> c
+    int[] imageIcons -> d
+    android.widget.ImageView preview -> e
+    android.widget.ImageView ivActiveIcon -> f
+    android.widget.ImageView ivFinishedIcon -> g
+    android.widget.ImageView ivScrollUp -> h
+    android.widget.ImageView ivScrollDown -> i
+    android.widget.TextView tvTitle -> j
+    java.util.ArrayList tvNotes -> k
+    java.util.ArrayList ivIcons -> l
+    android.widget.TextView padding1 -> m
+    android.widget.TextView padding2 -> n
+    android.widget.LinearLayout scrollButtonLayout -> o
+    org.chrisbailey.todo.utils.PreferenceManager pm -> p
+    boolean activeColorChooser -> q
+    int originalSize -> r
+    int defaultScale -> s
+    org.chrisbailey.todo.db.ToDoDatabase db -> t
+    void onCreate(android.os.Bundle) -> onCreate
+    void refreshWidgets(android.appwidget.AppWidgetManager,java.lang.Class) -> a
+    android.app.Dialog onCreateDialog(int) -> onCreateDialog
+    void onPrepareDialog(int,android.app.Dialog) -> onPrepareDialog
+    void onClick(android.view.View) -> onClick
+    void setScrollButtonState(boolean) -> a
+    void onColorChanged(int) -> a
+    void setBackgroundColor(android.view.View,int) -> a
+    void onNumberChanged$1cfc8c67(int) -> b
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    void updateIcons$13462e() -> b
+    void setIcon(android.widget.ImageView,int,int,int) -> a
+    org.chrisbailey.todo.utils.PreferenceManager access$0() -> a
+    void access$1(org.chrisbailey.todo.activities.PreferencesActivity,boolean) -> a
+    void access$2(org.chrisbailey.todo.activities.PreferencesActivity) -> a
+org.chrisbailey.todo.activities.PreferencesActivity$1 -> org.chrisbailey.todo.activities.b:
+    org.chrisbailey.todo.activities.PreferencesActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.PreferencesActivity$2 -> org.chrisbailey.todo.activities.a:
+    org.chrisbailey.todo.activities.PreferencesActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.PreferencesActivity$3 -> org.chrisbailey.todo.activities.h:
+    org.chrisbailey.todo.activities.PreferencesActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.PreferencesActivity$4 -> org.chrisbailey.todo.activities.i:
+    org.chrisbailey.todo.activities.PreferencesActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.PreferencesActivity$ImageAdapter -> org.chrisbailey.todo.activities.l:
+    int mGalleryItemBackground -> a
+    int[] mDrawables -> b
+    int mHeight -> c
+    int mWidth -> d
+    java.lang.String mField -> e
+    android.widget.ImageView$ScaleType mScaleType -> f
+    android.content.Context mContext -> g
+    org.chrisbailey.todo.activities.PreferencesActivity this$0 -> h
+    int getCount() -> getCount
+    java.lang.Object getItem(int) -> getItem
+    long getItemId(int) -> getItemId
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+org.chrisbailey.todo.activities.PreferencesActivity$ViewField -> org.chrisbailey.todo.activities.d:
+    java.lang.String field -> a
+    int getViewField(int) -> a
+org.chrisbailey.todo.activities.SizesConfiguration -> org.chrisbailey.todo.activities.SizesConfiguration:
+    int ID -> a
+    android.widget.ImageView saveButton -> d
+    android.widget.ImageView cancelButton -> e
+    android.content.pm.PackageManager pm -> b
+    java.util.ArrayList widgetList -> c
+    void onCreate(android.os.Bundle) -> onCreate
+    void addWidget(android.widget.LinearLayout,java.lang.Class,int) -> a
+    boolean amIEnabled(android.content.ComponentName) -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.SizesConfiguration$1 -> org.chrisbailey.todo.activities.r:
+    org.chrisbailey.todo.activities.SizesConfiguration this$0 -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.SizesConfiguration$2 -> org.chrisbailey.todo.activities.n:
+    org.chrisbailey.todo.activities.SizesConfiguration this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+org.chrisbailey.todo.activities.SizesConfiguration$3 -> org.chrisbailey.todo.activities.o:
+    org.chrisbailey.todo.activities.SizesConfiguration this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+org.chrisbailey.todo.activities.SizesConfiguration$Widget -> org.chrisbailey.todo.activities.s:
+    android.widget.CheckBox cb -> a
+    boolean state -> b
+    java.lang.Class widgetClass -> e
+    android.content.ComponentName componentName -> c
+    java.lang.String label -> f
+    int instances -> d
+    org.chrisbailey.todo.activities.SizesConfiguration this$0 -> g
+org.chrisbailey.todo.activities.ToDoActivity -> org.chrisbailey.todo.activities.ToDoActivity:
+    org.chrisbailey.todo.db.ToDoDatabase db -> a
+    float scale -> c
+    org.chrisbailey.todo.utils.PreferenceManager pm -> d
+    android.widget.EditText title -> e
+    int mAppWidgetId -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void done() -> a
+    void toggleRow(android.widget.TableRow,org.chrisbailey.todo.utils.Note$Status) -> a
+    void redraw(org.chrisbailey.todo.activities.ToDoActivity,org.chrisbailey.todo.activities.ToDoActivity$FOCUS) -> a
+    android.widget.ImageView createImage(android.content.Context,android.graphics.drawable.Drawable) -> a
+    void setConfigureResult(int) -> a
+    void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    void access$0(org.chrisbailey.todo.activities.ToDoActivity) -> a
+org.chrisbailey.todo.activities.ToDoActivity$1 -> org.chrisbailey.todo.activities.f:
+    org.chrisbailey.todo.activities.ToDoActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.ToDoActivity$2 -> org.chrisbailey.todo.activities.e:
+    org.chrisbailey.todo.activities.ToDoActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.ToDoActivity$DeleteClickListener -> org.chrisbailey.todo.activities.q:
+    org.chrisbailey.todo.activities.ToDoActivity c -> a
+    int noteId -> b
+    org.chrisbailey.todo.activities.ToDoActivity this$0 -> c
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.ToDoActivity$DeleteClickListener$1 -> org.chrisbailey.todo.activities.k:
+    org.chrisbailey.todo.activities.ToDoActivity$DeleteClickListener this$1 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+org.chrisbailey.todo.activities.ToDoActivity$DeleteClickListener$2 -> org.chrisbailey.todo.activities.j:
+    org.chrisbailey.todo.activities.ToDoActivity$DeleteClickListener this$1 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+org.chrisbailey.todo.activities.ToDoActivity$FOCUS -> org.chrisbailey.todo.activities.p:
+    org.chrisbailey.todo.activities.ToDoActivity$FOCUS GIVE_TO_LAST -> a
+    org.chrisbailey.todo.activities.ToDoActivity$FOCUS GIVE_TO_LAST_WITH_KEYBOARD -> b
+    org.chrisbailey.todo.activities.ToDoActivity$FOCUS NONE -> c
+    org.chrisbailey.todo.activities.ToDoActivity$FOCUS[] ENUM$VALUES -> d
+    org.chrisbailey.todo.activities.ToDoActivity$FOCUS[] values() -> values
+    org.chrisbailey.todo.activities.ToDoActivity$FOCUS valueOf(java.lang.String) -> valueOf
+org.chrisbailey.todo.activities.ToDoActivity$MyTextWatcher -> org.chrisbailey.todo.activities.c:
+    android.widget.EditText et -> a
+    org.chrisbailey.todo.activities.ToDoActivity this$0 -> b
+    void afterTextChanged(android.text.Editable) -> afterTextChanged
+    void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+org.chrisbailey.todo.activities.ToDoActivity$MyTitleTextWatcher -> org.chrisbailey.todo.activities.t:
+    org.chrisbailey.todo.activities.ToDoActivity this$0 -> b
+    void afterTextChanged(android.text.Editable) -> afterTextChanged
+org.chrisbailey.todo.activities.ToDoActivity$ShowKeyboardRunnable -> org.chrisbailey.todo.activities.g:
+    android.widget.EditText et -> a
+    org.chrisbailey.todo.activities.ToDoActivity this$0 -> b
+    void run() -> run
+org.chrisbailey.todo.activities.ToDoActivity$StatusClickListener -> org.chrisbailey.todo.activities.m:
+    org.chrisbailey.todo.activities.ToDoActivity c -> a
+    org.chrisbailey.todo.activities.ToDoActivity this$0 -> b
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.activities.ToDoWidgetConfigTab -> org.chrisbailey.todo.activities.ToDoWidgetConfigTab:
+    void onCreate(android.os.Bundle) -> onCreate
+org.chrisbailey.todo.db.ToDoDatabase -> org.chrisbailey.todo.b.a:
+    java.util.HashMap UPGRADE_SQL -> a
+    void setStringVariable(java.lang.String,java.lang.String) -> a
+    void setIntVariable(java.lang.String,int) -> a
+    int getIntVariable(java.lang.String) -> a
+    java.lang.String getVariable(java.lang.String) -> b
+    void setTitle(int,java.lang.String) -> a
+    java.lang.String getTitle(int) -> a
+    void deleteTitle(int) -> b
+    int getPrefSize() -> a
+    void setPrefSize(int) -> c
+    int getPrefBackground() -> b
+    void setPrefBackground(int) -> d
+    int getPrefIcon() -> c
+    void setPrefIcon(int) -> e
+    int getPrefColorActive() -> d
+    void setPrefColorActive(int) -> f
+    int getPrefColorFinished() -> e
+    void setPrefColorFinished(int) -> g
+    int getOffset(int) -> h
+    void setOffset(int,int) -> a
+    boolean getScrollButtons() -> f
+    void setScrollButtons(boolean) -> a
+    void addNote(org.chrisbailey.todo.utils.Note) -> a
+    void updateNote(org.chrisbailey.todo.utils.Note) -> b
+    org.chrisbailey.todo.utils.Note getNote(int) -> i
+    void deleteNote(org.chrisbailey.todo.utils.Note) -> c
+    void deleteAllNotes(int) -> j
+    java.util.LinkedList getAllNotes(int) -> k
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+    boolean execMultipleSQL(android.database.sqlite.SQLiteDatabase,java.lang.String[]) -> a
+    void close() -> close
+org.chrisbailey.todo.utils.Note -> org.chrisbailey.todo.a.a:
+    int id -> a
+    java.lang.String text -> b
+    org.chrisbailey.todo.utils.Note$Status status -> c
+    java.lang.Long created -> d
+    int list -> e
+org.chrisbailey.todo.utils.Note$Status -> org.chrisbailey.todo.a.b:
+    org.chrisbailey.todo.utils.Note$Status CREATED -> a
+    org.chrisbailey.todo.utils.Note$Status FINISHED -> b
+    java.util.Map lookup -> c
+    int code -> d
+    org.chrisbailey.todo.utils.Note$Status[] ENUM$VALUES -> e
+    int getCode() -> a
+    org.chrisbailey.todo.utils.Note$Status get(int) -> a
+    org.chrisbailey.todo.utils.Note$Status[] values() -> values
+    org.chrisbailey.todo.utils.Note$Status valueOf(java.lang.String) -> valueOf
+org.chrisbailey.todo.utils.PreferenceManager -> org.chrisbailey.todo.a.c:
+    int currentBackground -> a
+    int currentBackgroundRef -> b
+    int currentIcon -> c
+    int activeIconRef -> d
+    int finishedIconRef -> e
+    int currentActiveColor -> f
+    int currentFinishedColor -> g
+    int currentSize -> h
+    boolean scrollButtons -> i
+    int defaultPadding -> j
+    int topPadding -> k
+    void save(org.chrisbailey.todo.db.ToDoDatabase) -> a
+    int getTopPadding() -> a
+    void setSize(int) -> a
+    int getSize() -> b
+    int getTitleSize() -> c
+    int getActiveColor() -> d
+    void setActiveColor(int) -> b
+    int getFinishedColor() -> e
+    void setFinishedColor(int) -> c
+    int[] getAllBackgrounds() -> f
+    int[] getAllIcons() -> g
+    int[] getAllDrawables(java.lang.String) -> a
+    void setBackground(int) -> d
+    void setIcons(int) -> e
+    int getBackground() -> h
+    int getBackgroundId() -> i
+    int getIconId() -> j
+    int getActiveIcon() -> k
+    int getFinishedIcon() -> l
+    int getDrawableField(int,java.lang.String) -> a
+    boolean isEmptyIcon() -> m
+    boolean getScrollButtons() -> n
+    void setScrollButtons(boolean) -> a
+org.chrisbailey.todo.widgets.ColorChangedListener -> org.chrisbailey.todo.widgets.d:
+    void onColorChanged(android.view.View,int) -> a
+    void onColorPicked$5359dc9a(int) -> b
+org.chrisbailey.todo.widgets.ColorCircle -> org.chrisbailey.todo.widgets.ColorCircle:
+    float center_radius -> a
+    android.graphics.Paint mPaint -> b
+    android.graphics.Paint mCenterPaint -> c
+    int[] mColors -> d
+    org.chrisbailey.todo.widgets.ColorChangedListener mListener -> e
+    boolean mTrackingCenter -> f
+    boolean mHighlightCenter -> g
+    void onDraw(android.graphics.Canvas) -> onDraw
+    void onMeasure(int,int) -> onMeasure
+    void setColor(int) -> a
+    void setOnColorChangedListener(org.chrisbailey.todo.widgets.ColorChangedListener) -> a
+    int ave(int,int,float) -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+org.chrisbailey.todo.widgets.ColorPickerDialog -> org.chrisbailey.todo.widgets.c:
+    org.chrisbailey.todo.widgets.ColorPickerDialog$OnColorChangedListener mListener -> a
+    org.chrisbailey.todo.widgets.ColorCircle mColorCircle -> b
+    org.chrisbailey.todo.widgets.ColorSlider mSaturation -> c
+    org.chrisbailey.todo.widgets.ColorSlider mValue -> d
+    int defaultColor -> e
+    void setColor(int) -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onColorChanged(android.view.View,int) -> a
+    void onColorPicked$5359dc9a(int) -> b
+org.chrisbailey.todo.widgets.ColorPickerDialog$OnColorChangedListener -> org.chrisbailey.todo.widgets.b:
+    void onColorChanged(int) -> a
+org.chrisbailey.todo.widgets.ColorSlider -> org.chrisbailey.todo.widgets.ColorSlider:
+    int defaultWidth -> a
+    int defaultHeight -> b
+    android.graphics.Paint mPaint -> c
+    int mColor1 -> d
+    int mColor2 -> e
+    org.chrisbailey.todo.widgets.ColorChangedListener mListener -> f
+    void onDraw(android.graphics.Canvas) -> onDraw
+    void onMeasure(int,int) -> onMeasure
+    void setColors(int,int) -> a
+    void setOnColorChangedListener(org.chrisbailey.todo.widgets.ColorChangedListener) -> a
+    int ave(int,int,float) -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+org.chrisbailey.todo.widgets.NumberPicker -> org.chrisbailey.todo.widgets.NumberPicker:
+    org.chrisbailey.todo.widgets.NumberPicker$Formatter TWO_DIGIT_FORMATTER -> a
+    android.os.Handler mHandler -> b
+    java.lang.Runnable mRunnable -> c
+    android.widget.TextView mText -> d
+    android.text.InputFilter mNumberInputFilter -> e
+    java.lang.String[] mDisplayedValues -> f
+    int mStart -> g
+    int mEnd -> h
+    int mCurrent -> i
+    int mPrevious -> j
+    org.chrisbailey.todo.widgets.NumberPicker$OnNumberChangedListener mListener -> k
+    org.chrisbailey.todo.widgets.NumberPicker$Formatter mFormatter -> l
+    long mSpeed -> m
+    boolean mIncrement -> n
+    boolean mDecrement -> o
+    char[] DIGIT_CHARACTERS -> p
+    org.chrisbailey.todo.widgets.NumberPickerButton mIncrementButton -> q
+    org.chrisbailey.todo.widgets.NumberPickerButton mDecrementButton -> r
+    void setEnabled(boolean) -> setEnabled
+    void setOnChangeListener(org.chrisbailey.todo.widgets.NumberPicker$OnNumberChangedListener) -> a
+    void setRange$255f295() -> a
+    void setCurrent(int) -> a
+    void changeCurrent(int) -> b
+    void notifyChange() -> e
+    void updateView() -> f
+    void cancelIncrement() -> b
+    void cancelDecrement() -> c
+    int getSelectedPos(java.lang.String) -> a
+    boolean access$0(org.chrisbailey.todo.widgets.NumberPicker) -> a
+    int access$1(org.chrisbailey.todo.widgets.NumberPicker) -> b
+    android.os.Handler access$2(org.chrisbailey.todo.widgets.NumberPicker) -> c
+    long access$3(org.chrisbailey.todo.widgets.NumberPicker) -> d
+    boolean access$4(org.chrisbailey.todo.widgets.NumberPicker) -> e
+    java.lang.String[] access$5(org.chrisbailey.todo.widgets.NumberPicker) -> f
+    android.text.InputFilter access$6(org.chrisbailey.todo.widgets.NumberPicker) -> g
+    char[] access$7() -> d
+    int access$8(org.chrisbailey.todo.widgets.NumberPicker,java.lang.String) -> a
+    int access$9(org.chrisbailey.todo.widgets.NumberPicker) -> h
+    android.widget.TextView access$10(org.chrisbailey.todo.widgets.NumberPicker) -> i
+    void access$11(org.chrisbailey.todo.widgets.NumberPicker,android.view.View) -> a
+    void access$12$7aefd47b(org.chrisbailey.todo.widgets.NumberPicker) -> j
+    java.lang.Runnable access$13(org.chrisbailey.todo.widgets.NumberPicker) -> k
+    void access$14$7aefd47b(org.chrisbailey.todo.widgets.NumberPicker) -> l
+org.chrisbailey.todo.widgets.NumberPicker$1 -> org.chrisbailey.todo.widgets.g:
+    java.lang.StringBuilder mBuilder -> a
+    java.util.Formatter mFmt -> b
+    java.lang.Object[] mArgs -> c
+    java.lang.String toString(int) -> a
+org.chrisbailey.todo.widgets.NumberPicker$2 -> org.chrisbailey.todo.widgets.h:
+    org.chrisbailey.todo.widgets.NumberPicker this$0 -> a
+    void run() -> run
+org.chrisbailey.todo.widgets.NumberPicker$3 -> org.chrisbailey.todo.widgets.i:
+    org.chrisbailey.todo.widgets.NumberPicker this$0 -> a
+    void onClick(android.view.View) -> onClick
+org.chrisbailey.todo.widgets.NumberPicker$4 -> org.chrisbailey.todo.widgets.j:
+    org.chrisbailey.todo.widgets.NumberPicker this$0 -> a
+    void onFocusChange(android.view.View,boolean) -> onFocusChange
+org.chrisbailey.todo.widgets.NumberPicker$5 -> org.chrisbailey.todo.widgets.f:
+    org.chrisbailey.todo.widgets.NumberPicker this$0 -> a
+    boolean onLongClick(android.view.View) -> onLongClick
+org.chrisbailey.todo.widgets.NumberPicker$Formatter -> org.chrisbailey.todo.widgets.a:
+    java.lang.String toString(int) -> a
+org.chrisbailey.todo.widgets.NumberPicker$NumberPickerInputFilter -> org.chrisbailey.todo.widgets.k:
+    org.chrisbailey.todo.widgets.NumberPicker this$0 -> a
+    java.lang.CharSequence filter(java.lang.CharSequence,int,int,android.text.Spanned,int,int) -> filter
+org.chrisbailey.todo.widgets.NumberPicker$NumberRangeKeyListener -> org.chrisbailey.todo.widgets.e:
+    org.chrisbailey.todo.widgets.NumberPicker this$0 -> a
+    int getInputType() -> getInputType
+    char[] getAcceptedChars() -> getAcceptedChars
+    java.lang.CharSequence filter(java.lang.CharSequence,int,int,android.text.Spanned,int,int) -> filter
+org.chrisbailey.todo.widgets.NumberPicker$OnNumberChangedListener -> org.chrisbailey.todo.widgets.l:
+    void onNumberChanged$1cfc8c67(int) -> b
+org.chrisbailey.todo.widgets.NumberPickerButton -> org.chrisbailey.todo.widgets.NumberPickerButton:
+    org.chrisbailey.todo.widgets.NumberPicker mNumberPicker -> a
+    void setNumberPicker(org.chrisbailey.todo.widgets.NumberPicker) -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    boolean onTrackballEvent(android.view.MotionEvent) -> onTrackballEvent
+    boolean onKeyUp(int,android.view.KeyEvent) -> onKeyUp
+    void cancelLongpressIfRequired(android.view.MotionEvent) -> a
+    void cancelLongpress() -> a

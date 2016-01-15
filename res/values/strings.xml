@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- ENGLISH -->
-	<string name="app_name">ToDo List Widget</string>
+	<string name="app_name">To-Do List Widget</string>
 	<string name="app_name_1x1">ToDo List Widget 1x1</string>
 	<string name="app_name_1x2">ToDo List Widget 1x2</string>
 	<string name="app_name_1x3">ToDo List Widget 1x3</string>
